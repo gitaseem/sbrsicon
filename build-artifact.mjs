@@ -28,7 +28,11 @@ for (const f of ['assets/hero.mp4', 'assets/hero-poster.jpg', 'assets/bench-post
                  'assets/people-poster.jpg', 'assets/heart.jpg',
                  'assets/iitm-logo.webp', 'assets/iitm-logo.png',
                  'assets/iiitdmj-logo.png', 'assets/sbrs-logo.png',
-                 'assets/campus-jabalpur.webp', 'assets/campus-jabalpur.jpg']) {
+                 'assets/campus-jabalpur.webp', 'assets/campus-jabalpur.jpg',
+                 'assets/hl-bioprinting.webp', 'assets/hl-bioprinting.jpg',
+                 'assets/hl-4d.webp', 'assets/hl-4d.jpg',
+                 'assets/hl-devices.webp', 'assets/hl-devices.jpg',
+                 'assets/hl-products.webp', 'assets/hl-products.jpg']) {
   const before = h.length;
   h = h.split(f).join(dataURI(f));
   if (h.length === before) console.warn('  ! not referenced:', f);
@@ -51,6 +55,6 @@ h = h.replace(/^[\s\S]*?<title>/, '<title>')
 writeFileSync('artifact.html', h);
 const mb = (statSync('artifact.html').size / 1048576).toFixed(2);
 console.log(`artifact.html  ${mb} MB` + (mb > 16 ? '  ** OVER THE 16 MB LIMIT **' : '  (limit 16 MB)'));
-for (const tag of ['<iframe', '<!doctype', '<html', '<head', '<body', 'assets/']) {
+for (const tag of ['<iframe', '<!doctype', '<html', '<head>', '</head>', '<body>', 'assets/']) {
   if (h.toLowerCase().includes(tag)) console.warn('  ! leftover:', tag);
 }

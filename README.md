@@ -78,9 +78,6 @@ in a per-form tab of your Sheet.
 ## Still to supply
 
 - **`FORM_ENDPOINT`** — the forms email you only once this is set (above).
-- **Highlight imagery** — the four highlight cells (3D Bioprinting, 4D Biomanufacturing, Advanced
-  Medical Devices, Biomanufactured Medical Products) are currently title-only, waiting on one photo
-  each.
 - **Abstract file upload** — the form takes abstract text, not a `.docx`/`.pdf`. Apps Script can
   accept files, but it needs base64 upload and a Drive folder; say the word if you want it.
 - **QR code destination** — the poster has a QR code; it is not on the site because its target is unknown.
@@ -105,10 +102,14 @@ generated and no third-party asset was fetched.
 | `sbrs-logo.png` | `…sbrs logo.png` | → 440 px, alpha preserved |
 | `iiitdmj-logo.png` | `PDPM IIITDM Jabalpur logo.png` | → 380 px, alpha preserved |
 | `iitm-logo.png` / `.webp` | `IIT_Madras_Logo.svg.webp` | → 176 px, alpha preserved |
+| `hl-bioprinting`, `hl-4d`, `hl-devices`, `hl-products` (`.webp` + `.jpg`) | `3D Bioprinting.png`, `4d biomanufacturing.png`, `advanced medical product.png`, `biomanufacture emdical products.png` | Burned-in captions cropped off, subject area-normalised into one shared 880×660 frame |
 
 All three institutional logos are reproduced **unaltered** — marks are never recoloured into the palette.
 
-**Not used**: `…Kancheepuram_logo.png` is IIITDM **Kancheepuram**, a different institution from the
+**Not used**: `image for this Materials · Design & Engineering ….png` is a collage carrying its own
+headline (*"Innovating for a better tomorrow"*), its own blue/green palette and its own typography.
+Dropping it in would put a second poster inside the page, so it is held back pending a decision.
+`…Kancheepuram_logo.png` is IIITDM **Kancheepuram**, a different institution from the
 host. `845.jpg` has *"World Health Day"* burned in and belongs to another campaign. The two CGI DNA
 clips are off-subject. The remaining stock lab stills were left out on design grounds. All are still
 in `assets/source/`.
@@ -138,13 +139,36 @@ no clip introduces a colour outside the system. Institutional logos are exempt.
 
 ## The globe
 
-The hero carries a **dotted halftone globe** on canvas 2D — orthographic projection, drag to rotate,
-slow auto-rotation that pauses while you drag. It starts centred on India and marks two locations:
+The hero carries a **dotted halftone globe** on canvas 2D — orthographic projection, no libraries.
+It starts centred on India and marks two locations:
 
-| Pin | Colour |
+| Pin | Colour | Treatment |
+|---|---|---|
+| PDPM IIITDM Jabalpur — venue & host | `--phenol-beacon` `#FF4D8D` | Halo, breathing ring, lit centre — reads first |
+| IIT Madras — co-organizer | `--bioink` | Plain marker |
+
+`--phenol-beacon` is `--phenol` pushed bright enough to hold against the dark globe body; `--phenol`
+itself sits too close to the petrol ground to register at 4 px.
+
+### Interaction
+
+| Input | Result |
 |---|---|
-| PDPM IIITDM Jabalpur — venue & host | `--phenol` |
-| IIT Madras — co-organizer | `--bioink` |
+| Drag | Rotates; a throw coasts to a stop, auto-rotation resumes after 2.6 s idle |
+| Hover a marker or its label chip | Marker and chip light up, cursor turns to a pointer, rotation holds |
+| Click a marker | Scrolls to **Hosts** |
+| Focus (Tab) | Canvas takes focus and announces the controls |
+| Arrow keys | Rotate 5°, or 15° with Shift |
+| `Home` | Recentres on India |
+| `M` | Steps through the markers |
+| `Enter` / `Space` | Opens the focused marker |
+
+Tab is deliberately **not** intercepted, so the globe can never become a keyboard trap. The corner
+hint below the globe reports the current affordance rather than repeating one fixed instruction.
+
+The fallback SVG is painted over the canvas and therefore carries `pointer-events:none` — without it
+the invisible fallback swallows every pointer event and the globe looks dead. Same reason the corner
+labels are inert.
 
 Labels are chipped, separated, and flip to the other side of the pin near the frame edge, so the two
 Indian locations never collide.
@@ -154,7 +178,8 @@ are precomputed from Natural Earth 110m land data and packed base36 into a 16 KB
 Regenerate with the script in `tools/` if you ever want a different dot density.
 
 A hand-built inline SVG globe sits beneath as the base layer, so no-JS and `prefers-reduced-motion`
-still land on a complete static page. Reduced motion renders one static frame, already centred on India.
+still land on a complete static page. Reduced motion renders one static frame, already centred on
+India, with the pulse suppressed — drag, click and keyboard all still work.
 
 Wheel-zoom was deliberately left out: trapping the scroll wheel over a hero breaks page scrolling.
 
@@ -171,5 +196,9 @@ build swaps them for a link-out card, since the Artifact CSP blocks external hos
 - Text contrast ≥ 4.5:1 (≥ 3:1 large) on every pair.
 - Forms: empty submit blocked, invalid email/phone caught, dial code auto-filled, 300-word cap enforced.
 - One `<h1>`, skip link first in tab order, all focusables named, `<dialog>` traps focus and restores it.
-- `prefers-reduced-motion`: animation at final state, videos paused, globe renders one static frame.
+- `prefers-reduced-motion`: animation at final state, videos paused, globe renders one static frame
+  with no pulse, and stays draggable.
+- Globe, in a real browser: canvas is the topmost element at the stage centre; drag, throw-momentum,
+  arrow keys, marker hover and click-to-`#hosts` all confirmed on desktop and on a touch viewport,
+  where the drag does not scroll the page.
 - No horizontal overflow at 375 / 768 / 1440 px. Zero console errors.
