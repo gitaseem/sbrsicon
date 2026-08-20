@@ -231,13 +231,7 @@ ul,ol{padding:0;list-style:none}
 .zr-cap.top{top:26px;display:flex;flex-direction:column;gap:6px;align-items:center}
 .zr-cap.bot{bottom:30px;display:flex;flex-direction:column;gap:6px;align-items:center}
 .zr-cap b{font-variation-settings:"wght" 700;color:var(--graphite);font-size:.55rem;letter-spacing:.02em}
-.zr-vert{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  writing-mode:vertical-rl;font-family:var(--f-mono);font-size:.48rem;
-  letter-spacing:.26em;text-transform:uppercase;color:var(--toolpath-dim);
-  white-space:nowrap;
-}
+
 
 /* ==========================================================
    DUOTONE MEDIA — every clip graded into the palette
@@ -393,17 +387,9 @@ ul,ol{padding:0;list-style:none}
 /* ==========================================================
    OBJECTIVES
    ========================================================== */
-.obj-grid{display:grid;gap:clamp(30px,4vw,60px)}
-@media (min-width:960px){.obj-grid{grid-template-columns:minmax(0,.72fr) minmax(0,1fr);align-items:center}}
-.globe-stage{position:relative;aspect-ratio:1;max-width:440px;width:100%;margin-inline:auto}
-.globe-stage canvas,.globe-stage svg{position:absolute;inset:0;width:100%;height:100%}
-.globe-stage canvas{opacity:0;transition:opacity .7s var(--ease)}
-.globe-stage.gl-on canvas{opacity:1}
-.globe-stage.gl-on .glfallback{opacity:0}
-.globe-ring{
-  position:absolute;inset:6%;border:1px solid color-mix(in srgb,var(--toolpath) 40%,transparent);
-  border-radius:50%;pointer-events:none;
-}
+
+
+
 .obj-list{border-top:1px solid color-mix(in srgb,var(--toolpath) 45%,transparent)}
 .obj-list li{
   display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;
@@ -424,13 +410,7 @@ ul,ol{padding:0;list-style:none}
    TRACKS — unit-cell specimen sheet
    ========================================================== */
 .tracks{background:var(--chamber);color:var(--plate);overflow:hidden}
-.tracks-sheet{position:relative}
-#tracksCanvas{
-  position:absolute;inset:0;width:100%;height:100%;
-  pointer-events:none;z-index:1;opacity:0;transition:opacity .8s var(--ease);
-}
-.tracks-sheet.gl-on #tracksCanvas{opacity:1}
-.tracks-sheet.gl-on .cellsvg{opacity:.08}
+
 .tk-list{position:relative;z-index:2;border-top:1px solid color-mix(in srgb,var(--toolpath) 36%,transparent)}
 .tk{
   display:grid;grid-template-columns:minmax(0,1fr);gap:14px;
@@ -439,10 +419,9 @@ ul,ol{padding:0;list-style:none}
   align-items:center;position:relative;
 }
 @media (min-width:720px){
-  .tk{grid-template-columns:96px minmax(0,1fr) 112px;gap:clamp(18px,3vw,40px)}
-  /* asymmetric specimen sheet: alternate indent so it is not a uniform grid */
-  .tk:nth-child(even){padding-left:clamp(24px,5vw,90px)}
-  .tk:nth-child(3n){grid-template-columns:96px minmax(0,1fr) 150px}
+  .tk{grid-template-columns:104px minmax(0,1fr);gap:clamp(20px,3.2vw,44px)}
+  /* alternate indent so the column is not a flat uniform grid */
+  .tk:nth-child(even){padding-left:clamp(24px,5vw,96px)}
 }
 .tk::after{
   content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;
@@ -461,17 +440,7 @@ ul,ol{padding:0;list-style:none}
   line-height:1.14;letter-spacing:-.018em;color:var(--paper);
   text-wrap:balance;
 }
-.tk-cell{
-  position:relative;width:96px;height:96px;justify-self:start;
-  border:1px solid color-mix(in srgb,var(--toolpath) 30%,transparent);
-}
-@media (min-width:720px){.tk-cell{justify-self:end}}
-.tk-cell .cellsvg{position:absolute;inset:0;width:100%;height:100%;opacity:.85;transition:opacity .6s var(--ease)}
-.tk-cell span{
-  position:absolute;bottom:-1px;left:-1px;padding:2px 5px;
-  background:var(--chamber);font-family:var(--f-mono);font-size:.42rem;
-  letter-spacing:.1em;text-transform:uppercase;color:var(--toolpath);
-}
+
 
 /* ==========================================================
    ATTEND
@@ -512,16 +481,12 @@ ul,ol{padding:0;list-style:none}
 .hl-grid{display:grid;gap:1px;background:color-mix(in srgb,var(--toolpath) 42%,transparent);border:1px solid color-mix(in srgb,var(--toolpath) 42%,transparent)}
 @media (min-width:600px){.hl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1080px){.hl-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.hl{background:var(--plate);padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:16px}
-.hl:hover{background:var(--paper)}
-.hl-art{
-  aspect-ratio:1/.78;width:100%;
-  border:1px solid color-mix(in srgb,var(--toolpath) 34%,transparent);
-  background:var(--paper);position:relative;
+.hl{
+  background:var(--plate);padding:clamp(24px,3vw,36px);
+  display:flex;align-items:flex-end;min-height:clamp(130px,15vw,190px);
 }
-.hl:hover .hl-art{background:var(--plate-2)}
-.hl-art svg{position:absolute;inset:0;width:100%;height:100%}
-.hl-n{font-family:var(--f-mono);font-size:.53rem;letter-spacing:.13em;color:var(--phenol)}
+.hl:hover{background:var(--paper)}
+
 .hl h3{font-variation-settings:"wdth" 106,"wght" 650;font-size:clamp(1rem,1.35vw,1.16rem);line-height:1.2;letter-spacing:-.014em}
 
 /* ==========================================================
@@ -584,21 +549,38 @@ ul,ol{padding:0;list-style:none}
 .host-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
 .host-logo{width:76px;height:76px;object-fit:contain;flex:none}
 /* an explicit TBD field reads as deliberate in a title-block world, and asks for the missing mark */
-.host-logo-tbd{
-  width:76px;height:76px;flex:none;padding:6px;
-  border:1px dashed color-mix(in srgb,var(--toolpath) 75%,transparent);
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  font-family:var(--f-mono);font-size:.42rem;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--toolpath-dim);line-height:1.5;
-}
+
 .host .role{
   font-family:var(--f-mono);font-size:.53rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--phenol);
 }
 .host h3{font-variation-settings:"wdth" 108,"wght" 680;font-size:clamp(1.16rem,1.9vw,1.5rem);line-height:1.16;letter-spacing:-.02em}
 .host p{color:var(--toolpath-dim);font-size:.95rem;line-height:1.5}
-.locplate{margin-top:auto;padding-top:18px}
-.locplate svg{width:100%;height:auto}
+.locplate{margin-top:auto;padding-top:20px}
+.mapframe{
+  width:100%;height:clamp(190px,22vw,240px);border:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent);
+  display:block;background:var(--plate-2);
+}
+.mapstub{
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:0 16px;
+  width:100%;height:clamp(190px,22vw,240px);
+  border:1px dashed color-mix(in srgb,var(--toolpath) 70%,transparent);background:var(--plate-2);
+  font-family:var(--f-mono);font-size:.55rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--toolpath-dim);margin:0;
+}
+.mapnote{margin-top:9px;font-family:var(--f-mono);font-size:.52rem;letter-spacing:.12em;text-transform:uppercase}
+.mapnote a{color:var(--toolpath-dim);text-decoration:none;border-bottom:1px solid var(--phenol);padding-bottom:2px}
+.mapnote a:hover{color:var(--graphite)}
+.campus{margin:0 0 clamp(28px,3.5vw,46px)}
+.campus img{width:100%;display:block;aspect-ratio:21/9;object-fit:cover;object-position:50% 42%}
+.host-logo.wide{width:190px;height:auto;max-width:48%}
+.org-line{
+  display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:clamp(26px,3vw,38px);
+  font-family:var(--f-mono);font-size:.58rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--toolpath-dim);
+}
+.org-line img{width:150px;height:auto;flex:none}
+
 
 /* ==========================================================
    FOOTER — four pillars, CSS 3D
@@ -645,6 +627,7 @@ ul,ol{padding:0;list-style:none}
 }
 .pillar-key b{color:var(--bioink);font-weight:400}
 
+.foot-logo{width:168px;height:auto;margin-bottom:22px;filter:brightness(0) invert(1);opacity:.92}
 .foot-h{
   font-variation-settings:"wdth" 114,"wght" 720;
   font-size:clamp(1.7rem,3.6vw,2.75rem);line-height:1.02;
@@ -668,6 +651,66 @@ ul,ol{padding:0;list-style:none}
   text-transform:uppercase;color:var(--toolpath);
 }
 
+
+/* ==========================================================
+   FORMS — registration and abstract submission
+   ========================================================== */
+.dlg{
+  width:min(760px,calc(100vw - 28px));max-width:none;padding:0;
+  border:1px solid var(--toolpath);background:var(--paper);color:var(--graphite);
+  max-height:calc(100dvh - 40px);overflow:visible;
+}
+.dlg::backdrop{background:color-mix(in srgb,var(--chamber) 80%,transparent)}
+.dlg-in{display:flex;flex-direction:column;max-height:calc(100dvh - 40px)}
+.dlg-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:clamp(18px,2.6vw,28px);
+  border-bottom:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent);background:var(--plate);
+}
+.dlg-head h2{
+  font-variation-settings:"wdth" 112,"wght" 720;
+  font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.05;letter-spacing:-.02em;margin-top:10px;
+}
+.dlg-x{
+  flex:none;width:42px;height:42px;line-height:1;font-size:1.35rem;cursor:pointer;
+  background:transparent;color:var(--graphite);
+  border:1px solid color-mix(in srgb,var(--toolpath) 60%,transparent);
+}
+.dlg-x:hover{background:var(--graphite);color:var(--paper)}
+.dlg-body{padding:clamp(18px,2.6vw,28px);overflow-y:auto;display:grid;gap:16px;align-content:start}
+@media (min-width:640px){.dlg-body{grid-template-columns:1fr 1fr}.f.wide{grid-column:1/-1}}
+.dlg-foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  padding:clamp(16px,2.2vw,24px) clamp(18px,2.6vw,28px);
+  border-top:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent);background:var(--plate);
+}
+.f{display:flex;flex-direction:column;gap:6px;margin:0;min-width:0}
+.f label{font-family:var(--f-mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;color:var(--toolpath-dim)}
+.f label b{color:var(--phenol);font-weight:400}
+.f input,.f select,.f textarea{
+  font-family:inherit;font-size:.95rem;color:var(--graphite);background:var(--plate);
+  border:1px solid color-mix(in srgb,var(--toolpath) 65%,transparent);
+  padding:11px 12px;min-height:46px;width:100%;border-radius:0;
+}
+.f textarea{min-height:132px;resize:vertical;line-height:1.5}
+.f input:focus-visible,.f select:focus-visible,.f textarea:focus-visible{outline:2px solid var(--phenol);outline-offset:1px}
+.f .tel{display:grid;grid-template-columns:104px minmax(0,1fr);gap:8px}
+.f .tel .dial{
+  display:flex;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:.8rem;
+  background:var(--plate-2);min-height:46px;
+  border:1px solid color-mix(in srgb,var(--toolpath) 65%,transparent);
+}
+.err{font-family:var(--f-mono);font-size:.55rem;letter-spacing:.08em;color:var(--phenol)}
+.f.bad input,.f.bad select,.f.bad textarea{border-color:var(--phenol);background:color-mix(in srgb,var(--phenol) 6%,var(--plate))}
+.hint{font-family:var(--f-mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--toolpath-dim)}
+.dlg-status{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.1em;margin:0;flex:1 1 220px}
+.dlg-status.ok{color:#1B6B39}
+.dlg-status.bad{color:var(--phenol)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.dlg[open]{animation:dlgin .28s var(--ease-out)}
+@keyframes dlgin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.dlg[open]{animation:none}}
+
 /* ==========================================================
    REVEAL
    ========================================================== */
@@ -675,14 +718,7 @@ ul,ol{padding:0;list-style:none}
 .rv.rin{opacity:1;transform:none}
 .rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
 
-/* SVG line-draw for highlight motifs */
-.dash{stroke-dasharray:var(--len,240);stroke-dashoffset:var(--len,240);transition:stroke-dashoffset 1.4s var(--ease-out)}
-.rin .dash,.hl:hover .dash{stroke-dashoffset:0}
-@keyframes bead{0%{opacity:0;transform:translateY(-4px)}18%{opacity:1}100%{opacity:0;transform:translateY(26px)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse-t{0%,100%{opacity:.25}50%{opacity:1}}
-.hl-art .bead{animation:bead 2.6s linear infinite}
-.hl-art .tk-pulse{animation:pulse-t 3.4s ease-in-out infinite}
+
 
 /* ==========================================================
    REDUCED MOTION — everything lands on its final state
@@ -694,7 +730,6 @@ ul,ol{padding:0;list-style:none}
     transition-duration:.001ms !important;
   }
   .rv{opacity:1;transform:none}
-  .dash{stroke-dashoffset:0}
   .tl-bar i{transform:scaleX(1)}
   .pillar{opacity:1}
   .pillar:nth-child(1){transform:translateZ(0px)}
@@ -724,13 +759,12 @@ ul,ol{padding:0;list-style:none}
 <a class="skip" href="#main">Skip to content</a>
 
 <div class="zrail" aria-hidden="true">
-  <div class="zr-cap top"><span>Build</span><b id="zrPct">000%</b></div>
+  <div class="zr-cap top"><span>Read</span><b id="zrPct">000%</b></div>
   <div class="zr-line"></div>
   <div class="zr-fill" id="zrFill"></div>
   <div id="zrTicks"></div>
   <div class="zr-head" id="zrHead"></div>
-  <div class="zr-vert">Z-axis · build height</div>
-  <div class="zr-cap bot"><b id="zrZ">Z 000.0</b><span>mm</span></div>
+  <div class="zr-cap bot"><b id="zrZ">01</b><span>of 08</span></div>
 </div>
 
 <header class="site-head">
@@ -748,8 +782,8 @@ ul,ol{padding:0;list-style:none}
       <a href="#hosts">Hosts</a>
     </nav>
     <div class="head-cta">
-      <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration">Register</a>
-      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
+      <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register</a>
+      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
     </div>
     <div class="prog" id="prog"></div>
   </div>
@@ -776,37 +810,27 @@ ul,ol{padding:0;list-style:none}
       </h1>
       <p class="hero-theme">Engineering Sustainable Innovations for Next-Generation Healthcare and Planetary Health</p>
       <div class="hero-cta">
-        <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration">Register <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register <span class="ar" aria-hidden="true">→</span></a>
       </div>
     </div>
 
     <div class="hero-right">
       <div class="hero-stage" id="heroStage">
-        <span class="stage-tag tl">Build preview · organ construct</span>
-        <span class="stage-tag tr" id="heroLayerTag">Layer 000 / 072</span>
-        <span class="stage-tag bl">Nozzle 0.40 mm · layer 0.12 mm</span>
+        <span class="stage-tag tl">Planetary health · global participation</span>
+        <span class="stage-tag bl">Drag to rotate</span>
         <canvas id="heroCanvas" aria-hidden="true"></canvas>
-        <svg class="glfallback" viewBox="0 0 400 368" role="img" aria-label="Schematic of a layered bioprinted construct rising from a build plate">
-          <g fill="none" stroke="#7C8C84" stroke-width="1" opacity=".55">
-            <path d="M110 300 L200 330 L290 300 L200 270 Z"/>
-            <path d="M110 300 L110 310 L200 340 L290 310 L290 300"/>
-            <path d="M200 330 L200 340"/>
+        <svg class="glfallback" viewBox="0 0 360 360" role="img" aria-label="Wireframe globe crossed by a network of connecting arcs">
+          <g fill="none" stroke="#869690" stroke-width="1" opacity=".75">
+            <circle cx="180" cy="180" r="118"/>
+            <ellipse cx="180" cy="180" rx="118" ry="40"/><ellipse cx="180" cy="180" rx="118" ry="78"/>
+            <ellipse cx="180" cy="180" rx="40" ry="118"/><ellipse cx="180" cy="180" rx="78" ry="118"/>
+            <path d="M62 180h236M180 62v236"/>
           </g>
-          <g fill="none" stroke-width="1.4" opacity=".9">
-            <ellipse cx="200" cy="258" rx="52" ry="17" stroke="#5D6C65"/>
-            <ellipse cx="200" cy="238" rx="62" ry="20" stroke="#5D6C65"/>
-            <ellipse cx="200" cy="216" rx="68" ry="22" stroke="#6B7A73"/>
-            <ellipse cx="200" cy="194" rx="70" ry="23" stroke="#6B7A73"/>
-            <ellipse cx="200" cy="172" rx="67" ry="22" stroke="#7C8C84"/>
-            <ellipse cx="200" cy="150" rx="60" ry="20" stroke="#8B9B92"/>
-            <ellipse cx="200" cy="130" rx="49" ry="16" stroke="#A98A5B"/>
-            <ellipse cx="200" cy="113" rx="35" ry="12" stroke="#E8A33D"/>
-            <ellipse cx="200" cy="100" rx="20" ry="7" stroke="#D6215F" stroke-width="2"/>
+          <g fill="none" stroke="#D6215F" stroke-width="1.6" opacity=".95">
+            <path d="M92 122c46 34 130 34 176 0"/><path d="M84 216c52 40 140 26 192-24"/>
           </g>
-          <g stroke="#D6215F" stroke-width="1.5" fill="none">
-            <path d="M200 62 L200 92"/><path d="M188 62 L212 62 L206 88 L194 88 Z"/>
-          </g>
+          <g fill="#E8A33D"><circle cx="128" cy="140" r="3.2"/><circle cx="232" cy="152" r="3.2"/><circle cx="164" cy="230" r="3.2"/></g>
         </svg>
       </div>
 
@@ -831,10 +855,10 @@ ul,ol{padding:0;list-style:none}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">Layer 01</span>
+        <span class="eyebrow">01</span>
         <span>About the conference</span>
       </div>
-      <h2 class="h2" id="h-about">Materials, design and biomanufacturing, brought onto one build plate.</h2>
+      <h2 class="h2" id="h-about">Materials, design, engineering and medicine, in one room.</h2>
     </div>
     <hr class="rule rv">
 
@@ -851,7 +875,7 @@ ul,ol{padding:0;list-style:none}
 
       <figure class="about-fig rv rv-d1">
         <div class="plate-frame">
-          <div class="duo"><img src="assets/heart.jpg" alt="A three-dimensional printer with an anatomical heart model resting on its build plate." loading="lazy" decoding="async" width="1600" height="1333"></div>
+          <div class="duo"><img src="assets/heart.jpg" alt="An anatomical heart model produced by additive fabrication." loading="lazy" decoding="async" width="1600" height="1333"></div>
           <figcaption class="figcap">
             <span>Fig. 01 · Additive fabrication of a cardiac construct</span>
             <span class="tagi">Illustrative</span>
@@ -867,34 +891,14 @@ ul,ol{padding:0;list-style:none}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">Layer 02</span>
+        <span class="eyebrow">02</span>
         <span>Conference objectives</span>
       </div>
       <h2 class="h2" id="h-obj">What this conference sets out to do.</h2>
     </div>
 
-    <div class="obj-grid">
-      <div class="globe-stage rv" id="globeStage">
-        <canvas id="globeCanvas" aria-hidden="true"></canvas>
-        <svg class="glfallback" viewBox="0 0 360 360" role="img" aria-label="Wireframe globe crossed by a network of circulatory arcs, representing planetary health">
-          <g fill="none" stroke="#7C8C84" stroke-width="1" opacity=".75">
-            <circle cx="180" cy="180" r="118"/>
-            <ellipse cx="180" cy="180" rx="118" ry="40"/>
-            <ellipse cx="180" cy="180" rx="118" ry="78"/>
-            <ellipse cx="180" cy="180" rx="40" ry="118"/>
-            <ellipse cx="180" cy="180" rx="78" ry="118"/>
-            <path d="M62 180h236M180 62v236"/>
-          </g>
-          <g fill="none" stroke="#D6215F" stroke-width="1.6" opacity=".95">
-            <path d="M92 122c46 34 130 34 176 0"/>
-            <path d="M84 216c52 40 140 26 192-24"/>
-          </g>
-          <g fill="#E8A33D"><circle cx="128" cy="140" r="3.2"/><circle cx="232" cy="152" r="3.2"/><circle cx="164" cy="230" r="3.2"/></g>
-        </svg>
-        <span class="globe-ring" aria-hidden="true"></span>
-      </div>
-
-      <ol class="obj-list rv rv-d1">
+    <div>
+      <ol class="obj-list rv">
         <li><span class="oid">OBJ-01</span><p>Catalyse sustainable innovations for next-generation healthcare</p></li>
         <li><span class="oid">OBJ-02</span><p>Foster a global ecosystem for collaborative research and sustainable biomanufacturing</p></li>
         <li><span class="oid">OBJ-03</span><p>Bridge materials, design, engineering, and medicine through interdisciplinary partnerships</p></li>
@@ -910,25 +914,22 @@ ul,ol{padding:0;list-style:none}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">Layer 03</span>
-        <span>Specimen sheet · 08 tracks</span>
+        <span class="eyebrow">03</span>
+        <span>08 tracks</span>
       </div>
-      <h2 class="h2" id="h-tracks">Eight tracks. One build.</h2>
+      <h2 class="h2" id="h-tracks">Eight tracks across the field.</h2>
     </div>
 
-    <div class="tracks-sheet" id="tracksSheet">
-      <canvas id="tracksCanvas" aria-hidden="true"></canvas>
-      <ol class="tk-list">
-        <li class="tk rv"><div class="tk-id">TRK-01</div><h3 class="tk-title">Sustainable and Functional Materials for Human Health</h3><div class="tk-cell" data-cell="0"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><path d="M18 34c14-16 28 16 42 0s28 16 22 0"/><path d="M18 50c14-16 28 16 42 0s28 16 22 0"/><path d="M18 66c14-16 28 16 42 0s28 16 22 0"/><path d="M30 22v56M50 22v56M70 22v56" opacity=".45"/></svg><span>Gyroid</span></div></li>
-        <li class="tk rv"><div class="tk-id">TRK-02</div><h3 class="tk-title">Engineering Design for Healthcare Innovation</h3><div class="tk-cell" data-cell="1"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><path d="M36 24h28l14 26-14 26H36L22 50z"/><path d="M36 24v52M64 24v52M22 50h56" opacity=".45"/></svg><span>Honeycomb</span></div></li>
-        <li class="tk rv"><div class="tk-id">TRK-03</div><h3 class="tk-title">Biomanufacturing and Biofabrication Technologies</h3><div class="tk-cell" data-cell="2"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><path d="M24 26h52v48H24z"/><path d="M36 38h52v48H36" opacity=".55"/><path d="M24 26l12 12M76 26l12 12M76 74l12 12M24 74l12 12" opacity=".55"/><path d="M50 50l-13-12M50 50l13 12M50 50l13-12M50 50l-13 12"/></svg><span>Diamond</span></div></li>
-        <li class="tk rv"><div class="tk-id">TRK-04</div><h3 class="tk-title">Medical Devices and Next-Generation Medical Technologies</h3><div class="tk-cell" data-cell="3"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><path d="M22 30l24-8 26 12-6 26-24 12-22-16z"/><path d="M46 22v34M22 30l24 26M72 34L46 56M40 72l6-16M78 60L46 56"/></svg><span>Voronoi</span></div></li>
-        <li class="tk rv"><div class="tk-id">TRK-05</div><h3 class="tk-title">Regenerative Medicine and Therapeutic Engineering</h3><div class="tk-cell" data-cell="4"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><path d="M24 26h52v48H24z"/><path d="M24 26l26 24 26-24M24 74l26-24 26 24M24 26l26 24-26 24M76 26L50 50l26 24"/></svg><span>Octet</span></div></li>
-        <li class="tk rv"><div class="tk-id">TRK-06</div><h3 class="tk-title">AI, Digital Health, and Computational Medicine</h3><div class="tk-cell" data-cell="5"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><circle cx="50" cy="26" r="10"/><circle cx="50" cy="74" r="10"/><circle cx="26" cy="50" r="10"/><circle cx="74" cy="50" r="10"/><path d="M50 36v28M36 50h28" opacity=".5"/><circle cx="50" cy="50" r="5" stroke="#E8A33D"/></svg><span>Schwarz-P</span></div></li>
-        <li class="tk rv"><div class="tk-id">TRK-07</div><h3 class="tk-title">Sustainable Healthcare and Planetary Health</h3><div class="tk-cell" data-cell="6"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><path d="M24 24l26 16 26-16M24 76l26-16 26 16M24 24v52M76 24v52M50 40v20"/><path d="M24 50h14M62 50h14" opacity=".5"/></svg><span>Auxetic</span></div></li>
-        <li class="tk rv"><div class="tk-id">TRK-08</div><h3 class="tk-title">Translational Research and MedTech Innovation</h3><div class="tk-cell" data-cell="7"><svg class="cellsvg" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#7C8C84" stroke-width="1.1"><path d="M50 82V44"/><path d="M50 44L30 26M50 44l20-18"/><path d="M30 26L20 14M30 26l-4-16M70 26l10-12M70 26l4-16"/></svg><span>Vascular</span></div></li>
-      </ol>
-    </div>
+    <ol class="tk-list">
+      <li class="tk rv"><span class="tk-id">TRK-01</span><h3 class="tk-title">Sustainable and Functional Materials for Human Health</h3></li>
+      <li class="tk rv"><span class="tk-id">TRK-02</span><h3 class="tk-title">Engineering Design for Healthcare Innovation</h3></li>
+      <li class="tk rv"><span class="tk-id">TRK-03</span><h3 class="tk-title">Biomanufacturing and Biofabrication Technologies</h3></li>
+      <li class="tk rv"><span class="tk-id">TRK-04</span><h3 class="tk-title">Medical Devices and Next-Generation Medical Technologies</h3></li>
+      <li class="tk rv"><span class="tk-id">TRK-05</span><h3 class="tk-title">Regenerative Medicine and Therapeutic Engineering</h3></li>
+      <li class="tk rv"><span class="tk-id">TRK-06</span><h3 class="tk-title">AI, Digital Health, and Computational Medicine</h3></li>
+      <li class="tk rv"><span class="tk-id">TRK-07</span><h3 class="tk-title">Sustainable Healthcare and Planetary Health</h3></li>
+      <li class="tk rv"><span class="tk-id">TRK-08</span><h3 class="tk-title">Translational Research and MedTech Innovation</h3></li>
+    </ol>
   </div>
 </section>
 
@@ -943,7 +944,7 @@ ul,ol{padding:0;list-style:none}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">Layer 04</span>
+        <span class="eyebrow">04</span>
         <span>Who should attend</span>
       </div>
       <h2 class="h2" id="h-attend">Twelve communities, one room.</h2>
@@ -961,7 +962,7 @@ ul,ol{padding:0;list-style:none}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">Layer 05</span>
+        <span class="eyebrow">05</span>
         <span>Conference highlights</span>
       </div>
       <h2 class="h2" id="h-hl">Four technologies at the centre of the programme.</h2>
@@ -977,69 +978,10 @@ ul,ol{padding:0;list-style:none}
     </div>
 
     <div class="hl-grid">
-      <article class="hl rv">
-        <div class="hl-art">
-          <svg viewBox="0 0 200 156" aria-hidden="true" fill="none" stroke="#161C1B" stroke-width="1.4">
-            <path d="M84 20h32v22l-10 14h-12l-10-14z" stroke="#5A6862"/>
-            <path d="M100 56v10" stroke="#D6215F" stroke-width="2"/>
-            <circle class="bead" cx="100" cy="72" r="3.4" fill="#E8A33D" stroke="none"/>
-            <path class="dash" style="--len:300" d="M44 130h112" stroke="#E8A33D" stroke-width="3"/>
-            <path class="dash" style="--len:300" d="M50 120h100" stroke="#7C8C84" stroke-width="2.6"/>
-            <path class="dash" style="--len:300" d="M56 110h88" stroke="#7C8C84" stroke-width="2.6" opacity=".7"/>
-            <path d="M30 140h140" stroke="#5A6862"/>
-          </svg>
-        </div>
-        <span class="hl-n">HL-01</span>
-        <h3>3D Bioprinting</h3>
-      </article>
-
-      <article class="hl rv rv-d1">
-        <div class="hl-art">
-          <svg viewBox="0 0 200 156" aria-hidden="true" fill="none" stroke="#161C1B" stroke-width="1.4">
-            <path d="M28 132h144" stroke="#5A6862"/>
-            <g stroke="#7C8C84"><path d="M52 132v8M100 132v8M148 132v8"/></g>
-            <path class="dash" style="--len:180" d="M34 92h48" stroke="#7C8C84" stroke-width="2.6"/>
-            <path class="dash" style="--len:180" d="M86 92c14 0 20-10 20-22" stroke="#E8A33D" stroke-width="2.6"/>
-            <path class="dash" style="--len:180" d="M112 92c22 0 30-22 22-46" stroke="#D6215F" stroke-width="2.6"/>
-            <g class="tk-pulse" stroke="#D6215F"><path d="M148 40v-8M144 36h8"/></g>
-            <text x="28" y="150" font-family="monospace" font-size="9" fill="#5A6862" stroke="none">t0</text>
-            <text x="160" y="150" font-family="monospace" font-size="9" fill="#5A6862" stroke="none">t1</text>
-          </svg>
-        </div>
-        <span class="hl-n">HL-02</span>
-        <h3>4D Biomanufacturing</h3>
-      </article>
-
-      <article class="hl rv rv-d2">
-        <div class="hl-art">
-          <svg viewBox="0 0 200 156" aria-hidden="true" fill="none" stroke="#161C1B" stroke-width="1.4">
-            <path class="dash" style="--len:200" d="M66 30h68v18H66z" stroke="#5A6862"/>
-            <path class="dash" style="--len:200" d="M56 68h88v20H56z" stroke="#7C8C84"/>
-            <path class="dash" style="--len:200" d="M72 108h56v20H72z" stroke="#E8A33D"/>
-            <g stroke="#D6215F" stroke-dasharray="3 3" opacity=".8">
-              <path d="M100 48v20M100 88v20"/>
-            </g>
-            <g stroke="#7C8C84" opacity=".6"><path d="M144 39h22M144 78h22M128 118h38"/></g>
-          </svg>
-        </div>
-        <span class="hl-n">HL-03</span>
-        <h3>Advanced Medical Devices</h3>
-      </article>
-
-      <article class="hl rv rv-d3">
-        <div class="hl-art">
-          <svg viewBox="0 0 200 156" aria-hidden="true" fill="none" stroke="#161C1B" stroke-width="1.4">
-            <path d="M58 34h84a12 12 0 0 1 12 12v64a12 12 0 0 1-12 12H58a12 12 0 0 1-12-12V46a12 12 0 0 1 12-12z" stroke="#5A6862" stroke-width="1.8"/>
-            <g class="dash" style="--len:420" stroke="#E8A33D" stroke-width="1.2">
-              <path d="M62 52h76M62 70h76M62 88h76M62 106h76"/>
-              <path d="M74 40v76M98 40v76M122 40v76"/>
-            </g>
-            <g stroke="#D6215F" stroke-width="1.6"><path d="M46 78h-14M168 78h-14"/></g>
-          </svg>
-        </div>
-        <span class="hl-n">HL-04</span>
-        <h3>Biomanufactured Medical Products</h3>
-      </article>
+      <article class="hl rv"><h3>3D Bioprinting</h3></article>
+      <article class="hl rv"><h3>4D Biomanufacturing</h3></article>
+      <article class="hl rv"><h3>Advanced Medical Devices</h3></article>
+      <article class="hl rv"><h3>Biomanufactured Medical Products</h3></article>
     </div>
   </div>
 </section>
@@ -1049,10 +991,10 @@ ul,ol{padding:0;list-style:none}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">Layer 06</span>
+        <span class="eyebrow">06</span>
         <span>Important dates</span>
       </div>
-      <h2 class="h2" id="h-dates">The build schedule.</h2>
+      <h2 class="h2" id="h-dates">Key dates.</h2>
     </div>
 
     <p class="tl-now rv" id="tlNow">
@@ -1062,13 +1004,13 @@ ul,ol{padding:0;list-style:none}
     </p>
 
     <ol class="tl">
-      <li class="tl-item rv" style="--z:.18"><span class="tl-z">Z 000.0</span><span class="tl-bar"><i></i></span><span class="tl-name">Abstract submission opens</span><time class="tl-date" datetime="2026-10-01">1 Oct 2026</time></li>
-      <li class="tl-item rv" style="--z:.32"><span class="tl-z">Z 024.0</span><span class="tl-bar"><i></i></span><span class="tl-name">Abstract submission deadline</span><time class="tl-date" datetime="2027-01-31">31 Jan 2027</time></li>
-      <li class="tl-item rv" style="--z:.45"><span class="tl-z">Z 048.0</span><span class="tl-bar"><i></i></span><span class="tl-name">Acceptance notification</span><time class="tl-date" datetime="2027-02-15">15 Feb 2027</time></li>
-      <li class="tl-item rv" style="--z:.58"><span class="tl-z">Z 072.0</span><span class="tl-bar"><i></i></span><span class="tl-name">Early-bird registration opens</span><time class="tl-date" datetime="2027-02-16">16 Feb 2027</time></li>
-      <li class="tl-item rv" style="--z:.71"><span class="tl-z">Z 096.0</span><span class="tl-bar"><i></i></span><span class="tl-name">Early-bird registration deadline</span><time class="tl-date" datetime="2027-03-31">31 Mar 2027</time></li>
-      <li class="tl-item rv" style="--z:.85"><span class="tl-z">Z 120.0</span><span class="tl-bar"><i></i></span><span class="tl-name">Registration deadline</span><time class="tl-date" datetime="2027-10-31">31 Oct 2027</time></li>
-      <li class="tl-item rv" style="--z:1"><span class="tl-z">Z 144.0</span><span class="tl-bar"><i></i></span><span class="tl-name">Conference dates</span><time class="tl-date" datetime="2027-12-14">14–16 Dec 2027</time></li>
+      <li class="tl-item rv" style="--z:.18"><span class="tl-z">01</span><span class="tl-bar"><i></i></span><span class="tl-name">Abstract submission opens</span><time class="tl-date" datetime="2026-10-01">1 Oct 2026</time></li>
+      <li class="tl-item rv" style="--z:.32"><span class="tl-z">02</span><span class="tl-bar"><i></i></span><span class="tl-name">Abstract submission deadline</span><time class="tl-date" datetime="2027-01-31">31 Jan 2027</time></li>
+      <li class="tl-item rv" style="--z:.45"><span class="tl-z">03</span><span class="tl-bar"><i></i></span><span class="tl-name">Acceptance notification</span><time class="tl-date" datetime="2027-02-15">15 Feb 2027</time></li>
+      <li class="tl-item rv" style="--z:.58"><span class="tl-z">04</span><span class="tl-bar"><i></i></span><span class="tl-name">Early-bird registration opens</span><time class="tl-date" datetime="2027-02-16">16 Feb 2027</time></li>
+      <li class="tl-item rv" style="--z:.71"><span class="tl-z">05</span><span class="tl-bar"><i></i></span><span class="tl-name">Early-bird registration deadline</span><time class="tl-date" datetime="2027-03-31">31 Mar 2027</time></li>
+      <li class="tl-item rv" style="--z:.85"><span class="tl-z">06</span><span class="tl-bar"><i></i></span><span class="tl-name">Registration deadline</span><time class="tl-date" datetime="2027-10-31">31 Oct 2027</time></li>
+      <li class="tl-item rv" style="--z:1"><span class="tl-z">07</span><span class="tl-bar"><i></i></span><span class="tl-name">Conference dates</span><time class="tl-date" datetime="2027-12-14">14–16 Dec 2027</time></li>
     </ol>
   </div>
 </section>
@@ -1078,35 +1020,41 @@ ul,ol{padding:0;list-style:none}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">Layer 07</span>
+        <span class="eyebrow">07</span>
         <span>Host &amp; co-organizer</span>
       </div>
       <h2 class="h2" id="h-hosts">Where it happens, and who is behind it.</h2>
     </div>
 
+    <figure class="campus rv">
+      <div class="plate-frame">
+        <picture>
+          <source srcset="assets/campus-jabalpur.webp" type="image/webp">
+          <img src="assets/campus-jabalpur.jpg" width="1400" height="980" loading="lazy" decoding="async"
+               alt="The main academic building at PDPM IIITDM Jabalpur, seen across the campus lawn.">
+        </picture>
+        <figcaption class="figcap">
+          <span>PDPM IIITDM Jabalpur &middot; conference venue</span>
+          <span>14&ndash;16 December 2027</span>
+        </figcaption>
+      </div>
+    </figure>
+
     <div class="host-grid">
       <div class="host plate-frame rv">
         <div class="host-top">
           <span class="role">Host institution</span>
-          <span class="host-logo-tbd" aria-hidden="true">Host logo<br>to be<br>supplied</span>
+          <img class="host-logo wide" src="assets/iiitdmj-logo.png" width="190" height="57" loading="lazy" decoding="async"
+               alt="Logo of PDPM IIITDM Jabalpur">
         </div>
         <h3>PDPM Indian Institute of Information Technology, Design and Manufacturing (IIITDM) Jabalpur</h3>
-        <p>Madhya Pradesh, India — venue for SBRS ICON 2027, 14–16 December 2027.</p>
+        <p>Madhya Pradesh, India &mdash; venue for SBRS ICON 2027, 14&ndash;16 December 2027.</p>
         <div class="locplate">
-          <svg viewBox="0 0 420 150" role="img" aria-label="Schematic location plate marking the venue at PDPM IIITDM Jabalpur, Madhya Pradesh, India" fill="none">
-            <rect x=".5" y=".5" width="419" height="149" stroke="#7C8C84" opacity=".55"/>
-            <g stroke="#7C8C84" opacity=".3"><path d="M0 50h420M0 100h420M105 0v150M210 0v150M315 0v150"/></g>
-            <g stroke="#7C8C84" opacity=".8"><circle cx="150" cy="75" r="40"/><circle cx="150" cy="75" r="24"/></g>
-            <g stroke="#D6215F" stroke-width="1.4"><path d="M150 43v64M118 75h64"/><circle cx="150" cy="75" r="6" fill="#D6215F"/></g>
-            <g font-family="monospace" font-size="9" fill="#5A6862" stroke="none" letter-spacing="1.6">
-              <text x="206" y="62">VENUE</text>
-              <text x="206" y="80" fill="#161C1B">PDPM IIITDM JABALPUR</text>
-              <text x="206" y="96">MADHYA PRADESH · INDIA</text>
-            </g>
-            <g font-family="monospace" font-size="8" fill="#7C8C84" stroke="none" letter-spacing="1.4">
-              <text x="10" y="16">SITE PLATE</text><text x="10" y="142">NOT TO SCALE</text>
-            </g>
-          </svg>
+          <iframe class="mapframe" title="Map showing PDPM IIITDM Jabalpur"
+                  src="https://www.google.com/maps?q=PDPM+IIITDM+Jabalpur%2C+Madhya+Pradesh%2C+India&amp;output=embed"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <p class="mapnote"><a href="https://www.google.com/maps/search/?api=1&amp;query=PDPM+IIITDM+Jabalpur%2C+Madhya+Pradesh%2C+India"
+             target="_blank" rel="noopener">Open in Google Maps &#8599;</a></p>
         </div>
       </div>
 
@@ -1122,33 +1070,200 @@ ul,ol{padding:0;list-style:none}
         <h3>Indian Institute of Technology Madras (IIT Madras)</h3>
         <p>Chennai, Tamil Nadu, India.</p>
         <div class="locplate">
-          <svg viewBox="0 0 420 150" role="img" aria-label="Schematic plate marking IIT Madras, Chennai, Tamil Nadu, India as co-organizer" fill="none">
-            <rect x=".5" y=".5" width="419" height="149" stroke="#7C8C84" opacity=".55"/>
-            <g stroke="#7C8C84" opacity=".3"><path d="M0 50h420M0 100h420M105 0v150M210 0v150M315 0v150"/></g>
-            <g stroke="#7C8C84" opacity=".8"><path d="M110 75h80M150 35v80"/><rect x="126" y="51" width="48" height="48" transform="rotate(45 150 75)"/></g>
-            <circle cx="150" cy="75" r="5" fill="#E8A33D"/>
-            <g font-family="monospace" font-size="9" fill="#5A6862" stroke="none" letter-spacing="1.6">
-              <text x="206" y="62">CO-ORGANIZER</text>
-              <text x="206" y="80" fill="#161C1B">IIT MADRAS</text>
-              <text x="206" y="96">CHENNAI · TAMIL NADU · INDIA</text>
-            </g>
-            <g font-family="monospace" font-size="8" fill="#7C8C84" stroke="none" letter-spacing="1.4">
-              <text x="10" y="16">SITE PLATE</text><text x="10" y="142">NOT TO SCALE</text>
-            </g>
-          </svg>
+          <iframe class="mapframe" title="Map showing IIT Madras"
+                  src="https://www.google.com/maps?q=Indian+Institute+of+Technology+Madras%2C+Chennai%2C+Tamil+Nadu%2C+India&amp;output=embed"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <p class="mapnote"><a href="https://www.google.com/maps/search/?api=1&amp;query=Indian+Institute+of+Technology+Madras%2C+Chennai%2C+Tamil+Nadu%2C+India"
+             target="_blank" rel="noopener">Open in Google Maps &#8599;</a></p>
         </div>
       </div>
     </div>
 
-    <p class="mono dim rv" style="margin-top:26px">Organized by SBRS — Sustainable Biomanufacturers and Research Society</p>
+    <p class="org-line rv">
+      <img src="assets/sbrs-logo.png" width="150" height="63" loading="lazy" decoding="async"
+           alt="Logo of SBRS, Sustainable Biomanufacturers and Research Society">
+      <span>Organized by SBRS &mdash; Sustainable Biomanufacturers and Research Society</span>
+    </p>
   </div>
 </section>
 
 </main>
+
+<dialog class="dlg" id="dlgRegister" aria-labelledby="dlgRegister-t">
+  <form class="dlg-in" id="form-registration" data-kind="registration" novalidate>
+    <div class="dlg-head">
+      <div>
+        <span class="eyebrow">SBRS ICON 2027</span>
+        <h2 id="dlgRegister-t">Register</h2>
+        <p class="hint" style="margin-top:10px">Registration opens 16 February 2027. Send your details and we will contact you.</p>
+      </div>
+      <button type="button" class="dlg-x" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="dlg-body">
+      <p class="f">
+        <label for="r-name">Full name <b>*</b></label>
+        <input id="r-name" name="name" type="text" autocomplete="name" data-req>
+        <span class="err" id="e-r-name"></span>
+      </p>
+      <p class="f">
+        <label for="r-email">Email <b>*</b></label>
+        <input id="r-email" name="email" type="email" autocomplete="email" data-req>
+        <span class="err" id="e-r-email"></span>
+      </p>
+      <p class="f">
+        <label for="r-country">Country <b>*</b></label>
+        <select id="r-country" name="country" data-req data-country autocomplete="country-name">
+          <option value="">Select&hellip;</option>
+        </select>
+        <span class="err" id="e-r-country"></span>
+      </p>
+      <p class="f">
+        <label for="r-phone">Phone <b>*</b></label>
+        <span class="tel">
+          <span class="dial" id="r-dial" aria-hidden="true">+&mdash;</span>
+          <input id="r-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" data-req data-phone>
+        </span>
+        <span class="hint">Digits only &mdash; country code added automatically</span>
+        <span class="err" id="e-r-phone"></span>
+      </p>
+      <p class="f wide">
+        <label for="r-affiliation">Affiliation / Institution <b>*</b></label>
+        <input id="r-affiliation" name="affiliation" type="text" autocomplete="organization" data-req>
+        <span class="err" id="e-r-affiliation"></span>
+      </p>
+      <p class="f wide">
+        <label for="r-category">I am a <b>*</b></label>
+        <select id="r-category" name="category" data-req>
+          <option value="">Select&hellip;</option>
+          <option value="Researcher / Academician">Researcher / Academician</option>
+          <option value="Scientist / Engineer">Scientist / Engineer</option>
+          <option value="Designer">Designer</option>
+          <option value="Clinician / Healthcare Professional">Clinician / Healthcare Professional</option>
+          <option value="Industry Leader / MedTech Innovator">Industry Leader / MedTech Innovator</option>
+          <option value="Entrepreneur">Entrepreneur</option>
+          <option value="Policymaker">Policymaker</option>
+          <option value="UG / PG / PhD Student">UG / PG / PhD Student</option>
+        </select>
+        <span class="err" id="e-r-category"></span>
+      </p>
+      <p class="f">
+        <label for="r-city">City</label>
+        <input id="r-city" name="city" type="text" autocomplete="address-level2">
+        <span class="err" id="e-r-city"></span>
+      </p>
+      <p class="f wide">
+        <label for="r-notes">Anything we should know?</label>
+        <textarea id="r-notes" name="notes"></textarea>
+        <span class="err" id="e-r-notes"></span>
+      </p>
+      <p class="hp"><label>Leave this field empty
+        <input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
+    </div>
+    <div class="dlg-foot">
+      <p class="dlg-status" role="status" aria-live="polite"></p>
+      <button type="submit" class="btn btn-1">Submit registration <span class="ar" aria-hidden="true">&rarr;</span></button>
+    </div>
+  </form>
+</dialog>
+<dialog class="dlg" id="dlgAbstract" aria-labelledby="dlgAbstract-t">
+  <form class="dlg-in" id="form-abstract" data-kind="abstract" novalidate>
+    <div class="dlg-head">
+      <div>
+        <span class="eyebrow">SBRS ICON 2027</span>
+        <h2 id="dlgAbstract-t">Submit Abstract</h2>
+        <p class="hint" style="margin-top:10px">Abstract submission opens 1 October 2026 and closes 31 January 2027.</p>
+      </div>
+      <button type="button" class="dlg-x" data-close aria-label="Close">&times;</button>
+    </div>
+    <div class="dlg-body">
+      <p class="f">
+        <label for="a-name">Full name <b>*</b></label>
+        <input id="a-name" name="name" type="text" autocomplete="name" data-req>
+        <span class="err" id="e-a-name"></span>
+      </p>
+      <p class="f">
+        <label for="a-email">Email <b>*</b></label>
+        <input id="a-email" name="email" type="email" autocomplete="email" data-req>
+        <span class="err" id="e-a-email"></span>
+      </p>
+      <p class="f">
+        <label for="a-country">Country <b>*</b></label>
+        <select id="a-country" name="country" data-req data-country autocomplete="country-name">
+          <option value="">Select&hellip;</option>
+        </select>
+        <span class="err" id="e-a-country"></span>
+      </p>
+      <p class="f">
+        <label for="a-phone">Phone <b>*</b></label>
+        <span class="tel">
+          <span class="dial" id="a-dial" aria-hidden="true">+&mdash;</span>
+          <input id="a-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" data-req data-phone>
+        </span>
+        <span class="hint">Digits only &mdash; country code added automatically</span>
+        <span class="err" id="e-a-phone"></span>
+      </p>
+      <p class="f wide">
+        <label for="a-affiliation">Affiliation / Institution <b>*</b></label>
+        <input id="a-affiliation" name="affiliation" type="text" autocomplete="organization" data-req>
+        <span class="err" id="e-a-affiliation"></span>
+      </p>
+      <p class="f wide">
+        <label for="a-track">Conference track <b>*</b></label>
+        <select id="a-track" name="track" data-req>
+          <option value="">Select&hellip;</option>
+          <option value="Sustainable and Functional Materials for Human Health">Sustainable and Functional Materials for Human Health</option>
+          <option value="Engineering Design for Healthcare Innovation">Engineering Design for Healthcare Innovation</option>
+          <option value="Biomanufacturing and Biofabrication Technologies">Biomanufacturing and Biofabrication Technologies</option>
+          <option value="Medical Devices and Next-Generation Medical Technologies">Medical Devices and Next-Generation Medical Technologies</option>
+          <option value="Regenerative Medicine and Therapeutic Engineering">Regenerative Medicine and Therapeutic Engineering</option>
+          <option value="AI, Digital Health, and Computational Medicine">AI, Digital Health, and Computational Medicine</option>
+          <option value="Sustainable Healthcare and Planetary Health">Sustainable Healthcare and Planetary Health</option>
+          <option value="Translational Research and MedTech Innovation">Translational Research and MedTech Innovation</option>
+        </select>
+        <span class="err" id="e-a-track"></span>
+      </p>
+      <p class="f">
+        <label for="a-presentation">Preferred presentation <b>*</b></label>
+        <select id="a-presentation" name="presentation" data-req>
+          <option value="">Select&hellip;</option>
+          <option value="Oral">Oral</option>
+          <option value="Poster">Poster</option>
+          <option value="Either">Either</option>
+        </select>
+        <span class="err" id="e-a-presentation"></span>
+      </p>
+      <p class="f">
+        <label for="a-coauthors">Co-authors</label>
+        <input id="a-coauthors" name="coauthors" type="text">
+        <span class="hint">Comma separated</span>
+        <span class="err" id="e-a-coauthors"></span>
+      </p>
+      <p class="f wide">
+        <label for="a-title">Abstract title <b>*</b></label>
+        <input id="a-title" name="title" type="text" data-req>
+        <span class="err" id="e-a-title"></span>
+      </p>
+      <p class="f wide">
+        <label for="a-abstract">Abstract <b>*</b></label>
+        <textarea id="a-abstract" name="abstract" data-req></textarea>
+        <span class="hint">Maximum 300 words</span>
+        <span class="err" id="e-a-abstract"></span>
+      </p>
+      <p class="hp"><label>Leave this field empty
+        <input type="text" name="website" tabindex="-1" autocomplete="off"></label></p>
+    </div>
+    <div class="dlg-foot">
+      <p class="dlg-status" role="status" aria-live="polite"></p>
+      <button type="submit" class="btn btn-1">Submit abstract <span class="ar" aria-hidden="true">&rarr;</span></button>
+    </div>
+  </form>
+</dialog>
 <footer class="site-foot on-dark" id="contact">
   <div class="wrap">
     <div class="foot-grid rv" id="footGrid">
       <div>
+        <img class="foot-logo" src="assets/sbrs-logo.png" width="168" height="70" loading="lazy" decoding="async"
+             alt="Logo of SBRS, Sustainable Biomanufacturers and Research Society">
         <span class="eyebrow">Four pillars</span>
         <p class="foot-h" style="margin-top:18px">Materials · Design &amp; Engineering · Biomanufacturing · Human Health &amp; Planetary Health</p>
         <div class="contact">
@@ -1156,8 +1271,8 @@ ul,ol{padding:0;list-style:none}
           <a href="https://www.sbrs.site" rel="noopener">www.sbrs.site</a>
         </div>
         <div class="foot-cta">
-          <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
-          <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration">Register <span class="ar" aria-hidden="true">→</span></a>
+          <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
+          <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register <span class="ar" aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="pillars" aria-hidden="true">
@@ -1168,7 +1283,7 @@ ul,ol{padding:0;list-style:none}
             <div class="pillar"></div>
             <div class="pillar"></div>
           </div>
-          <p class="pillar-key">Four layers <b>·</b> one construct</p>
+          <p class="pillar-key">Four pillars <b>·</b> one programme</p>
         </div>
       </div>
     </div>
@@ -1184,6 +1299,16 @@ ul,ol{padding:0;list-style:none}
 <script>
 (function(){
 "use strict";
+
+/* =========================================================
+   FORM ENDPOINT
+   Paste the /exec URL of your deployed Google Apps Script Web App here.
+   Leave it empty and the forms fall back to opening a pre-filled email.
+   Deployment steps and the script itself: apps-script/Code.gs
+   ========================================================= */
+var FORM_ENDPOINT = "";
+var FORM_MAILTO   = "office@sbrsin.org";
+
 var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var $  = function(s,c){return (c||document).querySelector(s);};
 var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
@@ -1242,7 +1367,7 @@ function onScroll(){
   if(zrFill) zrFill.style.height = (pageProg*h).toFixed(1)+"px";
   if(zrHead) zrHead.style.top    = (RAIL_TOP + pageProg*h).toFixed(1)+"px";
   if(zrPct)  zrPct.textContent   = pad(pageProg*100)+"%";
-  if(zrZ)    zrZ.textContent     = "Z "+(pageProg*144).toFixed(1);
+  if(zrZ)    zrZ.textContent     = pad(Math.min(8,Math.floor(pageProg*8)+1),2);
   sweepReveal();
   markNav();
 }
@@ -1296,307 +1421,370 @@ $$("video").forEach(function(v){
 });
 
 /* =========================================================
-   MINI WEBGL — no libraries
+   DOTTED GLOBE — canvas 2D, orthographic, no libraries
+   Land dots and coastlines are precomputed from Natural Earth 110m
+   (see README) and packed base36, so there is no d3 and no runtime fetch.
    ========================================================= */
-function M(){return new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]);}
-/* column-major (GL order): mul(A,B) === A · B, so mul(P,mul(V,M)) is P·V·M */
-function mul(a,b){
-  var o=new Float32Array(16);
-  for(var c=0;c<4;c++)for(var r=0;r<4;r++){
-    o[c*4+r]=a[r]*b[c*4]+a[4+r]*b[c*4+1]+a[8+r]*b[c*4+2]+a[12+r]*b[c*4+3];
-  }
-  return o;
-}
-function persp(fovy,asp,n,f){
-  var t=1/Math.tan(fovy/2),o=new Float32Array(16);
-  o[0]=t/asp;o[5]=t;o[10]=(f+n)/(n-f);o[11]=-1;o[14]=2*f*n/(n-f);return o;
-}
-function trans(x,y,z){var o=M();o[12]=x;o[13]=y;o[14]=z;return o;}
-function rotX(a){var o=M(),s=Math.sin(a),c=Math.cos(a);o[5]=c;o[6]=s;o[9]=-s;o[10]=c;return o;}
-function rotY(a){var o=M(),s=Math.sin(a),c=Math.cos(a);o[0]=c;o[2]=-s;o[8]=s;o[10]=c;return o;}
+var GLOBE_DOTS="2ckw3iaz4ol35uv7715b87ff9d5iajfmbppqcvzue1pxf801gea5hkk9iqudjwkgl2uk1s032o9p3jza4g8w5cii688374hp807a8wgw9sqiaog3bkppcgfadcowe8yif4o3g0xpgwnahswwip6ijkw3kh5p25cz2via3l3k4b8v50u55qzg7wbb9c1wa1n6arshbhdrc7j2cx4cdn9necuxf2g7fsligi6sh8c3hxxdio2ojdnyk3t9ktej1t4l2eto30ir3m7u47cw4t1z5er260g590xk9mmna8bqau0tbf5vc0uycmk1d894dty7efnaf1cdfn1gg8qjgufmhg4pi1tsimyuj8nxjud0kg23l1r62ja431303jfx41su4k5r51yn5kbk62oh6khda4fram8nb4lkbmyhc4rdcn4ad5h7dnu4e5n0enzxf6cufoprg6ingovkh78hhp1di7eaipr7j844jpx0k89xkqmul8zr4wel5cje5s46688z6ods74ila8c6aogzb4lsbkqlc0vecgg6cwkzdcpsdsule8zeeok6f4ozfktsg0ylgh3egwo6hcszhsxsi92lip7ej4s6jkwzk11skh6lkxbelcw66r6575mvaq5ab4m0bj2qbwzfcbg5cpwvd4dldiaadwr0eb7qep4ff3l5fwilgafagow0h3cqhh9fhvq5ia6vionlj2kajh10jvhqk9efknv5l2bvlgsl6teh76r5c7k6d9y3dnare03eecw1epoof2hbfsmmg5f9gi7wgvkkh8d7hl5uhxyhibb5io3sj0wfjdp2jqhpk3udkgn0ktfn6yyzdyfjea44emcqey1bfa9xg9vpgm4bgxswha1ihlq3hxypi9nailvwixkhj9t3jlhojxqaji5q6xcg6m846tgh6iw66pki6wsv6hsc6ogo6v5071tc6l4q6rt26xxdljnm6q576wtj72xulk7vlqw76nda6thl6z1vk9hrlrgg6m9g6rtq6xy173ib79mm6l5m6qpw6wa671ug77eq7dj17j3bjwpkk29uk7u4ly58m3pi6pm26v6c70qm76aw7bb57gvfjtdmjyxwk4i6ka2g6q6b6vql70qu76b47bve7gvn7mfx7s07ceciidn9iinijkhejq1ojv1xk0m7k66hkb6qkgr06u2q6zn074n97a7j7f7s7k817psb7uskcd8oci8xcnt7cstgibzeigznimjxirk6ix4gjcp8jhphjn9rjsa0jxa9k2ujk7uskdf2kifb6umz6zn8757i7a7r7f807k897p8i7uss7zt1c9wqcewzcjx8cphicuhrczi0i9riierrijs0ios9itsiizcsj4d1j9dajedjjjxtjoy2jtybjyykk4iuk9j3kejckjjl6v78707h757q7a7z7f887k8h7p8q7u8z7z98849hc6kscbl1cglaclljcqlscvm1d0mai6zlibzuih03imkdirkmiwkvj1l4j6ldjblmjglvjlm4jqmdjvmmk0mvk5n4kandkfnmkknv6v7g707p757y7a877f8g7k8p7p8y7u977z9g83poc38uc893cd9cci9lcn9ucsa3cxacd1qki9ryies7ijsgiospitsyiyt7j3tgj89ojd9xjia6jnafjsaojxaxk2b6k7bfkcbokgrw6sfj6xfs72g176w97bwi7gwr7lx07qd87vdh80dq85dzc2p1c7paccpjchpscmq1cr69cw6id16rd670dan8duo8dz4gi701ibg9iggiilgriqh0iux8izxhj4xqj9xzjey8jjegjoepjteyjyf7k3fgk7vokcvxkhw66szs6xg072g977gi7bwq7gwz7ld77qdg7vdp7ztx84u689uf8ean8jawc4xdc9dlceducje3cnubcsukcxasd2b1d7badv8hdzopi98die8mij8vinp3ispcix5kj25tj762jbmajgmjjlmsjq30jv39jzjhk4jqk9jz6uo36zoc744k794t7dl17ila7n1i7s1r7whz81i885yg8ayp8fex8kf6bzdbc4dkc8tscdu1cia9cnaicsarcwqzd1r8d67gdykve3l4ikd5ipdeittmiytvj3u4j8acjdaljhqtjmr2jr7ajw7jk0nrk5o0ka486rw66wce71cn75sv7at47f9c7jpk7opt7t617y6a82mi87mr8c2z8gj78ljgbzdjc3trc8u0cda8chqgcmqpcr6xcw76d0ned5nnda3vdek3dxh1e1x9ir1pivhxizy5j4yej9emjeevjiv3jnvcjsbkjwrsk1s1m4vs6ko16p496tkh6y0p730y77h67bxe7gxn7ldv7pu37uuc7zak83qs88r18d798hnh8mnqbytqc39yc8a7ccqfch6ncm6wcqn4cv3cd03ld4jtd901de0adigie0tfe5toix68j1mgj62ojb2xjfj5jjzdjxw2k2ca6hw46mcc6qsk6v8s709174p9795h7dlp7i1x7n267rie7vym80eu85f389vb8ebj8irr8ns0by9xc3a6c7qecc6mcgmucln3cq3bcujjcyzrd400d8g8dcwgdhcodlswe45tiyaij7qzjc77jgnfjz0c6g896koh6poq6u4y6yl6731e77hm7chv7gy37leb7puj7uar7yqz83r8887g8cno8h3w8lk48qkdc0i9c4yhc9yqceeyciv6cnbecrrmcwrvd183d5obda4jdekrdj0zjcrg6f4f6jkn6o0v6sh36wxb71xk76ds7au07fa87jqg7o6o7smw7xn5823d86jl8azt8fg18jw98och8sspc2qlc76tcbn1cg39cl3icpjqctzycyg6d2wed7cmdbsudgt3dl9bkdhi690c6e0l6igt6mx16rd96vth709p74px79657dmd7i2l7mit7rj27vza80fi84vq89by8ds68i8e8mom8r4u8vl2c0ipc4yxc9f5cdvdciblcmrtcr81cvo9d04hd4kpd9kyde16dihei0dhi4tpjr8mjvouk052k9lj67wi6ccq6gsy6l966ppe6u5m6z5v73m3782b7cij7gyr7lez7pv77ubf7yrn837v87o38c4b8gkj8l0r8pgz8tx78ydfbxqsc270c6n8cb3gcfjockjxcp05ctgdcxwld2ctd6t1db99dfphjrsvjw93k0pbk55jke1z66so6b8w6fp46k5c6olk6t1s6xi071y876eg7auo7faw7jr47o7c7snk7x3s81k086088agg8ewo8jcw8nt4bviwbzz4c4fcc8vkcdbschs0cm88cqogcv4oczkwd414d8hcdcxkdhdshk94ijuwiob4jjgojnwwjsd4jwtck19k66sw6b946fpc6k5k6ols6t206xi871yg76eo7auw7fb47jrc7o7k7sns7x4081k8860g8agobr2wbvj4bzzcc4fkc8vscdc0chs8cm8gcqoocv4wczl4d41cd8hkdcxsdhe0dlu8hft4hk9ci228i6igiayoijv4jf0ojnx466t46b9c6fpk6k5s6om06t286xig71yo76ew7av47fbc7jrk7o7s7so07x48br34bvjcbzzkc4fsc8w0cdc8chsgcm8ocqowcv54czlcd41kd8hsdcy0dhe8dlugdqaohbd4hftchxm8i22gi6ioiaywijvcj1o86b9k6fps6k606om86t2g6xio71yw76f47avc7fbk7jrs7o807so87x4gbr3cbvjkbzzsc4g0c8w8cdcgchsocm8wcqp4cv5cczlkd41sd8i0dcy8dhegdluodqawdur4hbdchk9si22oi6iwiaz46fq06k686omg6t2o6xiw71z476fc7avk7fbs7js07o887sog7x4obr3kbvjsc000c4g8c8wgcdcochswcm94cqpccv5kczlsd420d8i8dcygdheodluwdqb4durcdz7kh6xchftsi6j4iazc6gua6lai6pqq6u6y6z7773nf783n7cjv7h037lgb7pwjaktoap9watq4ay6cb2mkb72sbfz8bkfgbovobtbwbxs4c28cc6okcb4scfl0ckl9cp1hcthpcxxxd2e5d6uddbaldfqtdk71don9dt3hdxjpe1zxhepyievr64lw6e2d6iil6myt6rf16vv970bh74rp797x7do5adljailsan20ari8avygb0eob4uwb9b4bdrcbi7kbmnsbr40bw49c0khc50pc9gxcdx5ciddcmtlcr9tcvq1d069d4mhd9mqde2ydij6dmzedrfmdvvue0c2e4sag53wh95wir4liw4u5wtq6jmv6o336sjb6wzj71zs76g0abdnaftvaka3apacatqkay6sb2n0b738bbjgbfzobkfwbpg5btwdbyclc2stc791cbp9cg5hcl5qcplycu26cyied2ymd7eudbv2dgvbdlbjdprrdu7zdyo7e34fe7knfujlfyzth8m3hqezihociqks5ths5yi16prea4pja95radlzai27amifaqynavywb0f4b4vcb9bkbdrsbis1bn89brohbw4pc0kxc515ca1ecehmcixucne2cruacwujd1ard5qzda77denfdj3ndo3wdsk4ftfrfxvzg2c7hkuxhpb5hubeiuh75lpm5q5u5v63a6duabe3afubakajaoqrat6zay78b2ngb73obbjwbgk5bl0dbpglbtwtbyd1c3dac7ticc9qcgpyclq7cq6fcumncz2vd434d8jcdczkdhfsdlw0dvchdzspe48xfrrwfws5g18dhaunhfavhkb4horcht7kiph655l15f1i5jhqa6e2aauaafaiakaraoqzat77ay7gb2nob73wbbk4bgkdbl0lbpgtbuh2byxac3dic8drcctzcha7cmagcqqocv6wd075d4ndd93lde3udik2dwgre0wze5x8eadgfozzfu08fyggg2wogzqbh8mrhdn0hi38hmjghrjpintb4two4ycw52t457td5c9l5h9u5lq26e3h71gna5u9aaahafaqajqyaor7at7faxnnb2nwb744bc4dbgklbl0tbq12buhabzhjc3xrc8y0cde8chugcmupcraxcwb6d0red5rnda7vdeo3dt4tdxl1e219e71iebhqeghzeky7fr8bfvojg0osg550ga59h1ynh6ywhbf4hfvchkvlhpbtim5g4m4i4r4r4vkz50l8551g5nye6gvua5agaaapaeqxajr6ao7eat7naxnvb2o4b74cbc4lbgktbll2bq1abv1jbzhrc4i0c8y8cdyhciepcneycsf7cwvfd1vod6bwdbc5dp8udu93dypbe3pke85sed61ehm9emmifogefswmfxwvg2x4g7dcgcdlgzqrh4r0h978he7hhinphnny4ocu4st24xtb52tk69npa4qna9qwaer5aj7dao7masnuaxo3b2ocb74kbc4tbh52bllabqljbv1rc020c529c9ihceiqcjizcnz7cszgcxfod2fxd7g6dbwedlwwdqd4dvdddztle4tue9u3eeabejakeoatesr1fgo8flohfq4pfv4yg057g4lfg9logelxgj25go2egxivh2j4h6zchbzlhgzuhlg2hqgbhuwjhzws4moz4r574w5g515pa6yzabf7agfgalfpaqfyauw6azwfb4wob9wxbex6bjdebodnbtdwbye5c2udc7umccuvchv4cmvdcrblcwbud1c3d6ccdaskdkt2dptbdutkdz9se4a1e9aaeeajejasenr0fc88fh8hfm8qfr8zfvp7g0pgg5ppgapygf66gk6fgp6ogu6xgz76h3neh8nnhdnwhio5hn4dhs4mhx4vi254i75dibllilm34ecs4jd14oda4tdj4yds53e1abffagfoakvwapw5auweazwnb4wwb9x5bexebjxnboxwbte4byedc3emc8evcdf4cifdcnfmcsfvcxg4d1wcd6wldgx3dlxcdqxldvxue0y3e5yceaekepfbeufkezftf4g2f9gbfegkfiwsfnx1fsxafxxjg2xsg7y1gcyaghyjgmysgrf0gwf9h1fih6frhbg0hgg9hlgihqgrhvh0hzx8i4xhi9xqiexz4cox4hp64mpf4rpo4wpx51q660rxad3qai3zan48as4hax4qb24zb7p9bcpibhprbmq0brq9bwqic1qrc6r0cbr9cgriclrrcqs0cvs9d0sid5srdft9dktidqdsdve1e0eaeff1ekfaepfjeufsezg1f4gaf9gjfegsfjh1fohafthjfyhsg422g92bge2kgj2tgo32gt3bgy3kh33th842hd4bhi4khn4ths52hx5bi25ki75tic62ih6b3zwi4ah14fha4khj4q1t4v22502b552k5amu5fn35knc5unu6084akcbapckauwuazx3b4xcb9xlbexubki4bpidbuimbzivc535ca3ecf3nck3wcpo6cuofczood4oxd9p6df9gdk9pdp9ydua7dzuhe4uqe9uzeev8ekfiepfreug0ezg9f4gifa0sff11fk1afp1jfultfzm2g4mbg9mkgf6ugk73gp7cgu7lgz7uh4s4h9sdhesmhjsvhpd5hudehzdni4dwi9y6ieyfijyo3xom438w48954d9e4ito4ntx4te74yeg53ep58yz5dz85jji5ojr5tk05z4a644jamknarkwax56b25fb7ppbcpybia8bnahbsaqbxv0c2v9cdfscig1de5mdj5vdoq5dtqedzaoe4axe9b6eevgejvpepfzeug8ezghf50rfa10fflafkljfplsfv62g06bg5qlgaquggb4glbdgqbmgvvwh0w5h6gfhbgohggxhm17hr1ghwlqi1lzi6m8ic6iih6rimr1j7c23w0r41l1475b4c5k4hpu4na44sad4xun53ex58f65dzg5jjq5ojz5u495zoj64os6a92arl4ax5eb25nb7pxbcq6biagbnuqdgdydle7dqyhdwire1j0e73aecnkehnten83essdexsmf3cwf8x6fdxffjhpfp1zfu28fzmig56sga71gfrbglblgqbugvw4h1geh6gnhc0xhhl7hmlghs5qhxq0i2q9i8ajidutiiv2ja4fjf4o3o8l3tsv3yt444de49xo4fhy4l284qmi4w6s517156rb5cbl5hvv5ng55t0f5ykp644z69586epibaiabg2kblmubqn3dfa4dkuedqeodvyye0z7e6jhec3reho1en8bessleycvf3d4f8xefehofk1yfpm8fv6ig0qsg5r1gbbbggvlgmfvgs05gxkfh34ph8ozhdp8hj9ihotshue2hzyci5imib2wig35j2c9jo1cjtlm3m0p3rkz3xpa439k48tu4ee44jye4pio4v2y517956rj5cbt5hw35ngd5t0n5ykx64576a9iao9eattoazdybxbnc2vxcjkrcv9cd0tmd6dwdby6dhigdn2qdsn0dyrbe4blel0feqkpew4zf29af7tkfddufiy4foiefu2ofzmyg5r9gbbjggvtgmg3gs0dgxknh34xh8p7hetihkdshpy2hvici12mi6mwic76iz0bjrdq3kcu3px43vhe41lp475z4daa4iuk4oyv4uj5503f567q5bs05hwb5ngl5tkw5z56659h6atr6ge1anplat9vaze6b4ygc407c9khcf4rcl92cwxnd2hxd8m8de6idkatdpv3dvfde1joeisjeowueuh4f01ef65pfbpzfhuafnekftivfz35g4nfgarqggc0gmgbgs0lgy4wh3p6h9thhfdrhky1hr2chwmmi2qxi8b7iefiipk2ivodj18nju633i4y3np83ttj3zxu46254bmf4hqq4nv14tzc4zjm55nx5bs85hwj5ngt5tl45zpf65tq6be06hib6nmman5sata3ayudb4yobb2zbz06cgt2cmxdcshndaukdsngdyrre4c1emoyes98eydjf4hufam5fg6ffmaqfsf1fyjcg43mga7xggc8gmgjgs0tgy54h49fhadqhfy0hm2bhs6mhyaxi3v7i9ziig3tim84irseixwpj4103mle3t9q3ze145ic4bmn4hqy4nv94ujl50nw56s75cwi5j0t5p545vtg61xr68226e6d6kao6qez737mb1mqb8b2befdbkjobwsac9kxcfp8cltjcrxudn3edt7pdzc0ec4nei8yeod9euhkf0lvf6q6fcuhfjitfpn4fvrfg1vqg801ge4cgksogqwzgx1ah35lh99whfe7hm2jhs6uhyb5i4fgiajrigo2inceitgpizl0j5pbjbtmjhxxk0uv3kdi3r1u3x6543uh49ys4gn44nbg4tfr5043568e5cwq5j115ppd5vto62i068mb6fan6ley6s3a6y7l74vxb8babeflbl3xbr88bxwkc40vcap7cgticnhuctm5d0ahdjrgdpvrdwk3e2oeefh1em5des9oeyy0f52bfbqnfhuyfojafunlg1bxg7g8ge4kgk8vgqx7gx1ih3puh9u5hgihhmmshtb4hzzgi63rics3iiweipkqivp1j2ddj8hojf60jlab3py03wmc43ao49z04gnc4nbo4u0050oc57co5e105kpc5rdo5y2064qc6beo6i306orc6vfo72407m507stcayb0b4zcbbnobic0bp0cbvooc2d0c91ccfpocme0ct2cczqod6f0dd3cdjrodqg0dx4ce3soeah0eh5centoeui0f16cf7uofej0fl7cfrvofyk0g58cgbwogil0gp9cgvxoh2m0h9achfyohmn0htbchzzoi6o0idccik0oiqp0ixdcj41ojaq0jhecjo2o39tf3ghr3nq43ueg41mt48b54fji4m7u4sw6504j56sv5e185kpk5rdw5ym965al6ciy6j7a6pvm6x3z7oxdbbnwbiw9bpklbwsyc3haca5mchdzco2bcvaod1z0d97ddfvpdmk1dtsee0gqe7p3eedfel1resa4eyygf66tfcv5fk3ifqrufxg6g4ojgbcvgil8gp9kgvxwh369h9ulhh2yhnrahufmi1nzi8cbifkoim90ithdj05pj6u1je2ejkqqjrz3jynf3fdx3mma3tam40iz47rc4ezp4m824tgf50os57x55f5i5mdv5tm860ul6fbb6mjo6ts1710e788r7fh47mphan6wauf9b1nmbfkbbmsobu11c19ec8hrcfq4cmyhcu6ud1f7d8nkdfvxdn4aducne1l0e8tdeg1qena3euigf1qtf8z6fg7jfnfwfuo9g1wmg94zggdcgnlpguu2h22fh9ashgj5hnrihuzvi288i9gligoyindaiulnj1u0j92djgaqjnj3jurgkux92y5a35xo3d613kyf3sqt3zz647rk4ezx4msb4u0o51t259lg5gtt5om75vuk6bfc6inp6qg36xog75gu7cp77khlapz9brt5bz1ic6twcemaclunctn1d0ved8nsdfw5dnojdvgxe2paeahoehq1epifexatf4j6fcbkfjjxfrcbfykog6d2ge5ggldtgt67h0ekh86yhfzchn7phv03i28gia0uih97ip1liwtzj42cjbuqjj33jqvhjynvkspdkzxq1cam33ps3bi63jak3r2y3zfd477r4f054msj4v4y52xc5apq5ii45quj6e7p6mk46uci724w79xaatbnbp18ckqtcsj7d0bld83zdggedo8sdw16e3tkec5zejyderqrf036f7vkffnyfngcfvsrg3l5gbdjgj5xgricgzaqh734hevihn7xhv0bi2spial3iixiiqpwiyiaj6aojen3kxpu1f2z321x3aec3iqr3rn73zzm48c14gog4p0v4xda55pp5em56kc86t8o71l379xibyhxco37cwfmd4s1dd4gdlgvdttae25peb25ejekerqzf03ef8ftfgs8fpoofy13g6digepxgn2cgverh4b7hcnmhl01htcgi1ovia1aiidpira5izmkj7yzjgbejontl3ac102g18yw1hvc2hh42qdk2za0386g3h2w3pzc3yvs47s84goo4pl44yhk57e06fw86osobmtkbvq0c4mgcmfcd488dd4odm14duxke3u0ecqgelmweujcf3fsfcc8fl8ofu54g31kgby0gkuggtqwh2nchbjshkg8htcoi294ib5kik20isygj1uwjarcjjnsjsk8k1gokad4kj9kl9yw12as1br91l7q1uo7244o2d142mhl2vy235ej3ev03obh3xry478f4gow4q5d4zlu592b6kco84jh8dzybixlbse2c1ujckrhcu7yd3ofdd4wdmlddw1ue5ibeeyseof9exvqf7c7fgsofpp4fz5lg8m2gi2jgrj0h0zhhafyhjwfhtcwi2tdic9uilqbiv6sj4n9je3qjnk7jx0ok5x4kfdlkou2kyajlh7hlqny1f3n1p451zoo29p62jpo2tq634ap3eb73obp3yc748cp4ix84sxq52y85cyq5xjr6rl9725s86rt8gsb9veubumec4mwceneconwcyoed98xdj9fdt9xe3afeduyenvgexvyf7wgfigzfshhg2hzgcihgmizgx3ih740hh4ihr50i1pjibq1ilqjivr1j5rjjgc2jqckk0d2kadkkky3kuyll4z3lezllpk4lzkm00hc0blw0m6f0xaz18fj1jk31u4m25962gdq2ria322t3d7d3obx3ywg4a104l5k4wa456un5hz75t3r6pxe7xvl89058jko8up89riva2nfc7f9cijtct4cd48wdqi0e12jec73enbneyg7f90qfk5afv9ug5udggyxgs3hh381hdskhox4i01oib68ilqriwvbj7zvjikejtoyk4tikfy2kqill1n5lcrplnw9lygs00hk103c1cby1o0j20952bxq2o6c2zux3c3j3ns4400q4nxx5bv45njp5zsb6npi6ze37zjw8b8h8nh38z5ocarncn09cyoudaxgdyuneaj8emrueygffap1fmdmfym8gaatgmjfgy80hagmhm57hydtia2eimb0ixzlja87jlwsjy5ek9tzkm2lkxr6l9zsllodlxwz13fq1g8d1t1025tn38rl3ycv4bpj4oi65e3g648r6h1e6tu17wrz89km8md98zpx9cik9pb7cksdcxl0fg9jft26g5utginggw04h8srhllehye1ibqpiojcj1bzje4mjqx9k49xkh2kktv73l0f3zh54dxv5ks05z8q6d5f7yga8cx08rdq95af9jr5fihvfwylgavagpc0h3sqhhpfhw65iamvip3ljvxqk9uf3kgm5czu80om8gtf8wy89d319t7uep0mgx4mhd9fhte8429q52fj7lo384108ltw946t9mjqf6tqh7pdhpi9jqdw47u860xh6mmk78bn7u0q8fpt91ew9n3zc1ca6h2i777t7wt38med9cjoh8tv68qb74zx80pi8wz4";
+var GLOBE_RINGS="7g6i7eib715q7g6i 8bwb8gcb7rv0843x8bwb 6w6i6vmc6qm26hpp6oe36oyb6saj6w6i 7igd7anx7anr72b57b7a7df26rpn6cow6kh56b0m6b0j7iya9d5x9adw8x178y5fa1npa5jza3vza645apldb420blv3bsjcbynqcsp6d7q5diukehwrexhafe64ffu2fbdqfe5tfbxlfftqfoqggkgfh1p5halmhha5hp2di57aij3ujghmjh1rjmluk4eqkbmxlpp2ll8ml8fplb7mlg7tl4j6l02rllrjm94lm9400000000l028r0m9s1cyz2aco1mzn1onx1frl22kt1j3z1czs1cfv1s0l23pa235d25xj42x546t84weg4pqf6hph6yyh6w6n6xv078ft7k4k7igd 6xwi740p6uk56ibu6qo46ukh6xwi 7ihu7jls7cdg7ihu fh0afdo4fe8afh0a k4hnkalxka1nk5lek2tik4hn ltoolwgsltodllbmlfreltoo lx1dm21fm5xnlyoulvcxlxl9lt5dlx1d m5fwm5ztm3rpm5fw e822e95ve1cgduo4dt0ddv8pdvt5e31pe6e5e822 k04fk40hk6s6kbs9kls5kl7hkeiik65xk3dwk01njtxfjntejodjjl1ajn9njjd8jfhbj8t3ifb8i8mziabdi4rpi6zsi5bwi70ai707ilh8iwmej4yqj774jbnejb3gjkjvjibejsvmjxclk04f itupirmlisqrizz7itup ife8ii6aiclzife8 hu9bhz9liadyhtp6hn0yhop4hu9b kj2akf60kapukga5khydkjmgkj2a j786j7s4j1nuj786 jfksjicpjoh6k2dnk9lrk8hjkg9lka5bk2x8jygujmscjpkmjnwqjeghjcscjakdjegmj78ejfks ivk3is7sikfeim3air3nin7air34in70im35ikysii6nih2wijveivk3 j3cgj1o4j0kdj3cg ho54hgwxh0t7h5tfhjpjhj5fhopgho54 iffbihnciev6ibihhy5xhve2hx2fi4awicnrii7vidreiffb iyd0iw4kiroliocdiw51iyd0 g5nqg2bmg3g0g6rxg5nq 7d4c7aw87d4g7d4c issxiqkoipgpiqkwir4uist1issx igk7idryiisjigk7 iocwiqkyiocqiocw iw5biuh0itd7iw5b in8yimouikgvin8y impjiphiint4istbist6ijx0impj 6nk56x0h6k7s6jnu6o426lc16nk5 hy8chuw5huw8hzcjhy8c 1iuu1iay1kiz1iuu 67fo6jo06bvk6djq69nn62zg5vr061vg67fo imq0illvijxyinabimq0 6dke6d0b6bwd6dke c3fzc2bqbwrkc3fz bpjmbqngbofbbnbhbpjm juptjt1ijj0tjhcuj8gcjaodj903j6rzj543jbsojj11jl9cjrdrjt26jvabjwy8jupt bq3rbpjnbnvnbq3ubq3r k1exk473k4qzjsi6jwyuk1ex 7nte7mp87txj7v1b7s9a7ph27h4p7lla7oxk7nte 2xl92ztd30x82xl9 k0vmk33jjzrejy35k0b3jwywjwfojynwk0vm apz2aiqnajaxapzeas7fapz2 bxdlbvpfbthfbxdl 1ojc1kn71pni1ojc ayc7aw3yb0k7aybwb8w2b8bvatazax7catb7avjcauzgayboasrjar3matvzayc7 5vbu67075qvd5vbu a8rsaazr9zaz9qel9smr9nmk9rit9n2la8rs 6gh26d4x6fx56i566gh2 0bly0mqg0h640g1x039h00h800ho0bly 57z14z2n52ew57z1 03a100hy062703a1 5jno5jnk5mfs5qvs5usa61gl648o648h5u7v5qvi5dij5a615di65fq361z062it66yt6ab467j86ers6abt6d426bg96kwr6ud26uwv6y8y75hj7ble7llq7oxm7fgx71076qzb74c9760a74c475fz7c4a7eci7g0h73rl71jl75fv6zbk6rix6t6v6kud6oqk6kab6i206gy06ftp6f9w6dlp6gdj644h65rv5y005mbg5k375caw566f53dn56pg5alj5g5v5k2b5raq5mtw5z2f5yhx63hx67y86e2g6hyw6p7f6p716t3l6wzl7awb79s67lgb7son7yss81kn80ge8cou8dsr8nt98xth8zhc8qk98lj086hx83pd7t477njw7ijq7mfl7gv47a6s792h742877e86z1h6yhd72dg71tb6uko6wsm6r896qo56hrv6go76jgj6g4e6jgv6lox6mt76jgy6l5p6pmg6sg06po56fnx67cc640a67cu64kr64kw6cxu6aq867y664lt5u1l5q5r4qkj4m4i4l0r43sv41ks41km4d8f4c4b474a474f410b42oh3w0n3osg3fwn3fdi3kdm3jtt399h38pm2utk21wg1rbq1u431cam0ydr1dyv1fn414ij152o0vme0yyr17b815n817bc0xuu0r6n153d0tz21gsj2pai37nl4ehe4h9l4f1i4g5m4klu4v6953ir57ex56us5bb756b2593f5jno 42tf4c9w4g5y4fm24k2a4wai4seb4sy93ywt3w4r46pb3ugq3yx13r4o42tf 5skj5u8j621265d16c1g6o9x6xq86zy96w207bmk76m46xpt74xv74dr6w1g71lj6iow6c0i6acg6bgl6kd26mlf69915njz5k805o4c5u8o5skj 4xz2543d52z856bc55r84syo4xex4v6v4xz2 5djq58je57fi5jo55djq 3owk3jc83cnz3h4f3ewd3vl7401c3owk k3qijqdqjlxljptwk3qi 51vl52ff4sz04sz351vl 4g6g4l6o4kmj43xn48dy3v1a401o4eia4b684g6g ep09ebnoel4jfe25er8rekk7ep09 5a8167lh5f815bw1557r5a81 3ydq3wpi3jwt3ydq hr6gi7b4hwqfirbtirbwizoaj94gjbcojs1hjqxjjtppkyvjl3bmlicdlm8hlp0nlogqm69km9lom9l8m40wm8gwlvo6lnvll8utl5ihl8ajl5i3ktt3ks5nl9f0lb38l12ikzekktu9ko9skpxtjxkdjhz4jsjljvvjjomijgttjb9ij0olj54hj408iyfwixc3iz07iuk3ivobim7sinw3ifjhihreiozriib5iof3inuoib1fhzcphysjhuchhorzhvznhvzghn2nhmishbemh9q2hi22hktqheplhbduh7hsh8m9h5apgym9gymigsipgii2ghdvg3gpg2c0fxbifofyfmsgfhs6f8c7eov9emnbeir1ebite86xe3qoe9ueebilec2feh2oem37en70etv4eju2dto9ds0mda8zdat6d8kvd58xdeojdgc8dt47ds02dvw4ead0eacve33sdk5udngwda3odbrbd52rd4iecq13cc4bc9w9c9cic2opc0h5buxbbzecbvisboavbpzhbnrhbi75beb6b0ebaktja45ja1xpa4q7a32ka8nbajsaakclarlbazxob8a8bq37btfcbrqwcb7hcgs1cxgnd817ddm4cup6crdbd7iedi2tdpvbder4djrldav1ddn1d8mpd5and6ytd1elcuptcwxrcjl0cmcvck4scj0kcccnccctbygkbwsaca4jc68dc4k0c3g6bozxbbn4bbn0b6mnb4ybazxuaspeakx3ajtqb1mqb26zauyxb1n9b0jbb7rqbfkfbmsubnxabsdlbthibqp9bth8ccy9cgaicguscmf0cnj8ckr6cxjwcjn6cgb4cgvfcps2cijsc8iyc6upcaqrc6aec4m0bxxlbrtrbnxfbht5bg5gc1v6cnkmcvx2d2lbczt5d216dmm1dou0dm1td714dad7dax2dfd7dfxedkxkdqi2duy8dw2ddtugdzyqe12qdyaidzykegnmeuk9ewsgevohfdh6ff5bfa56f9lbff5sfme5fkpxfp5tfjlafmdffrxvfolxfqu5fni2freefuqefu6ffxing6f1g475gi3vggfugj81hd9phl28hr6g e601e9c3e5fqe6jnegk3eh4ceecbeisnegkneecgedsle8sjeewxeex3e60me105e601 4yjl4mv14p364mb34yjl hmqdhahqhg25hmqd c9owcgx6c4obbsg1c9ow cptscu9yck9ec7gucpts hblwgs52h2pphc60hblw 5rh75u9a5j4m55s65f8r5rh7 6wnm7b496dq96h2c65xj5lwk5psu5oov5vx65p8x5vxd5rh9635v5qd85hgy6wnm 9h0a9uww96zmadto9wkpa1ky9x4k9zwi9so49x499xo79uw29y849orj9rjk9lza9sng9kb49imw9rjc8okv8hw88g7u85ne7xvc7svh80457r7n7sbu7yg47ozs7r7z7ivw6wmu6pym70j76m2j72rj6xrc79g480pk8e2589208gaf9h0a";
 
-var VS="attribute vec3 aPos;attribute float aLay;uniform mat4 uMVP;varying float vL;"+
-       "void main(){vL=aLay;gl_Position=uMVP*vec4(aPos,1.0);}";
-var FS="precision mediump float;varying float vL;uniform float uProg,uMode;uniform vec3 uHot,uCool,uEdge;"+
-       "void main(){vec3 c=uCool;"+
-       "if(uMode<0.5){float d=clamp((uProg-vL)*7.0,0.0,1.0);c=mix(uHot,uCool,d);"+
-       "float hd=1.0-clamp(abs(uProg-vL)*55.0,0.0,1.0);c=mix(c,uEdge,hd);}"+
-       "gl_FragColor=vec4(c,1.0);}";
-
-function GL(canvas){
-  var gl=null;
-  try{ gl=canvas.getContext("webgl",{antialias:true,alpha:true,powerPreference:"low-power"})
-        ||canvas.getContext("experimental-webgl",{antialias:true,alpha:true}); }catch(e){}
-  if(!gl) return null;
-  function sh(t,src){var s=gl.createShader(t);gl.shaderSource(s,src);gl.compileShader(s);
-    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))return null;return s;}
-  var vs=sh(gl.VERTEX_SHADER,VS), fs=sh(gl.FRAGMENT_SHADER,FS);
-  if(!vs||!fs) return null;
-  var pr=gl.createProgram();gl.attachShader(pr,vs);gl.attachShader(pr,fs);gl.linkProgram(pr);
-  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)) return null;
-  gl.useProgram(pr);
-  var A={pos:gl.getAttribLocation(pr,"aPos"),lay:gl.getAttribLocation(pr,"aLay")};
-  var U={mvp:gl.getUniformLocation(pr,"uMVP"),prog:gl.getUniformLocation(pr,"uProg"),
-         mode:gl.getUniformLocation(pr,"uMode"),hot:gl.getUniformLocation(pr,"uHot"),
-         cool:gl.getUniformLocation(pr,"uCool"),edge:gl.getUniformLocation(pr,"uEdge")};
-  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
-  return {gl:gl,A:A,U:U,
-    buf:function(pos,lay){
-      var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
-      gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(pos),gl.STATIC_DRAW);
-      var c=null;
-      if(lay){c=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,c);
-        gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(lay),gl.STATIC_DRAW);}
-      return {p:b,l:c,n:pos.length/3};
-    },
-    draw:function(o,mvp,count,mode,hot,cool,edge,prog){
-      gl.uniformMatrix4fv(U.mvp,false,mvp);
-      gl.uniform1f(U.mode,mode);gl.uniform1f(U.prog,prog||0);
-      gl.uniform3fv(U.hot,hot||[1,1,1]);gl.uniform3fv(U.cool,cool);gl.uniform3fv(U.edge,edge||[1,1,1]);
-      gl.bindBuffer(gl.ARRAY_BUFFER,o.p);gl.enableVertexAttribArray(A.pos);
-      gl.vertexAttribPointer(A.pos,3,gl.FLOAT,false,0,0);
-      if(o.l&&A.lay>=0){gl.bindBuffer(gl.ARRAY_BUFFER,o.l);gl.enableVertexAttribArray(A.lay);
-        gl.vertexAttribPointer(A.lay,1,gl.FLOAT,false,0,0);}
-      else if(A.lay>=0){gl.disableVertexAttribArray(A.lay);gl.vertexAttrib1f(A.lay,0);}
-      gl.drawArrays(gl.LINES,0,count===undefined?o.n:count);
-    }};
-}
-
-var C={hot:[.910,.639,.239], cool:[.525,.588,.565], edge:[.839,.129,.373],
-       dim:[.365,.424,.396], pl:[.867,.890,.863]};
-
-/* ---------- hero: the bioprint ---------- */
-var HERO_L=72, heroScene=null;
-function organPt(t,th){
-  var prof=Math.sin(Math.PI*Math.pow(t,.78));
-  prof=Math.pow(Math.max(prof,1e-4),.62);
-  var lobe=1+.20*Math.cos(2*th+1.4*t)+.11*Math.cos(3*th-2.2*t+.7);
-  var r=prof*lobe*.92, lean=.16*Math.sin(Math.PI*t);
-  return [Math.cos(th)*r+lean, -1+2*t, Math.sin(th)*r];
-}
-function buildHero(R){
-  var SEG=76,pos=[],lay=[],ends=[];
-  for(var i=0;i<HERO_L;i++){
-    var t=i/(HERO_L-1), prev=organPt(t,0);
-    for(var s=1;s<=SEG;s++){
-      var p=organPt(t,s/SEG*Math.PI*2);
-      pos.push(prev[0],prev[1],prev[2],p[0],p[1],p[2]);lay.push(t,t);prev=p;
-    }
-    if(i%8===0){
-      var cx=.16*Math.sin(Math.PI*t);
-      for(var k=0;k<6;k++){
-        var q=organPt(t,k/6*Math.PI*2);
-        pos.push(cx,q[1],0,q[0],q[1],q[2]);lay.push(t,t);
-      }
-    }
-    ends.push(pos.length/3);
-  }
-  var pl=[];
-  for(var g=-6;g<=6;g++){var u=g/6*1.45;pl.push(u,-1.06,-1.45,u,-1.06,1.45,-1.45,-1.06,u,1.45,-1.06,u);}
-  return {organ:R.buf(pos,lay),plate:R.buf(pl,null),ends:ends};
-}
-
-/* ---------- unit cells ---------- */
-function ringPts(n,f){var v=[],p=f(0);for(var i=1;i<=n;i++){var q=f(i/n*Math.PI*2);v.push(p[0],p[1],p[2],q[0],q[1],q[2]);p=q;}return v;}
-function seg(v,a,b){v.push(a[0],a[1],a[2],b[0],b[1],b[2]);}
-var CELLS=[
-  function(){var v=[],i,u,a,b;
-    for(var k=0;k<3;k++){for(var j=0;j<3;j++){
-      var y0=-1+k, z0=-1+j, prev=null;
-      for(i=0;i<=28;i++){u=-1+2*i/28;
-        var p=[u, y0*.62+Math.sin(Math.PI*u+k*2.1)*.34, z0*.62+Math.cos(Math.PI*u+j*2.1)*.34];
-        if(prev) seg(v,prev,p); prev=p;}
-    }}return v;},
-  function(){var v=[],hx=function(y){return function(a){return [Math.cos(a)*.78,y,Math.sin(a)*.78];};},i;
-    v=v.concat(ringPts(6,hx(-.85))).concat(ringPts(6,hx(.85)));
-    for(i=0;i<6;i++){var a=i/6*Math.PI*2;seg(v,[Math.cos(a)*.78,-.85,Math.sin(a)*.78],[Math.cos(a)*.78,.85,Math.sin(a)*.78]);}
-    return v;},
-  function(){var v=[],c=[],x,y,z;
-    for(x=-1;x<=1;x+=2)for(y=-1;y<=1;y+=2)for(z=-1;z<=1;z+=2)c.push([x*.8,y*.8,z*.8]);
-    for(var i=0;i<c.length;i++)for(var j=i+1;j<c.length;j++){
-      var d=0,k;for(k=0;k<3;k++)d+=Math.abs(c[i][k]-c[j][k]);
-      if(d<3.3) seg(v,c[i],c[j]);}
-    for(i=0;i<c.length;i++) seg(v,c[i],[c[i][0]*.34,c[i][1]*.34,c[i][2]*.34]);
-    return v;},
-  function(){var v=[],s=17,rnd=function(){s=(s*1103515245+12345)&2147483647;return s/2147483647;},P=[],i,j;
-    for(i=0;i<11;i++)P.push([rnd()*1.7-.85,rnd()*1.7-.85,rnd()*1.7-.85]);
-    for(i=0;i<P.length;i++)for(j=i+1;j<P.length;j++){
-      var dx=P[i][0]-P[j][0],dy=P[i][1]-P[j][1],dz=P[i][2]-P[j][2];
-      if(dx*dx+dy*dy+dz*dz<.62) seg(v,P[i],P[j]);}
-    return v;},
-  function(){var v=[],c=[],x,y,z,i,j;
-    for(x=-1;x<=1;x+=2)for(y=-1;y<=1;y+=2)for(z=-1;z<=1;z+=2)c.push([x*.82,y*.82,z*.82]);
-    for(i=0;i<c.length;i++)for(j=i+1;j<c.length;j++){
-      var d=0,k;for(k=0;k<3;k++)d+=Math.abs(c[i][k]-c[j][k]);
-      if(d<1.8) seg(v,c[i],c[j]);}
-    var f=[[.82,0,0],[-.82,0,0],[0,.82,0],[0,-.82,0],[0,0,.82],[0,0,-.82]];
-    for(i=0;i<f.length;i++)for(j=0;j<c.length;j++){
-      var e=0,k2;for(k2=0;k2<3;k2++)e+=Math.abs(f[i][k2]-c[j][k2]);
-      if(e<1.7) seg(v,f[i],c[j]);}
-    return v;},
-  function(){var v=[],ax=[[0,1,2],[1,2,0],[2,0,1]],i,k;
-    for(k=0;k<3;k++)for(i=-1;i<=1;i+=2){
-      var a=ax[k],o=[0,0,0];o[a[0]]=i*.82;
-      v=v.concat(ringPts(20,(function(a,o){return function(t){
-        var p=[0,0,0];p[a[0]]=o[a[0]];p[a[1]]=Math.cos(t)*.42;p[a[2]]=Math.sin(t)*.42;return p;};})(a,o)));
-      seg(v,[o[0]*.5,o[1]*.5,o[2]*.5],o);
-    }return v;},
-  function(){var v=[],y,i;
-    for(y=-1;y<=1;y+=2){var yy=y*.85;
-      seg(v,[-.8,yy,-.8],[.8,yy,-.8]);seg(v,[.8,yy,-.8],[.8,yy,.8]);
-      seg(v,[.8,yy,.8],[-.8,yy,.8]);seg(v,[-.8,yy,.8],[-.8,yy,-.8]);}
-    var cn=[[-.8,-.8],[.8,-.8],[.8,.8],[-.8,.8]];
-    for(i=0;i<4;i++) seg(v,[cn[i][0],-.85,cn[i][1]],[cn[i][0]*.32,0,cn[i][1]*.32]);
-    for(i=0;i<4;i++) seg(v,[cn[i][0],.85,cn[i][1]],[cn[i][0]*.32,0,cn[i][1]*.32]);
-    return v;},
-  function(){var v=[];
-    (function br(p,d,len,dep){
-      var q=[p[0]+d[0]*len,p[1]+d[1]*len,p[2]+d[2]*len];
-      seg(v,p,q); if(dep<=0) return;
-      var s=.62;
-      br(q,[d[0]+s,d[1]*.7,d[2]+s*.4],len*.66,dep-1);
-      br(q,[d[0]-s,d[1]*.7,d[2]-s*.4],len*.66,dep-1);
-    })([0,-.92,0],[0,1,0],.72,3);
-    return v;}
+/* venue and organiser locations, city-level precision */
+var GLOBE_PINS = [
+  { lng: 80.02, lat: 23.19, label: "PDPM IIITDM Jabalpur", role: "Venue \u00b7 Host", key: 1 },
+  { lng: 80.23, lat: 12.99, label: "IIT Madras",           role: "Co-organizer",     key: 2 }
 ];
 
-/* ---------- scenes ---------- */
-var scenes=[];
-function fit(cv,box){
-  var dpr=Math.min(window.devicePixelRatio||1,2);
-  var w=Math.max(1,Math.round(box.clientWidth*dpr)), h=Math.max(1,Math.round(box.clientHeight*dpr));
-  if(cv.width!==w||cv.height!==h){cv.width=w;cv.height=h;return true;}
-  return false;
-}
+(function globe(){
+  var cv = $("#heroCanvas"), stage = $("#heroStage");
+  if(!cv || !stage) return;
+  var ctx = cv.getContext("2d");
+  if(!ctx) return;
 
-/* HERO */
-(function(){
-  var cv=$("#heroCanvas"), stage=$("#heroStage"); if(!cv||!stage) return;
-  var R=GL(cv); if(!R) return;
-  var G=buildHero(R), tag=$("#heroLayerTag"), t0=null, entr=0, vis=true;
-  stage.classList.add("gl-on");
-  if("IntersectionObserver" in window)
-    new IntersectionObserver(function(e){vis=e[0].isIntersecting;},{threshold:0}).observe(stage);
-  scenes.push({el:stage,vis:function(){return vis;},render:function(now){
-    fit(cv,stage);
-    var gl=R.gl; gl.viewport(0,0,cv.width,cv.height); gl.disable(gl.SCISSOR_TEST);
-    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
-    if(t0===null)t0=now;
-    if(RM) entr=1; else entr=clamp((now-t0)/3200,0,1);
-    var ee=1-Math.pow(1-entr,3);
-    var hs=clamp(window.scrollY/Math.max(1,window.innerHeight*.85),0,1);
-    var prog=RM?1:clamp(ee*(.55+.45*hs),0,1);
-    var li=clamp(Math.floor(prog*(HERO_L-1)),0,HERO_L-1);
-    if(tag) tag.textContent="Layer "+pad(li+1)+" / "+HERO_L;
-    var asp=cv.width/cv.height;
-    var mdl=mul(rotY(RM?.6:(now*.00016)),rotX(-.30));
-    var mvp=mul(persp(.66,asp,.1,60),mul(trans(0,.30,-3.72),mdl));
-    R.draw(G.plate,mvp,undefined,1,null,C.dim,null,0);
-    R.draw(G.organ,mvp,G.ends[li],0,C.hot,C.cool,C.edge,prog);
-  }});
-})();
-
-/* GLOBE */
-(function(){
-  var cv=$("#globeCanvas"), stage=$("#globeStage"); if(!cv||!stage) return;
-  var R=GL(cv); if(!R) return;
-  var wire=[],arcs=[],i,j;
-  for(i=1;i<7;i++){var ph=-Math.PI/2+i/7*Math.PI;
-    wire=wire.concat(ringPts(44,(function(ph){return function(t){
-      return [Math.cos(ph)*Math.cos(t),Math.sin(ph),Math.cos(ph)*Math.sin(t)];};})(ph)));}
-  for(j=0;j<10;j++){var lo=j/10*Math.PI*2;
-    wire=wire.concat(ringPts(44,(function(lo){return function(t){
-      return [Math.sin(t)*Math.cos(lo),Math.cos(t),Math.sin(t)*Math.sin(lo)];};})(lo)));}
-  for(j=0;j<3;j++){var tw=.5+j*.7;
-    arcs=arcs.concat(ringPts(60,(function(tw){return function(t){
-      var x=Math.cos(t),y=Math.sin(t)*Math.cos(tw),z=Math.sin(t)*Math.sin(tw);
-      var r=1.015;return [x*r,y*r,z*r];};})(tw)));}
-  var W=R.buf(wire,null), A=R.buf(arcs,null), vis=true;
-  stage.classList.add("gl-on");
-  if("IntersectionObserver" in window)
-    new IntersectionObserver(function(e){vis=e[0].isIntersecting;},{threshold:0}).observe(stage);
-  scenes.push({el:stage,vis:function(){return vis;},render:function(now){
-    fit(cv,stage);
-    var gl=R.gl; gl.viewport(0,0,cv.width,cv.height); gl.disable(gl.SCISSOR_TEST);
-    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
-    var mdl=mul(rotY(RM?.8:now*.00009),rotX(-.34));
-    var mvp=mul(persp(.62,cv.width/cv.height,.1,60),mul(trans(0,0,-3.15),mdl));
-    R.draw(W,mvp,undefined,1,null,C.cool,null,0);
-    R.draw(A,mvp,undefined,1,null,C.edge,null,0);
-  }});
-})();
-
-/* TRACKS — one canvas, eight scissor viewports */
-(function(){
-  var cv=$("#tracksCanvas"), sheet=$("#tracksSheet"); if(!cv||!sheet) return;
-  var R=GL(cv); if(!R) return;
-  var bufs=CELLS.map(function(f){return R.buf(f(),null);});
-  var tiles=$$(".tk-cell",sheet), rects=[], vis=true;
-  var hot=-1;
-  tiles.forEach(function(t,i){
-    t.addEventListener("mouseenter",function(){hot=i;});
-    t.addEventListener("mouseleave",function(){hot=-1;});
-  });
-  $$(".tk",sheet).forEach(function(row,i){
-    row.addEventListener("focusin",function(){hot=i;});
-    row.addEventListener("focusout",function(){hot=-1;});
-  });
-  function measure(){
-    var sb=sheet.getBoundingClientRect();
-    rects=tiles.map(function(t){
-      var r=t.getBoundingClientRect();
-      return {x:r.left-sb.left,y:r.top-sb.top,w:r.width,h:r.height,i:+t.getAttribute("data-cell")};
-    });
+  function unpack(str){
+    var out = [];
+    for(var i=0;i<str.length;i+=4){
+      var n = parseInt(str.substr(i,4),36);
+      out.push([(Math.floor(n/721))/4 - 180, (n%721)/4 - 90]);
+    }
+    return out;
   }
-  measure();
-  window.addEventListener("resize",measure,{passive:true});
-  sheet.classList.add("gl-on");
-  if("IntersectionObserver" in window)
-    new IntersectionObserver(function(e){vis=e[0].isIntersecting;},{threshold:0}).observe(sheet);
-  var spin=new Array(8).fill(0), lastMeasure=-1e9;
-  scenes.push({el:sheet,vis:function(){return vis;},render:function(now,dt){
-    // rows carry a reveal transform, so tile rects settle late: re-measure on a cheap cadence
-    if(fit(cv,sheet)){ measure(); lastMeasure=now; }
-    else if(now-lastMeasure>200){ measure(); lastMeasure=now; }
-    var gl=R.gl, dpr=cv.width/Math.max(1,sheet.clientWidth);
-    gl.disable(gl.SCISSOR_TEST);
-    gl.viewport(0,0,cv.width,cv.height);
-    gl.clearColor(0,0,0,0); gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.enable(gl.SCISSOR_TEST);
-    rects.forEach(function(r,k){
-      var x=Math.round(r.x*dpr), w=Math.round(r.w*dpr), h=Math.round(r.h*dpr);
-      var y=Math.round(cv.height-(r.y*dpr)-h);
-      if(w<2||h<2) return;
-      gl.viewport(x,y,w,h); gl.scissor(x,y,w,h);
-      var target=(hot===k)?1:0;
-      spin[k]+=((RM?0:1)*(0.00022+target*0.0011))*dt;
-      var mdl=mul(rotY(spin[k]+k*.5),rotX(-.42));
-      var mvp=mul(persp(.72,w/h,.1,40),mul(trans(0,0,-4.1),mdl));
-      R.draw(bufs[r.i],mvp,undefined,1,null,(hot===k)?C.hot:C.cool,null,0);
-    });
-    gl.disable(gl.SCISSOR_TEST);
-  }});
-})();
+  var DOTS  = unpack(GLOBE_DOTS);
+  var RINGS = GLOBE_RINGS.split(" ").map(unpack);
 
-/* ---------- one shared loop ---------- */
-if(scenes.length){
-  if(RM){
-    // single static frame, no loop
-    scenes.forEach(function(s){ try{ s.render(0,16); }catch(e){} });
-    window.addEventListener("resize",function(){
-      scenes.forEach(function(s){ try{ s.render(0,16); }catch(e){} });
-    },{passive:true});
-  }else{
-    var last=0;
+  var DEG = Math.PI/180;
+  var rotL = -80, rotP = 14;          // start centred on India, where both pins are
+  var dragging = false, autoRot = !RM, vis = true;
+  var cx=0, cy=0, R=0, dpr=1;
+
+  function project(lng, lat){
+    var l = (lng + rotL) * DEG, ph = lat * DEG, pr = rotP * DEG;
+    var cp = Math.cos(ph);
+    var x = cp*Math.sin(l), y = Math.sin(ph), z = cp*Math.cos(l);
+    var c = Math.cos(pr), sn = Math.sin(pr);
+    var y2 = y*c - z*sn, z2 = y*sn + z*c;
+    return [cx + x*R, cy - y2*R, z2];
+  }
+
+  function strokeRing(pts, colour, w){
+    ctx.beginPath();
+    var pen = false;
+    for(var i=0;i<pts.length;i++){
+      var q = project(pts[i][0], pts[i][1]);
+      if(q[2] > 0){ if(pen){ ctx.lineTo(q[0],q[1]); } else { ctx.moveTo(q[0],q[1]); pen = true; } }
+      else pen = false;
+    }
+    ctx.strokeStyle = colour; ctx.lineWidth = w; ctx.stroke();
+  }
+
+  function draw(){
+    var w = cv.width/dpr, h = cv.height/dpr;
+    ctx.clearRect(0,0,w,h);
+
+    // sphere body
+    ctx.beginPath(); ctx.arc(cx,cy,R,0,6.2832);
+    var g = ctx.createRadialGradient(cx-R*0.35, cy-R*0.35, R*0.1, cx, cy, R);
+    g.addColorStop(0,"rgba(21,57,58,0.95)"); g.addColorStop(1,"rgba(8,28,29,0.95)");
+    ctx.fillStyle = g; ctx.fill();
+    ctx.strokeStyle = "rgba(134,150,144,0.85)"; ctx.lineWidth = 1; ctx.stroke();
+
+    // graticule
+    var i, j;
+    for(i=-60;i<=60;i+=30){
+      var lat=[]; for(j=-180;j<=180;j+=6) lat.push([j,i]);
+      strokeRing(lat,"rgba(134,150,144,0.22)",1);
+    }
+    for(i=0;i<180;i+=30){
+      var lon=[]; for(j=-90;j<=90;j+=4) lon.push([i,j]);
+      strokeRing(lon,"rgba(134,150,144,0.22)",1);
+      var lon2=[]; for(j=-90;j<=90;j+=4) lon2.push([i-180,j]);
+      strokeRing(lon2,"rgba(134,150,144,0.22)",1);
+    }
+
+    // coastlines
+    for(i=0;i<RINGS.length;i++) strokeRing(RINGS[i],"rgba(134,150,144,0.55)",1);
+
+    // halftone land
+    var r = Math.max(0.9, R*0.0075);
+    ctx.fillStyle = "rgba(221,227,220,0.82)";
+    for(i=0;i<DOTS.length;i++){
+      var q = project(DOTS[i][0], DOTS[i][1]);
+      if(q[2] <= 0.02) continue;
+      ctx.beginPath(); ctx.arc(q[0], q[1], r, 0, 6.2832); ctx.fill();
+    }
+
+    // pins — both sit in India, so labels get chips, generous separation
+    // and an edge flip so they never collide or run out of the frame
+    for(i=0;i<GLOBE_PINS.length;i++){
+      var pin = GLOBE_PINS[i], q = project(pin.lng, pin.lat);
+      if(q[2] <= 0.06) continue;
+      var col  = pin.key === 1 ? "#D6215F" : "#E8A33D";
+      var fade = Math.min(1, q[2]*3.2);
+      ctx.globalAlpha = fade;
+
+      ctx.beginPath(); ctx.arc(q[0], q[1], 3.4, 0, 6.2832); ctx.fillStyle = col; ctx.fill();
+      ctx.beginPath(); ctx.arc(q[0], q[1], 9, 0, 6.2832);
+      ctx.strokeStyle = col; ctx.lineWidth = 1.1; ctx.stroke();
+
+      var mono = '600 8.5px "Martian Mono", ui-monospace, monospace';
+      var sans = '500 11.5px Archivo, system-ui, sans-serif';
+      ctx.font = mono; var w1 = ctx.measureText(pin.role.toUpperCase()).width;
+      ctx.font = sans; var w2 = ctx.measureText(pin.label).width;
+      var bw = Math.max(w1, w2) + 20, bh = 34;
+
+      var up = pin.key === 1 ? -1 : 1;
+      var ly = q[1] + up * 62;
+      ly = Math.max(bh/2 + 6, Math.min(h - bh/2 - 24, ly));
+      var flip = (q[0] + 30 + bw) > (w - 10);
+      var lx = flip ? (q[0] - 30 - bw) : (q[0] + 30);
+      lx = Math.max(6, Math.min(w - bw - 6, lx));
+
+      ctx.beginPath();
+      ctx.moveTo(q[0], q[1] + up*9);
+      ctx.lineTo(flip ? lx + bw + 8 : lx - 8, ly);
+      ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.stroke();
+
+      ctx.fillStyle = "rgba(8,28,29,0.9)";
+      ctx.fillRect(lx, ly - bh/2, bw, bh);
+      ctx.strokeStyle = col; ctx.lineWidth = 1;
+      ctx.strokeRect(lx + 0.5, ly - bh/2 + 0.5, bw - 1, bh - 1);
+
+      ctx.textAlign = "left";
+      ctx.font = mono; ctx.fillStyle = col;
+      ctx.fillText(pin.role.toUpperCase(), lx + 10, ly - 3);
+      ctx.font = sans; ctx.fillStyle = "rgba(237,240,235,0.97)";
+      ctx.fillText(pin.label, lx + 10, ly + 11);
+
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  function resize(){
+    dpr = Math.min(window.devicePixelRatio||1, 2);
+    var w = stage.clientWidth, h = stage.clientHeight;
+    cv.width = Math.max(1,Math.round(w*dpr)); cv.height = Math.max(1,Math.round(h*dpr));
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx = w/2; cy = h/2; R = Math.min(w,h)/2 - Math.min(w,h)*0.13;
+    draw();
+  }
+
+  /* drag to rotate */
+  var lastX=0, lastY=0;
+  function down(e){
+    dragging = true; autoRot = false;
+    var t = e.touches ? e.touches[0] : e;
+    lastX = t.clientX; lastY = t.clientY;
+    cv.setPointerCapture && e.pointerId !== undefined && cv.setPointerCapture(e.pointerId);
+  }
+  function move(e){
+    if(!dragging) return;
+    var t = e.touches ? e.touches[0] : e;
+    rotL += (t.clientX - lastX) * 0.32;
+    rotP = Math.max(-72, Math.min(72, rotP - (t.clientY - lastY) * 0.28));
+    lastX = t.clientX; lastY = t.clientY;
+    if(e.cancelable) e.preventDefault();
+    draw();
+  }
+  function up(){ dragging = false; if(!RM) setTimeout(function(){ if(!dragging) autoRot = true; }, 2600); }
+
+  cv.addEventListener("pointerdown", down);
+  window.addEventListener("pointermove", move, {passive:false});
+  window.addEventListener("pointerup", up);
+  cv.style.cursor = "grab";
+  cv.addEventListener("pointerdown", function(){ cv.style.cursor = "grabbing"; });
+  window.addEventListener("pointerup", function(){ cv.style.cursor = "grab"; });
+
+  if("IntersectionObserver" in window)
+    new IntersectionObserver(function(e){ vis = e[0].isIntersecting; },{threshold:0}).observe(stage);
+
+  stage.classList.add("gl-on");
+  window.addEventListener("resize", resize, {passive:true});
+  resize();
+
+  if(!RM){
+    var prev = 0;
     (function loop(now){
-      var dt=Math.min(64,now-last); last=now;
-      for(var i=0;i<scenes.length;i++){
-        if(scenes[i].vis()){ try{ scenes[i].render(now,dt); }catch(e){} }
-      }
+      var dt = Math.min(64, now - prev); prev = now;
+      if(vis && autoRot && !dragging){ rotL += dt * 0.0042; draw(); }
       window.requestAnimationFrame(loop);
     })(0);
   }
-}
+})();
+
+/* =========================================================
+   REGISTRATION / ABSTRACT FORMS
+   ========================================================= */
+var COUNTRIES = "AF|93|Afghanistan;AL|355|Albania;DZ|213|Algeria;AD|376|Andorra;AO|244|Angola;AR|54|Argentina;AM|374|Armenia;AU|61|Australia;AT|43|Austria;AZ|994|Azerbaijan;BH|973|Bahrain;BD|880|Bangladesh;BB|1|Barbados;BY|375|Belarus;BE|32|Belgium;BZ|501|Belize;BJ|229|Benin;BT|975|Bhutan;BO|591|Bolivia;BA|387|Bosnia and Herzegovina;BW|267|Botswana;BR|55|Brazil;BN|673|Brunei;BG|359|Bulgaria;BF|226|Burkina Faso;BI|257|Burundi;KH|855|Cambodia;CM|237|Cameroon;CA|1|Canada;CV|238|Cape Verde;CF|236|Central African Republic;TD|235|Chad;CL|56|Chile;CN|86|China;CO|57|Colombia;KM|269|Comoros;CG|242|Congo;CD|243|Congo (DRC);CR|506|Costa Rica;CI|225|Cote d Ivoire;HR|385|Croatia;CU|53|Cuba;CY|357|Cyprus;CZ|420|Czechia;DK|45|Denmark;DJ|253|Djibouti;DO|1|Dominican Republic;EC|593|Ecuador;EG|20|Egypt;SV|503|El Salvador;GQ|240|Equatorial Guinea;ER|291|Eritrea;EE|372|Estonia;SZ|268|Eswatini;ET|251|Ethiopia;FJ|679|Fiji;FI|358|Finland;FR|33|France;GA|241|Gabon;GM|220|Gambia;GE|995|Georgia;DE|49|Germany;GH|233|Ghana;GR|30|Greece;GT|502|Guatemala;GN|224|Guinea;GY|592|Guyana;HT|509|Haiti;HN|504|Honduras;HK|852|Hong Kong;HU|36|Hungary;IS|354|Iceland;IN|91|India;ID|62|Indonesia;IR|98|Iran;IQ|964|Iraq;IE|353|Ireland;IL|972|Israel;IT|39|Italy;JM|1|Jamaica;JP|81|Japan;JO|962|Jordan;KZ|7|Kazakhstan;KE|254|Kenya;KW|965|Kuwait;KG|996|Kyrgyzstan;LA|856|Laos;LV|371|Latvia;LB|961|Lebanon;LS|266|Lesotho;LR|231|Liberia;LY|218|Libya;LI|423|Liechtenstein;LT|370|Lithuania;LU|352|Luxembourg;MO|853|Macao;MG|261|Madagascar;MW|265|Malawi;MY|60|Malaysia;MV|960|Maldives;ML|223|Mali;MT|356|Malta;MR|222|Mauritania;MU|230|Mauritius;MX|52|Mexico;MD|373|Moldova;MC|377|Monaco;MN|976|Mongolia;ME|382|Montenegro;MA|212|Morocco;MZ|258|Mozambique;MM|95|Myanmar;NA|264|Namibia;NP|977|Nepal;NL|31|Netherlands;NZ|64|New Zealand;NI|505|Nicaragua;NE|227|Niger;NG|234|Nigeria;KP|850|North Korea;MK|389|North Macedonia;NO|47|Norway;OM|968|Oman;PK|92|Pakistan;PS|970|Palestine;PA|507|Panama;PG|675|Papua New Guinea;PY|595|Paraguay;PE|51|Peru;PH|63|Philippines;PL|48|Poland;PT|351|Portugal;QA|974|Qatar;RO|40|Romania;RU|7|Russia;RW|250|Rwanda;SA|966|Saudi Arabia;SN|221|Senegal;RS|381|Serbia;SC|248|Seychelles;SL|232|Sierra Leone;SG|65|Singapore;SK|421|Slovakia;SI|386|Slovenia;SO|252|Somalia;ZA|27|South Africa;KR|82|South Korea;SS|211|South Sudan;ES|34|Spain;LK|94|Sri Lanka;SD|249|Sudan;SR|597|Suriname;SE|46|Sweden;CH|41|Switzerland;SY|963|Syria;TW|886|Taiwan;TJ|992|Tajikistan;TZ|255|Tanzania;TH|66|Thailand;TG|228|Togo;TT|1|Trinidad and Tobago;TN|216|Tunisia;TR|90|Turkiye;TM|993|Turkmenistan;UG|256|Uganda;UA|380|Ukraine;AE|971|United Arab Emirates;GB|44|United Kingdom;US|1|United States;UY|598|Uruguay;UZ|998|Uzbekistan;VE|58|Venezuela;VN|84|Vietnam;YE|967|Yemen;ZM|260|Zambia;ZW|263|Zimbabwe";
+
+(function initForms(){
+  var list = COUNTRIES.split(";").map(function(r){var x=r.split("|");return {iso:x[0],dial:x[1],name:x[2]};});
+
+  $$("select[data-country]").forEach(function(sel){
+    var frag = document.createDocumentFragment();
+    list.forEach(function(c){
+      var o = document.createElement("option");
+      o.value = c.name; o.textContent = c.name + " (+" + c.dial + ")";
+      o.setAttribute("data-dial", c.dial);
+      frag.appendChild(o);
+    });
+    sel.appendChild(frag);
+    sel.addEventListener("change", function(){
+      var pfx = sel.id.split("-")[0];
+      var dial = sel.selectedOptions[0] && sel.selectedOptions[0].getAttribute("data-dial");
+      var box = document.getElementById(pfx + "-dial");
+      if(box) box.textContent = dial ? "+" + dial : "+\u2014";
+    });
+  });
+
+  function setErr(field, msg){
+    var wrap = field.closest(".f"), box = document.getElementById("e-" + field.id);
+    if(msg){
+      wrap.classList.add("bad");
+      field.setAttribute("aria-invalid","true");
+      if(box){ box.textContent = msg; field.setAttribute("aria-describedby", box.id); }
+    }else{
+      wrap.classList.remove("bad");
+      field.removeAttribute("aria-invalid");
+      if(box) box.textContent = "";
+    }
+    return !msg;
+  }
+
+  var EMAIL = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+
+  function validateField(el){
+    var v = (el.value || "").trim();
+    if(el.hasAttribute("data-req") && !v)
+      return setErr(el, el.tagName === "SELECT" ? "Please choose one" : "This field is required");
+    if(!v) return setErr(el, "");
+    if(el.type === "email" && !EMAIL.test(v))
+      return setErr(el, "Enter a valid email address");
+    if(el.hasAttribute("data-phone")){
+      var digits = v.replace(/\D/g, "");
+      var sel = document.getElementById(el.id.split("-")[0] + "-country");
+      var dial = sel && sel.selectedOptions[0] ? (sel.selectedOptions[0].getAttribute("data-dial")||"") : "";
+      if(!dial) return setErr(el, "Choose your country first");
+      if(digits.length < 4)  return setErr(el, "Number looks too short");
+      if(digits.length > 14) return setErr(el, "Number looks too long");
+      if((dial + digits).length > 15) return setErr(el, "Too long for an international number");
+    }
+    if(el.name === "abstract"){
+      var words = v.split(/\s+/).filter(Boolean).length;
+      if(words > 300) return setErr(el, "Abstract is " + words + " words \u2014 maximum is 300");
+      if(words < 20)  return setErr(el, "Please write at least 20 words");
+    }
+    return setErr(el, "");
+  }
+
+  function fields(form){
+    return $$("input,select,textarea", form).filter(function(el){
+      return el.name && el.name !== "website" && el.type !== "submit";
+    });
+  }
+
+  function collect(form){
+    var out = {}, sel = $("select[data-country]", form);
+    var dial = sel && sel.selectedOptions[0] ? sel.selectedOptions[0].getAttribute("data-dial") : "";
+    fields(form).forEach(function(el){ out[el.name] = (el.value||"").trim(); });
+    if(out.phone) out.phone = "+" + dial + " " + out.phone.replace(/\D/g,"");
+    out.form = form.getAttribute("data-kind");
+    out.submitted_at = new Date().toISOString();
+    out.page = location.href;
+    return out;
+  }
+
+  function mailtoFallback(data){
+    var lines = Object.keys(data).map(function(k){ return k + ": " + data[k]; }).join("\n");
+    var subject = data.form === "abstract"
+      ? "SBRS ICON 2027 \u2014 Abstract Submission"
+      : "SBRS ICON 2027 \u2014 Registration";
+    return "mailto:" + FORM_MAILTO + "?subject=" + encodeURIComponent(subject) +
+           "&body=" + encodeURIComponent(lines);
+  }
+
+  $$("form[data-kind]").forEach(function(form){
+    var status = $(".dlg-status", form), btn = $("button[type=submit]", form);
+
+    fields(form).forEach(function(el){
+      el.addEventListener("blur", function(){ validateField(el); });
+      el.addEventListener("input", function(){
+        if(el.closest(".f").classList.contains("bad")) validateField(el);
+        // clear the summary once nothing is outstanding, so a stale count never lingers
+        if(status.className.indexOf("bad")>-1 && !$$(".f.bad", form).length){
+          status.textContent=""; status.className="dlg-status";
+        }
+      });
+    });
+
+    form.addEventListener("submit", function(ev){
+      ev.preventDefault();
+      if(form.website && form.website.value) return;          // honeypot
+
+      var bad = fields(form).filter(function(el){ return !validateField(el); });
+      if(bad.length){
+        status.textContent = bad.length + " field" + (bad.length>1?"s":"") + " need attention";
+        status.className = "dlg-status bad";
+        bad[0].focus();
+        return;
+      }
+
+      var data = collect(form);
+      status.className = "dlg-status";
+      status.textContent = "Sending\u2026";
+      btn.disabled = true;
+
+      function ok(){
+        status.className = "dlg-status ok";
+        status.textContent = "Received \u2014 we will be in touch by email.";
+        form.reset();
+        $$(".dial", form).forEach(function(d){ d.textContent = "+\u2014"; });
+        btn.disabled = false;
+      }
+      function fail(){
+        status.className = "dlg-status bad";
+        status.innerHTML = 'Could not send. <a href="' + mailtoFallback(data) + '">Send it by email instead</a>';
+        btn.disabled = false;
+      }
+
+      if(!FORM_ENDPOINT){ window.location.href = mailtoFallback(data); ok(); return; }
+
+      var body = new URLSearchParams();
+      Object.keys(data).forEach(function(k){ body.append(k, data[k]); });
+      fetch(FORM_ENDPOINT, { method:"POST", body:body })
+        .then(function(r){ if(!r.ok) throw new Error(r.status); return r.text(); })
+        .then(ok)
+        .catch(fail);
+    });
+  });
+
+  /* ---- open / close ---- */
+  var lastTrigger = null;
+  var DLG = { register: "#dlgRegister", abstract: "#dlgAbstract" };
+
+  $$("[data-open]").forEach(function(a){
+    a.addEventListener("click", function(ev){
+      var d = $(DLG[a.getAttribute("data-open")]);
+      if(!d || !d.showModal) return;                          // no <dialog>: mailto href runs
+      ev.preventDefault();
+      lastTrigger = a;
+      d.showModal();
+      document.documentElement.style.overflow = "hidden";
+      var first = $("input,select,textarea", d);
+      if(first) setTimeout(function(){ first.focus(); }, 60);
+    });
+  });
+
+  $$("dialog.dlg").forEach(function(d){
+    function shut(){
+      d.close();
+      document.documentElement.style.overflow = "";
+      if(lastTrigger) lastTrigger.focus();
+    }
+    $$("[data-close]", d).forEach(function(b){ b.addEventListener("click", shut); });
+    d.addEventListener("cancel", function(ev){ ev.preventDefault(); shut(); });
+    d.addEventListener("click", function(ev){ if(ev.target === d) shut(); });
+  });
+})();
+
 })();
 </script>
 </body>
