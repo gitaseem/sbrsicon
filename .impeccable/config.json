@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "codex-grid-background",
+        "value": "two-axis grid-line gradient background",
+        "createdAt": "2026-08-20T07:33:30.707Z",
+        "reason": "Claude: the grid is the bioprinter build plate the hero renders on, which is the rule's own sanctioned exception for canvas/blueprint/measurement surfaces; it is masked to the lower viewport and sits directly under the WebGL plate geometry"
+      },
+      {
+        "rule": "marketing-buzzword",
+        "value": "4 buzzword phrases: \"vations for next-generation healthcare",
+        "createdAt": "2026-08-20T07:33:30.788Z",
+        "reason": "Claude: 'Next-Generation' is verbatim official conference copy (theme line and track 04 title) from the client brief, which forbids paraphrasing facts, names and track titles; not authored marketing language"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+# Original supplied media — 269 MB, not needed to serve the site.
+# Keep these somewhere safe (Drive/Dropbox); they are the masters the
+# assets/ files were transcoded from. See README.md § Media provenance.
+assets/source/
+
+# Generated: the media-inlined bundle for claude.ai Artifacts (3 MB, rebuildable)
+artifact.html
+
+# Build review screenshots
+.impeccable/review/
+.impeccable/hook.cache.json
+
+# Spartan AI config (contains API keys)
+.spartan/ai.env
+
+# Spartan/Claude toolkit config — local tooling, unrelated to serving the site.
+# Delete this line if you do want it versioned.
+.claude/
+
+node_modules/
+.DS_Store
+Thumbs.db

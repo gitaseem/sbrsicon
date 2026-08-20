@@ -1,0 +1,23 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# Static site: no build step, no runtime, no server. Render just serves the files.
+services:
+  - type: web
+    name: sbrs-icon-2027
+    runtime: static
+    staticPublishPath: .
+
+    headers:
+      # Media and logos are content-hashed by name and never change in place.
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # The page itself must revalidate so edits go live immediately.
+      - path: /index.html
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
