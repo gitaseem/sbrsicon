@@ -32,7 +32,18 @@ for (const f of ['assets/hero.mp4', 'assets/hero-poster.jpg', 'assets/bench-post
                  'assets/hl-bioprinting.webp', 'assets/hl-bioprinting.jpg',
                  'assets/hl-4d.webp', 'assets/hl-4d.jpg',
                  'assets/hl-devices.webp', 'assets/hl-devices.jpg',
-                 'assets/hl-products.webp', 'assets/hl-products.jpg']) {
+                 'assets/hl-products.webp', 'assets/hl-products.jpg',
+                 'assets/spk-chen.webp', 'assets/spk-chen.jpg',
+                 'assets/spk-basu.webp', 'assets/spk-basu.jpg',
+                 'assets/spk-kundu.webp', 'assets/spk-kundu.jpg',
+                 'assets/spk-yingnan.webp', 'assets/spk-yingnan.jpg',
+                 'assets/spk-hashimoto.webp', 'assets/spk-hashimoto.jpg',
+                 'assets/spk-narain.webp', 'assets/spk-narain.jpg',
+                 'assets/spk-rajadas.webp', 'assets/spk-rajadas.jpg',
+                 'assets/spk-kamakoti.webp', 'assets/spk-kamakoti.jpg',
+                 'assets/spk-nanda.webp', 'assets/spk-nanda.jpg',
+                 'assets/spk-singh.webp', 'assets/spk-singh.jpg',
+                 'assets/spk-jayaganthan.webp', 'assets/spk-jayaganthan.jpg']) {
   const before = h.length;
   h = h.split(f).join(dataURI(f));
   if (h.length === before) console.warn('  ! not referenced:', f);

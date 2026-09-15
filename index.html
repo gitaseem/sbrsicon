@@ -179,8 +179,11 @@ ul,ol{padding:0;list-style:none}
   font-family:var(--f-mono);font-size:.48rem;letter-spacing:.19em;
   text-transform:uppercase;color:var(--toolpath-dim);margin-top:5px;
 }
-.nav{display:none;gap:clamp(13px,1.7vw,28px);margin-left:auto}
+.nav{display:none;gap:clamp(11px,1.2vw,22px);margin-left:auto}
 @media (min-width:1040px){.nav{display:flex}}
+/* ten links will not fit the mid band, so the two least load-bearing stand down */
+.nav-opt{display:none}
+@media (min-width:1300px){.nav-opt{display:inline-block}}
 .nav a{
   font-family:var(--f-mono);font-size:.58rem;letter-spacing:.15em;
   text-transform:uppercase;text-decoration:none;color:var(--toolpath-dim);
@@ -743,6 +746,141 @@ ul,ol{padding:0;list-style:none}
 @media (prefers-reduced-motion:reduce){.dlg[open]{animation:none}}
 
 /* ==========================================================
+   PEOPLE — speakers & organizing committee
+   ========================================================== */
+.spk-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:clamp(24px,3vw,38px)}
+.spk-chip{
+  font-family:var(--f-mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:9px 14px;border:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent);
+  background:transparent;color:var(--toolpath-dim);cursor:pointer;
+  transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease);
+}
+.spk-chip:hover{color:var(--graphite);border-color:var(--graphite)}
+.spk-chip[aria-pressed="true"]{background:var(--chamber);border-color:var(--chamber);color:var(--paper)}
+.spk-count{
+  font-family:var(--f-mono);font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--toolpath-dim);margin-left:auto;
+}
+
+.spk-grid{display:grid;gap:clamp(16px,1.9vw,24px);grid-template-columns:minmax(0,1fr)}
+@media (min-width:520px){.spk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:860px){.spk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1140px){.spk-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.spk{
+  background:var(--paper);padding:clamp(13px,1.4vw,17px);
+  display:flex;flex-direction:column;gap:11px;
+  transition:background .3s var(--ease);
+}
+.spk[hidden]{display:none}
+.spk:hover{background:#fff}
+.spk-fig{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--plate-2)}
+.spk-fig picture{display:block;width:100%;height:100%}
+.spk-fig img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transform:scale(1);transition:transform .5s var(--ease);
+}
+.spk:hover .spk-fig img{transform:scale(1.04)}
+.spk-role{
+  font-family:var(--f-mono);font-size:.5rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--phenol);
+}
+.spk-name{
+  font-variation-settings:"wdth" 106,"wght" 650;
+  font-size:clamp(.97rem,1.2vw,1.08rem);line-height:1.18;letter-spacing:-.014em;
+}
+.spk-org{color:var(--toolpath-dim);font-size:.84rem;line-height:1.45}
+.people-committee .spk{background:var(--plate)}
+.people-committee .spk:hover{background:var(--paper)}
+@keyframes spkIn{from{opacity:0;transform:translateY(12px) scale(.975)}to{opacity:1;transform:none}}
+.spk-in{animation:spkIn .44s var(--ease-out) both}
+@media (prefers-reduced-motion:reduce){
+  .spk-in{animation:none}
+  .spk-fig img,.spk:hover .spk-fig img{transform:none}
+}
+
+/* ==========================================================
+   FEES — the rate card, read as a drawing schedule
+   ========================================================== */
+.fee-block+.fee-block{margin-top:clamp(36px,4.6vw,62px)}
+.fee-cap{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;margin-bottom:14px}
+.fee-cap h3{
+  font-variation-settings:"wdth" 108,"wght" 660;
+  font-size:clamp(1.08rem,1.7vw,1.36rem);line-height:1.18;letter-spacing:-.018em;
+}
+.fee-tag{
+  font-family:var(--f-mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--phenol);border:1px solid currentColor;padding:4px 8px;
+}
+.tbl-scroll{overflow-x:auto;border:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent)}
+.tbl{width:100%;min-width:660px;border-collapse:collapse;background:var(--paper)}
+.tbl th,.tbl td{padding:13px clamp(12px,1.3vw,18px);text-align:left;vertical-align:bottom}
+.tbl thead tr:first-child th{padding-bottom:5px}
+.tbl thead th{
+  font-family:var(--f-mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--toolpath-dim);font-weight:600;
+}
+.tbl thead tr:last-child th{border-bottom:1px solid color-mix(in srgb,var(--toolpath) 60%,transparent)}
+.tbl tbody th{
+  font-variation-settings:"wdth" 104,"wght" 620;font-size:.95rem;line-height:1.3;
+  border-bottom:1px solid color-mix(in srgb,var(--toolpath) 32%,transparent);
+}
+.tbl tbody td{
+  font-family:var(--f-mono);font-size:.8rem;white-space:nowrap;
+  border-bottom:1px solid color-mix(in srgb,var(--toolpath) 32%,transparent);
+}
+.tbl tbody tr:last-child th,.tbl tbody tr:last-child td{border-bottom:0}
+.tbl tbody tr:hover th,.tbl tbody tr:hover td{background:var(--plate)}
+.tbl .sep{border-left:1px solid color-mix(in srgb,var(--toolpath) 40%,transparent)}
+.tbl .late{color:var(--toolpath-dim)}
+.fee-notes{
+  margin-top:clamp(22px,2.8vw,34px);display:grid;gap:10px;
+  border-top:1px solid color-mix(in srgb,var(--toolpath) 45%,transparent);padding-top:18px;
+}
+.fee-notes li{display:flex;gap:12px;font-size:.9rem;line-height:1.5;color:var(--toolpath-dim)}
+.fee-notes strong{color:var(--graphite);font-variation-settings:"wdth" 100,"wght" 620}
+.tbl .hint{display:block;margin-top:4px;color:var(--toolpath-dim)}
+.fee-notes>li>b{
+  font-family:var(--f-mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--phenol);flex:none;padding-top:.35em;
+}
+
+/* ==========================================================
+   SPONSORSHIP
+   ========================================================== */
+.spo-grid{
+  display:grid;gap:1px;
+  background:color-mix(in srgb,var(--toolpath) 34%,transparent);
+  border:1px solid color-mix(in srgb,var(--toolpath) 34%,transparent);
+}
+@media (min-width:620px){.spo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.spo-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.spo{
+  background:var(--chamber);padding:clamp(22px,2.6vw,32px);
+  display:flex;flex-direction:column;gap:16px;
+  transition:background .3s var(--ease);
+}
+.spo:hover{background:var(--chamber-3)}
+.spo-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.spo-tier{
+  font-variation-settings:"wdth" 110,"wght" 680;
+  font-size:clamp(1.14rem,1.8vw,1.44rem);line-height:1;letter-spacing:-.02em;color:var(--paper);
+}
+.spo-n{font-family:var(--f-mono);font-size:.5rem;letter-spacing:.14em;color:var(--toolpath)}
+.spo-rates{display:grid;gap:12px;margin-top:auto}
+.spo-rate{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  border-top:1px solid color-mix(in srgb,var(--toolpath) 28%,transparent);padding-top:10px}
+.spo-rate span{font-family:var(--f-mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--toolpath)}
+.spo-rate b{font-family:var(--f-mono);font-size:.94rem;letter-spacing:.01em;color:var(--bioink);font-weight:500}
+.spo-lakh{font-family:var(--f-mono);font-size:.48rem;letter-spacing:.14em;text-transform:uppercase;color:var(--toolpath);margin:-7px 0 0;text-align:right}
+.spo--top .spo-tier{color:var(--bioink)}
+.spo-foot{
+  margin-top:clamp(26px,3.2vw,40px);display:flex;flex-wrap:wrap;gap:16px 26px;align-items:center;
+}
+.spo-foot p{color:var(--toolpath);font-size:.92rem;line-height:1.5;margin:0;flex:1 1 320px}
+.on-dark .btn-2{border-color:var(--toolpath);color:var(--paper)}
+.on-dark .btn-2:hover{border-color:var(--paper);background:var(--paper);color:var(--graphite)}
+
+/* ==========================================================
    REVEAL
    ========================================================== */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease-out),transform .75s var(--ease-out)}
@@ -795,7 +933,7 @@ ul,ol{padding:0;list-style:none}
   <div class="zr-fill" id="zrFill"></div>
   <div id="zrTicks"></div>
   <div class="zr-head" id="zrHead"></div>
-  <div class="zr-cap bot"><b id="zrZ">01</b><span>of 08</span></div>
+  <div class="zr-cap bot"><b id="zrZ">01</b><span id="zrOf">of 08</span></div>
 </div>
 
 <header class="site-head">
@@ -806,11 +944,15 @@ ul,ol{padding:0;list-style:none}
     </a>
     <nav class="nav" id="nav" aria-label="Sections">
       <a href="#about">About</a>
-      <a href="#objectives">Objectives</a>
+      <a class="nav-opt" href="#objectives">Objectives</a>
       <a href="#tracks">Tracks</a>
-      <a href="#highlights">Highlights</a>
+      <a class="nav-opt" href="#highlights">Highlights</a>
+      <a href="#speakers">Speakers</a>
       <a href="#dates">Dates</a>
+      <a href="#fees">Fees</a>
+      <a href="#sponsors">Sponsors</a>
       <a href="#hosts">Hosts</a>
+      <a href="#committee">Committee</a>
     </nav>
     <div class="head-cta">
       <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register</a>
@@ -1050,12 +1192,115 @@ ul,ol{padding:0;list-style:none}
   </div>
 </section>
 
+<!-- ===================== SPEAKERS ===================== -->
+<section class="sec people" id="speakers" aria-labelledby="h-spk" style="background:var(--plate-2)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-meta">
+        <span class="eyebrow">06</span>
+        <span>Confirmed speakers</span>
+      </div>
+      <h2 class="h2" id="h-spk">Seven confirmed speakers, six countries.</h2>
+    </div>
+    <hr class="rule rv">
+
+    <div class="spk-bar rv" style="margin-top:clamp(28px,3.6vw,46px)">
+      <button type="button" class="spk-chip" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="spk-chip" data-filter="india" aria-pressed="false">India</button>
+      <button type="button" class="spk-chip" data-filter="japan" aria-pressed="false">Japan</button>
+      <button type="button" class="spk-chip" data-filter="singapore" aria-pressed="false">Singapore</button>
+      <button type="button" class="spk-chip" data-filter="europe" aria-pressed="false">Europe</button>
+      <button type="button" class="spk-chip" data-filter="namerica" aria-pressed="false">North America</button>
+      <p class="spk-count" id="spkCount" role="status">07 of 07 shown</p>
+    </div>
+
+    <div class="spk-grid rv" id="spkGrid">
+      <article class="spk plate-frame" data-region="japan">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-chen.webp" type="image/webp">
+            <img src="assets/spk-chen.jpg" alt="Portrait of Prof. Guoping Chen." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <h3 class="spk-name">Prof. Guoping Chen</h3>
+        <p class="spk-org">National Institute for Materials Science, Japan</p>
+      </article>
+
+      <article class="spk plate-frame" data-region="india">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-basu.webp" type="image/webp">
+            <img src="assets/spk-basu.jpg" alt="Portrait of Prof. Bikramjit Basu." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <h3 class="spk-name">Prof. Bikramjit Basu</h3>
+        <p class="spk-org">CSIR&ndash;Central Glass Ceramic Research Institute, Kolkata and IISc Bangalore</p>
+      </article>
+
+      <article class="spk plate-frame" data-region="europe">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-kundu.webp" type="image/webp">
+            <img src="assets/spk-kundu.jpg" alt="Portrait of Prof. Subhas C. Kundu." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <h3 class="spk-name">Prof. Subhas C. Kundu</h3>
+        <p class="spk-org">I3B&rsquo;s Research Institute, University of Minho, Portugal</p>
+      </article>
+
+      <article class="spk plate-frame" data-region="japan">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-yingnan.webp" type="image/webp">
+            <img src="assets/spk-yingnan.jpg" alt="Portrait of Prof. Yang Yingnan." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <h3 class="spk-name">Prof. Yang Yingnan</h3>
+        <p class="spk-org">University of Tsukuba, Japan</p>
+      </article>
+
+      <article class="spk plate-frame" data-region="singapore">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-hashimoto.webp" type="image/webp">
+            <img src="assets/spk-hashimoto.jpg" alt="Portrait of Prof. Michinao Hashimoto." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <h3 class="spk-name">Prof. Michinao Hashimoto</h3>
+        <p class="spk-org">Singapore University of Technology Design (SUTD), Singapore</p>
+      </article>
+
+      <article class="spk plate-frame" data-region="namerica">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-narain.webp" type="image/webp">
+            <img src="assets/spk-narain.jpg" alt="Portrait of Prof. Ravin Narain." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <h3 class="spk-name">Prof. Ravin Narain</h3>
+        <p class="spk-org">Professor, University of Alberta, Canada</p>
+      </article>
+
+      <article class="spk plate-frame" data-region="namerica">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-rajadas.webp" type="image/webp">
+            <img src="assets/spk-rajadas.jpg" alt="Portrait of Prof. Jayakumar Rajadas." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <h3 class="spk-name">Prof. Jayakumar Rajadas</h3>
+        <p class="spk-org">Stanford University, USA</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== IMPORTANT DATES ===================== -->
 <section class="sec dates" id="dates" aria-labelledby="h-dates">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">06</span>
+        <span class="eyebrow">07</span>
         <span>Important dates</span>
       </div>
       <h2 class="h2" id="h-dates">Key dates.</h2>
@@ -1079,12 +1324,170 @@ ul,ol{padding:0;list-style:none}
   </div>
 </section>
 
+<!-- ===================== REGISTRATION & FEES ===================== -->
+<section class="sec" id="fees" aria-labelledby="h-fees">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-meta">
+        <span class="eyebrow">08</span>
+        <span>Registration &amp; fees</span>
+      </div>
+      <h2 class="h2" id="h-fees">What it costs to attend.</h2>
+    </div>
+
+    <div class="fee-block rv">
+      <div class="fee-cap">
+        <h3>Registration</h3>
+        <span class="fee-tag">Conference only</span>
+      </div>
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th rowspan="2" scope="col">Delegate category</th>
+              <th colspan="2" scope="colgroup" class="sep">Indian &middot; INR</th>
+              <th colspan="2" scope="colgroup" class="sep">Foreign &middot; USD</th>
+            </tr>
+            <tr>
+              <th scope="col" class="sep">Early bird</th>
+              <th scope="col">Late</th>
+              <th scope="col" class="sep">Early bird</th>
+              <th scope="col">Late</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Faculty / Scientists / Researchers</th>
+              <td class="sep">&#8377;8,500</td><td class="late">&#8377;10,000</td>
+              <td class="sep">$450</td><td class="late">$600</td>
+            </tr>
+            <tr>
+              <th scope="row">Students <span class="hint">ID proof required</span></th>
+              <td class="sep">&#8377;6,000</td><td class="late">&#8377;7,000</td>
+              <td class="sep">$300</td><td class="late">$450</td>
+            </tr>
+            <tr>
+              <th scope="row">Industry</th>
+              <td class="sep">&#8377;12,000</td><td class="late">&#8377;15,000</td>
+              <td class="sep">$600</td><td class="late">$650</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="fee-block rv">
+      <div class="fee-cap">
+        <h3>Registration + SBRS membership</h3>
+        <span class="fee-tag">Package</span>
+      </div>
+      <div class="tbl-scroll">
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th rowspan="2" scope="col">Delegate category</th>
+              <th colspan="2" scope="colgroup" class="sep">Indian &middot; INR</th>
+              <th colspan="2" scope="colgroup" class="sep">Foreign &middot; USD</th>
+            </tr>
+            <tr>
+              <th scope="col" class="sep">Early bird</th>
+              <th scope="col">Late</th>
+              <th scope="col" class="sep">Early bird</th>
+              <th scope="col">Late</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Faculty / Scientists / Researchers</th>
+              <td class="sep">&#8377;15,000</td><td class="late">&#8377;16,500</td>
+              <td class="sep">$550</td><td class="late">$650</td>
+            </tr>
+            <tr>
+              <th scope="row">Students <span class="hint">ID proof required</span></th>
+              <td class="sep">&#8377;10,000</td><td class="late">&#8377;11,000</td>
+              <td class="sep">$550</td><td class="late">$600</td>
+            </tr>
+            <tr>
+              <th scope="row">Industry</th>
+              <td class="sep">&#8377;21,000</td><td class="late">&#8377;25,000</td>
+              <td class="sep">$750</td><td class="late">$850</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <ul class="fee-notes rv">
+      <li><b>Early bird</b><span>Early-bird rates apply until <strong>31 March 2027</strong>; the late rate applies from 1 April 2027 up to the registration deadline of 31 October 2027. See <a href="#dates">Key dates</a>.</span></li>
+      <li><b>Students</b><span>Student rates require valid photo ID proof of enrolment at registration.</span></li>
+      <li><b>Membership</b><span>The package rate bundles conference registration with SBRS membership &mdash; Sustainable Biomanufacturers and Research Society.</span></li>
+    </ul>
+
+    <p class="rv" style="margin-top:clamp(24px,3vw,36px)">
+      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register <span class="ar" aria-hidden="true">&rarr;</span></a>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== SPONSORSHIP ===================== -->
+<section class="sec on-dark" id="sponsors" aria-labelledby="h-spo" style="background:var(--chamber)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-meta">
+        <span class="eyebrow">09</span>
+        <span>Sponsorship</span>
+      </div>
+      <h2 class="h2" id="h-spo">Four tiers of support.</h2>
+    </div>
+
+    <div class="spo-grid rv">
+      <div class="spo spo--top">
+        <div class="spo-top"><span class="spo-tier">Diamond</span><span class="spo-n">T1</span></div>
+        <div class="spo-rates">
+          <div class="spo-rate"><span>Indian</span><b>&#8377;5,00,000</b></div>
+          <p class="spo-lakh">5 lakh</p>
+          <div class="spo-rate"><span>Foreign</span><b>$1,000</b></div>
+        </div>
+      </div>
+      <div class="spo">
+        <div class="spo-top"><span class="spo-tier">Platinum</span><span class="spo-n">T2</span></div>
+        <div class="spo-rates">
+          <div class="spo-rate"><span>Indian</span><b>&#8377;3,00,000</b></div>
+          <p class="spo-lakh">3 lakh</p>
+          <div class="spo-rate"><span>Foreign</span><b>$750</b></div>
+        </div>
+      </div>
+      <div class="spo">
+        <div class="spo-top"><span class="spo-tier">Gold</span><span class="spo-n">T3</span></div>
+        <div class="spo-rates">
+          <div class="spo-rate"><span>Indian</span><b>&#8377;2,00,000</b></div>
+          <p class="spo-lakh">2 lakh</p>
+          <div class="spo-rate"><span>Foreign</span><b>$500</b></div>
+        </div>
+      </div>
+      <div class="spo">
+        <div class="spo-top"><span class="spo-tier">Silver</span><span class="spo-n">T4</span></div>
+        <div class="spo-rates">
+          <div class="spo-rate"><span>Indian</span><b>&#8377;1,00,000</b></div>
+          <p class="spo-lakh">1 lakh</p>
+          <div class="spo-rate"><span>Foreign</span><b>$300</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spo-foot rv">
+      <p>Indian rates apply to organizations registered in India; the foreign rate applies to all others. Tier benefits are confirmed on enquiry.</p>
+      <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Sponsorship%20enquiry">Sponsorship enquiry <span class="ar" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== HOSTS ===================== -->
 <section class="sec" id="hosts" aria-labelledby="h-hosts" style="background:var(--plate-2)">
   <div class="wrap">
     <div class="sec-head rv">
       <div class="sec-meta">
-        <span class="eyebrow">07</span>
+        <span class="eyebrow">10</span>
         <span>Host &amp; co-organizer</span>
       </div>
       <h2 class="h2" id="h-hosts">Where it happens, and who is behind it.</h2>
@@ -1148,6 +1551,69 @@ ul,ol{padding:0;list-style:none}
            alt="Logo of SBRS, Sustainable Biomanufacturers and Research Society">
       <span>Organized by SBRS &mdash; Sustainable Biomanufacturers and Research Society</span>
     </p>
+  </div>
+</section>
+
+<!-- ===================== ORGANIZING COMMITTEE ===================== -->
+<section class="sec people people-committee" id="committee" aria-labelledby="h-com" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="sec-meta">
+        <span class="eyebrow">11</span>
+        <span>Organizing committee</span>
+      </div>
+      <h2 class="h2" id="h-com">Who is convening it.</h2>
+    </div>
+
+    <div class="spk-grid rv">
+      <article class="spk plate-frame">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-singh.webp" type="image/webp">
+            <img src="assets/spk-singh.jpg" alt="Portrait of Prof. Bhartendu K. Singh." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <p class="spk-role">Patron</p>
+        <h3 class="spk-name">Prof. Bhartendu K. Singh</h3>
+        <p class="spk-org">Director, PDPM&ndash;IIITDM Jabalpur</p>
+      </article>
+
+      <article class="spk plate-frame">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-kamakoti.webp" type="image/webp">
+            <img src="assets/spk-kamakoti.jpg" alt="Portrait of Prof. V Kamakoti." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <p class="spk-role">Patron</p>
+        <h3 class="spk-name">Prof. V Kamakoti</h3>
+        <p class="spk-org">Director, IIT Madras</p>
+      </article>
+
+      <article class="spk plate-frame">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-jayaganthan.webp" type="image/webp">
+            <img src="assets/spk-jayaganthan.jpg" alt="Portrait of Prof. R Jayaganthan." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <p class="spk-role">Chairperson</p>
+        <h3 class="spk-name">Prof. R Jayaganthan</h3>
+        <p class="spk-org">Institute Chair Professor, IIT Madras and CEO, SBRS</p>
+      </article>
+
+      <article class="spk plate-frame">
+        <span class="spk-fig">
+          <picture>
+            <source srcset="assets/spk-nanda.webp" type="image/webp">
+            <img src="assets/spk-nanda.jpg" alt="Portrait of Dr. Himansu Sekhar Nanda." loading="lazy" decoding="async" width="440" height="550">
+          </picture>
+        </span>
+        <p class="spk-role">Chairperson &amp; Convener</p>
+        <h3 class="spk-name">Dr. Himansu Sekhar Nanda</h3>
+        <p class="spk-org">Assistant Professor Gr-1, PDPM&ndash;IIITDM Jabalpur and President, SBRS</p>
+      </article>
+    </div>
   </div>
 </section>
 
@@ -1412,7 +1878,9 @@ function markNav(){
 
 /* ---------- scroll rail ---------- */
 var progEl=$("#prog"), zrFill=$("#zrFill"), zrHead=$("#zrHead"),
-    zrPct=$("#zrPct"), zrZ=$("#zrZ"), zrTicks=$("#zrTicks");
+    zrPct=$("#zrPct"), zrZ=$("#zrZ"), zrTicks=$("#zrTicks"), zrOf=$("#zrOf");
+var ZONES = Math.max(1, $$("#main > section").length);
+if(zrOf) zrOf.textContent = "of " + pad(ZONES,2);
 var RAIL_TOP=104, RAIL_BOT=150;
 function railH(){ return Math.max(60, window.innerHeight - RAIL_TOP - RAIL_BOT); }
 (function ticks(){
@@ -1431,7 +1899,7 @@ function onScroll(){
   if(zrFill) zrFill.style.height = (pageProg*h).toFixed(1)+"px";
   if(zrHead) zrHead.style.top    = (RAIL_TOP + pageProg*h).toFixed(1)+"px";
   if(zrPct)  zrPct.textContent   = pad(pageProg*100)+"%";
-  if(zrZ)    zrZ.textContent     = pad(Math.min(8,Math.floor(pageProg*8)+1),2);
+  if(zrZ)    zrZ.textContent     = pad(Math.min(ZONES,Math.floor(pageProg*ZONES)+1),2);
   sweepReveal();
   markNav();
 }
@@ -1991,6 +2459,40 @@ var COUNTRIES = "AF|93|Afghanistan;AL|355|Albania;DZ|213|Algeria;AD|376|Andorra;
     d.addEventListener("cancel", function(ev){ ev.preventDefault(); shut(); });
     d.addEventListener("click", function(ev){ if(ev.target === d) shut(); });
   });
+})();
+
+/* ---------- speakers: region filter ----------
+   The grid is complete in the markup, so no-JS and search engines see all seven.
+   Filtering only hides; it never builds. */
+(function(){
+  var grid = $("#spkGrid"); if(!grid) return;
+  var chips = $$(".spk-chip"), cards = $$(".spk", grid), out = $("#spkCount");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  function apply(cat, animate){
+    var shown = 0;
+    cards.forEach(function(c){
+      var show = (cat === "all" || c.getAttribute("data-region") === cat);
+      c.hidden = !show;
+      if(!show) return;
+      if(animate && !reduce){
+        c.classList.remove("spk-in");
+        c.style.animationDelay = (shown * 32) + "ms";
+        void c.offsetWidth;          /* restart the animation on re-entry */
+        c.classList.add("spk-in");
+      }
+      shown++;
+    });
+    if(out) out.textContent = pad(shown,2) + " of " + pad(cards.length,2) + " shown";
+    chips.forEach(function(b){
+      b.setAttribute("aria-pressed", b.getAttribute("data-filter") === cat ? "true" : "false");
+    });
+  }
+
+  chips.forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.getAttribute("data-filter"), true); });
+  });
+  apply("all", false);
 })();
 
 })();

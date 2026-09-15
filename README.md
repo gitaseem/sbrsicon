@@ -81,10 +81,55 @@ in a per-form tab of your Sheet.
 - **Abstract file upload** — the form takes abstract text, not a `.docx`/`.pdf`. Apps Script can
   accept files, but it needs base64 upload and a Drive folder; say the word if you want it.
 - **QR code destination** — the poster has a QR code; it is not on the site because its target is unknown.
-- **Speakers, programme, fees, sponsors, committee** — no sections, because no content was supplied.
+- **Programme** — no session grid or schedule has been supplied, so there is no programme section.
+- **Sponsor logos** — the tiers are listed, but no sponsor marks were supplied.
+- **Silver tier / “NBIL”** — the fee note attached *NBIL* to the Silver tier. It is not on the page,
+  because it is ambiguous whether that names the first Silver sponsor or is an internal note. Say which.
 
 The About photograph is captioned **ILLUSTRATIVE** because it is a generic additive-manufacturing
 still, not a result from this conference. Keep that label if the image stays.
+
+---
+
+## Sections
+
+Eleven numbered sections plus the hero. The zone rail bottom-right derives its total from
+`#main > section` at runtime, so adding or removing a section no longer needs a hand edit.
+
+| # | Section | Ground |
+|---|---|---|
+| 01 | About | plate |
+| 02 | Objectives | plate-2 |
+| 03 | Tracks | chamber |
+| 04 | Attend | chamber-2 |
+| 05 | Highlights | plate |
+| 06 | **Speakers** | plate-2 |
+| 07 | Dates | paper |
+| 08 | **Registration & fees** | plate |
+| 09 | **Sponsorship** | chamber |
+| 10 | Hosts | plate-2 |
+| 11 | **Organizing committee** | paper |
+
+The nav carries ten links. Two of them (`Objectives`, `Highlights`) carry `.nav-opt` and stand down
+below 1300 px, because ten labels plus the wordmark and both CTAs do not fit the 1040 px band.
+
+### Speakers filter
+
+Region chips filter the seven confirmed speakers: All / India / Japan / Singapore / Europe /
+North America. The grid is **complete in the markup** — the filter only sets `hidden`, it never
+builds cards, so no-JS, print and crawlers still get all seven. Re-entering cards replay a 32 ms
+staggered fade; `prefers-reduced-motion` drops the animation and just shows them. The live
+`07 of 07 shown` readout is a `role="status"`, so the count is announced rather than only seen.
+
+Region is the only grouping taken from the source — it is derivable from each affiliation. No
+research topics were assigned, because the supplied PDF gives none.
+
+### Fees
+
+Two plain HTML tables: registration, and registration + SBRS membership. Each is
+3 categories × (Indian early/late, foreign early/late), transcribed verbatim from the supplied rates.
+Wide numeric tables sit in an `overflow-x:auto` container, so they scroll inside their own box and
+the page itself never scrolls sideways.
 
 ---
 
@@ -103,8 +148,15 @@ generated and no third-party asset was fetched.
 | `iiitdmj-logo.png` | `PDPM IIITDM Jabalpur logo.png` | → 380 px, alpha preserved |
 | `iitm-logo.png` / `.webp` | `IIT_Madras_Logo.svg.webp` | → 176 px, alpha preserved |
 | `hl-bioprinting`, `hl-4d`, `hl-devices`, `hl-products` (`.webp` + `.jpg`) | `3D Bioprinting.png`, `4d biomanufacturing.png`, `advanced medical product.png`, `biomanufacture emdical products.png` | Burned-in captions cropped off, subject area-normalised into one shared 880×660 frame |
+| `spk-*.webp` / `.jpg` — 11 portraits | `speaker info.pdf` | Image XObjects extracted at native resolution, hand-tuned 4:5 crop per face, 440×550 |
 
 All three institutional logos are reproduced **unaltered** — marks are never recoloured into the palette.
+**Speaker portraits are likewise exempt from the duotone.** They are photographs of real people; recolouring
+them into the petrol/amber ramp would misrepresent the subjects. Consistency comes from the shared 4:5 frame
+and card, not from a colour treatment.
+
+Each portrait was mapped to its name by the position of the image box relative to the caption text box on the
+same PDF page, then checked by eye against a labelled contact sheet — not by file order, which is not reliable.
 
 **Not used**: `image for this Materials · Design & Engineering ….png` is a collage carrying its own
 headline (*"Innovating for a better tomorrow"*), its own blue/green palette and its own typography.
@@ -202,3 +254,12 @@ build swaps them for a link-out card, since the Artifact CSP blocks external hos
   arrow keys, marker hover and click-to-`#hosts` all confirmed on desktop and on a touch viewport,
   where the drag does not scroll the page.
 - No horizontal overflow at 375 / 768 / 1440 px. Zero console errors.
+- Speaker filter driven in a real browser: every chip returns the right count (India 1, Japan 2,
+  Singapore 1, Europe 1, North America 2, All 7), exactly one chip is `aria-pressed` at a time, and
+  the live readout tracks it.
+- Fee and sponsorship figures diffed digit by digit against the supplied rates.
+- Each of the 11 portraits confirmed against its name on a labelled contact sheet before shipping.
+- Zone rail reads `of 12` from the DOM, not from a hard-coded constant.
+
+**Known, pre-existing:** at a 360 px viewport the header CTA pair overflows by 4 px. It is present in
+the same form before these sections were added, and it is clean at 375 px.
