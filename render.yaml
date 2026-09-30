@@ -15,6 +15,13 @@ services:
       - path: /index.html
         name: Cache-Control
         value: public, max-age=0, must-revalidate
+      # File names stay stable, so browsers must check for CSS/JS updates too.
+      - path: /styles/*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
+      - path: /scripts/*
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
       - path: /*
         name: X-Content-Type-Options
         value: nosniff

@@ -1,0 +1,62 @@
+/** Speaker filters, portrait cards, and committee directory. */
+/* ==========================================================
+   PEOPLE — speakers & organizing committee
+   ========================================================== */
+.spk-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:clamp(24px,3vw,38px)}
+.spk-chip{
+  font-family:var(--f-label);font-size:.74rem;font-weight:650;letter-spacing:.04em;
+  padding:10px 14px;min-height:44px;border:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent);
+  background:transparent;color:var(--toolpath-dim);cursor:pointer;
+  transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease);
+}
+.spk-chip:hover{color:var(--graphite);border-color:var(--graphite)}
+.spk-chip[aria-pressed="true"]{background:var(--chamber);border-color:var(--chamber);color:var(--paper)}
+.spk-count{
+  font-family:var(--f-label);font-size:.74rem;letter-spacing:.02em;
+  color:var(--toolpath-dim);margin-left:auto;
+}
+
+.spk-grid{display:grid;gap:clamp(16px,1.9vw,24px);grid-template-columns:minmax(0,1fr)}
+@media (min-width:520px){.spk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:860px){.spk-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1140px){.spk-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.spk{
+  background:var(--paper);padding:clamp(13px,1.4vw,17px);
+  display:flex;flex-direction:column;gap:11px;
+  transition:background .3s var(--ease);
+}
+.spk[hidden]{display:none}
+.spk:hover{background:#fff}
+.spk-fig{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--plate-2)}
+.spk-fig picture{display:block;width:100%;height:100%}
+.spk-fig img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transform:scale(1);transition:transform .5s var(--ease);
+}
+.spk:hover .spk-fig img{transform:scale(1.04)}
+.spk-role{
+  font-family:var(--f-label);font-size:.78rem;font-weight:650;letter-spacing:.02em;
+  text-transform:uppercase;color:var(--phenol);
+}
+.spk-name{
+  font-family:var(--f-disp);font-weight:650;
+  font-size:clamp(1.2rem,1.5vw,1.4rem);line-height:1.17;letter-spacing:-.018em;
+}
+.spk-org{color:var(--toolpath-dim);font-size:.94rem;line-height:1.45}
+.people-committee .spk{background:var(--plate)}
+.people-committee .spk:hover{background:var(--paper)}
+.committee-directory{margin-top:clamp(48px,6vw,88px)}
+.committee-directory-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.committee-directory h3{font-family:var(--f-disp);font-size:clamp(1.4rem,2.5vw,2.1rem);font-weight:650;line-height:1.1;letter-spacing:-.02em}
+.committee-directory-head p{font-size:.9rem;color:var(--toolpath-dim)}
+.committee-list{display:grid;grid-template-columns:minmax(0,1fr);column-gap:clamp(26px,5vw,76px);border-top:1px solid var(--toolpath)}
+@media (min-width:720px){.committee-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.committee-list li{padding:18px 0 21px;border-bottom:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent)}
+.committee-list strong{display:block;font-size:1.02rem;font-weight:650;line-height:1.25}
+.committee-list span{display:block;margin-top:4px;color:var(--toolpath-dim);font-size:.88rem;line-height:1.45}
+@keyframes spkIn{from{opacity:0;transform:translateY(12px) scale(.975)}to{opacity:1;transform:none}}
+.spk-in{animation:spkIn .44s var(--ease-out) both}
+@media (prefers-reduced-motion:reduce){
+  .spk-in{animation:none}
+  .spk-fig img,.spk:hover .spk-fig img{transform:none}
+}

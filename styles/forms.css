@@ -1,0 +1,59 @@
+/** Registration and abstract dialogs, fields, and feedback. */
+/* ==========================================================
+   FORMS — registration and abstract submission
+   ========================================================== */
+.dlg{
+  width:min(760px,calc(100vw - 28px));max-width:none;padding:0;
+  border:1px solid var(--toolpath);background:var(--paper);color:var(--graphite);
+  max-height:calc(100dvh - 40px);overflow:visible;
+}
+.dlg::backdrop{background:color-mix(in srgb,var(--chamber) 80%,transparent)}
+.dlg-in{display:flex;flex-direction:column;max-height:calc(100dvh - 40px)}
+.dlg-head{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:clamp(18px,2.6vw,28px);
+  border-bottom:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent);background:var(--plate);
+}
+.dlg-head h2{
+  font-weight:720;
+  font-size:clamp(1.3rem,2.6vw,1.85rem);line-height:1.05;letter-spacing:-.02em;margin-top:10px;
+}
+.dlg-x{
+  flex:none;width:42px;height:42px;line-height:1;font-size:1.35rem;cursor:pointer;
+  background:transparent;color:var(--graphite);
+  border:1px solid color-mix(in srgb,var(--toolpath) 60%,transparent);
+}
+.dlg-x:hover{background:var(--graphite);color:var(--paper)}
+.dlg-body{padding:clamp(18px,2.6vw,28px);overflow-y:auto;display:grid;gap:16px;align-content:start}
+@media (min-width:640px){.dlg-body{grid-template-columns:1fr 1fr}.f.wide{grid-column:1/-1}}
+.dlg-foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  padding:clamp(16px,2.2vw,24px) clamp(18px,2.6vw,28px);
+  border-top:1px solid color-mix(in srgb,var(--toolpath) 55%,transparent);background:var(--plate);
+}
+.f{display:flex;flex-direction:column;gap:6px;margin:0;min-width:0}
+.f label{font-family:var(--f-label);font-size:.72rem;letter-spacing:.035em;text-transform:uppercase;color:var(--toolpath-dim)}
+.f label b{color:var(--phenol);font-weight:400}
+.f input,.f select,.f textarea{
+  font-family:inherit;font-size:.95rem;color:var(--graphite);background:var(--plate);
+  border:1px solid color-mix(in srgb,var(--toolpath) 65%,transparent);
+  padding:11px 12px;min-height:46px;width:100%;border-radius:0;
+}
+.f textarea{min-height:132px;resize:vertical;line-height:1.5}
+.f input:focus-visible,.f select:focus-visible,.f textarea:focus-visible{outline:2px solid var(--phenol);outline-offset:1px}
+.f .tel{display:grid;grid-template-columns:104px minmax(0,1fr);gap:8px}
+.f .tel .dial{
+  display:flex;align-items:center;justify-content:center;font-family:var(--f-label);font-size:.8rem;
+  background:var(--plate-2);min-height:46px;
+  border:1px solid color-mix(in srgb,var(--toolpath) 65%,transparent);
+}
+.err{font-family:var(--f-label);font-size:.72rem;letter-spacing:.035em;color:var(--phenol)}
+.f.bad input,.f.bad select,.f.bad textarea{border-color:var(--phenol);background:color-mix(in srgb,var(--phenol) 6%,var(--plate))}
+.hint{font-family:var(--f-label);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--toolpath-dim)}
+.dlg-status{font-family:var(--f-label);font-size:.72rem;letter-spacing:.05em;margin:0;flex:1 1 220px}
+.dlg-status.ok{color:#1B6B39}
+.dlg-status.bad{color:var(--phenol)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.dlg[open]{animation:dlgin .28s var(--ease-out)}
+@keyframes dlgin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.dlg[open]{animation:none}}

@@ -1,0 +1,27 @@
+/** Reveal effects and reduced-motion rules. */
+/* ==========================================================
+   REVEAL
+   ========================================================== */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .75s var(--ease-out),transform .75s var(--ease-out)}
+.rv.rin{opacity:1;transform:none}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+
+
+
+/* ==========================================================
+   REDUCED MOTION — everything lands on its final state
+   ========================================================== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .rv{opacity:1;transform:none}
+  .tl-bar i{transform:scaleX(1)}
+  .pillar{opacity:1}
+  .pillar:nth-child(1){transform:translateZ(0px)}
+  .pillar:nth-child(2){transform:translateZ(62px)}
+  .pillar:nth-child(3){transform:translateZ(124px)}
+  .pillar:nth-child(4){transform:translateZ(186px)}
+}

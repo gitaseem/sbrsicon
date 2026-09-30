@@ -4,13 +4,14 @@ First-announcement / save-the-date site for the **1st SBRS International Confere
 Materials, Design, and Biomanufacturing for Human Health**, 14–16 December 2027, PDPM IIITDM
 Jabalpur, Madhya Pradesh, India.
 
-One self-contained page. No build step, no dependencies, no framework.
+One static page with separate content, styles, and feature scripts. No build step, runtime dependencies,
+or framework is needed for the hosted site.
 
 ---
 
 ## Deploy
 
-Copy `index.html` and the `assets/` folder to any static host.
+Copy `index.html`, `styles/`, `scripts/`, and `assets/` to any static host.
 
 Hosted on **Render** from `github.com/gitaseem/sbrsicon` — `render.yaml` configures it as a static
 site with no build command. Every `git push` to `main` redeploys.
@@ -18,6 +19,10 @@ site with no build command. Every `git push` to `main` redeploys.
 `assets/source/` holds the untouched originals and is **not needed in production** (it is gitignored).
 
 Local preview: open `index.html`, or `npx serve .`
+
+Browser smoke test: `node tests/site-smoke.mjs` (requires Chrome, or set `CHROME_PATH` to a
+Chromium executable). The test opens the local file, checks key interactions at desktop and
+mobile widths, and needs no installed package.
 
 ---
 
@@ -31,11 +36,11 @@ Both CTAs open a modal form. **Nothing is wired up until you deploy the Apps Scr
    via Extensions → Apps Script, set `NOTIFY_TO` and `SHEET_ID`, then deploy as a **Web app** with
    *Execute as: Me* and *Who has access:* **Anyone**.
 2. Copy the `/exec` URL it gives you.
-3. In `index.html`, find near the top of the `<script>`:
+3. In `scripts/config.js`, set the form endpoint:
    ```js
-   var FORM_ENDPOINT = "";
+   window.SBRS.formEndpoint = "https://script.google.com/macros/s/.../exec";
    ```
-   Paste the URL between the quotes. Commit and push.
+   Commit and push the change.
 
 Until you do that, submitting opens a pre-filled email to `office@sbrsin.org` instead — so the forms
 are never a dead end.
@@ -64,7 +69,12 @@ in a per-form tab of your Sheet.
 
 | Path | What it is |
 |---|---|
-| `index.html` | The whole site — markup, CSS, inline SVG, canvas globe, forms |
+| `index.html` | Semantic page content, section links, dialog markup, and SVG fallback |
+| `styles/` | Seven ordered stylesheets: foundation, hero, content, forms, people, fees and sponsorship, motion |
+| `scripts/core.js` / `navigation.js` / `timeline.js` / `video.js` | Shared helpers and page behavior |
+| `scripts/globe-data.js` / `globe.js` | Packed geography and interactive globe rendering |
+| `scripts/config.js` / `countries.js` / `forms.js` | Form settings, country data, validation and submission |
+| `scripts/speakers.js` | Region filtering for the speaker grid |
 | `assets/` | Web-ready media and logos |
 | `assets/source/` | Originals, untouched (not deployed) |
 | `apps-script/Code.gs` | Google Apps Script form receiver — deploy this to make the forms live |
@@ -72,6 +82,11 @@ in a per-form tab of your Sheet.
 | `tools/build-globe-data.js` | Regenerates the globe dot payload from Natural Earth data |
 | `build-artifact.mjs` | Builds `artifact.html` for publishing to a claude.ai Artifact |
 | `.impeccable/review/` | Review screenshots |
+
+The ten classic scripts use `defer` and load in the order shown in `index.html`. `core.js` exposes only
+the small `window.SBRS` helper namespace used by feature scripts. This also keeps direct `file://`
+preview working. The artifact builder inlines the styles, scripts, and images into one optional
+standalone file; it is not needed for Render deployment.
 
 ---
 
@@ -111,15 +126,19 @@ Eleven numbered sections plus the hero. The zone rail bottom-right derives its t
 | 11 | **Organizing committee** | paper |
 
 The nav carries ten links. Two of them (`Objectives`, `Highlights`) carry `.nav-opt` and stand down
-below 1300 px, because ten labels plus the wordmark and both CTAs do not fit the 1040 px band.
+in the 1040–1299 px desktop band. Below 1040 px, a menu exposes all ten links with keyboard and
+touch access; the header action remains available.
 
 ### Speakers filter
 
-Region chips filter the seven confirmed speakers: All / India / Japan / Singapore / Europe /
-North America. The grid is **complete in the markup** — the filter only sets `hidden`, it never
-builds cards, so no-JS, print and crawlers still get all seven. Re-entering cards replay a 32 ms
+Region chips filter the twelve confirmed speakers: All / India / Japan / Singapore / Europe /
+North America / China / Australia. The grid is **complete in the markup** — the filter only sets
+`hidden`, so no-JS, print and crawlers still get all twelve. Re-entering cards replay a 32 ms
 staggered fade; `prefers-reduced-motion` drops the animation and just shows them. The live
-`07 of 07 shown` readout is a `role="status"`, so the count is announced rather than only seen.
+`12 of 12 shown` readout is a `role="status"`, so the count is announced rather than only seen.
+
+The committee section contains five portrait cards and a text directory for the ten additional
+members on the final slide of the supplied PowerPoint. No portrait was supplied for those ten.
 
 Region is the only grouping taken from the source — it is derivable from each affiliation. No
 research topics were assigned, because the supplied PDF gives none.
@@ -135,8 +154,9 @@ the page itself never scrolls sideways.
 
 ## Media provenance
 
-Everything shipping is a transcode of a client-supplied original in `assets/source/`. Nothing was
-generated and no third-party asset was fetched.
+Everything shipping is a transcode of a client-supplied original. Earlier source files are in
+`assets/source/`; the six new portraits came from `SBRS_SPEAKERS(1) (1).pptx` supplied separately.
+Nothing was generated and no third-party asset was fetched.
 
 | Shipping file | Source | Treatment |
 |---|---|---|
@@ -148,7 +168,8 @@ generated and no third-party asset was fetched.
 | `iiitdmj-logo.png` | `PDPM IIITDM Jabalpur logo.png` | → 380 px, alpha preserved |
 | `iitm-logo.png` / `.webp` | `IIT_Madras_Logo.svg.webp` | → 176 px, alpha preserved |
 | `hl-bioprinting`, `hl-4d`, `hl-devices`, `hl-products` (`.webp` + `.jpg`) | `3D Bioprinting.png`, `4d biomanufacturing.png`, `advanced medical product.png`, `biomanufacture emdical products.png` | Burned-in captions cropped off, subject area-normalised into one shared 880×660 frame |
-| `spk-*.webp` / `.jpg` — 11 portraits | `speaker info.pdf` | Image XObjects extracted at native resolution, hand-tuned 4:5 crop per face, 440×550 |
+| Original `spk-*.webp` / `.jpg` — 11 portraits | `speaker info.pdf` | Image XObjects extracted at native resolution, hand-tuned 4:5 crop per face, 440×550 |
+| New `spk-{roy,rad,li,liu,chanda,sharma}.webp` / `.jpg` — 6 portraits | `SBRS_SPEAKERS(1) (1).pptx` | Embedded images matched by slide relationship and picture position to each caption, cropped to 4:5, 440×550 |
 
 All three institutional logos are reproduced **unaltered** — marks are never recoloured into the palette.
 **Speaker portraits are likewise exempt from the duotone.** They are photographs of real people; recolouring
@@ -181,8 +202,9 @@ in `assets/source/`.
 | `--bioink` | `#E8A33D` | Accent, duotone highlight end |
 | `--toolpath` | `#869690` | Rules and instrument labels |
 
-**Type** — Archivo (variable `wdth` + `wght`) for display and body; Martian Mono for labels. Google
-Fonts, the only external host the Artifact CSP permits.
+**Type** — Fraunces for the title, section headings, and speaker names; Source Sans 3 for body text,
+navigation, controls, and labels. The variable WOFF2 files and their OFL licenses live in
+`assets/fonts/`. The artifact builder embeds those same fonts in its standalone HTML output.
 
 **Footage** is duotoned `--chamber` → `--bioink` via a grayscale + `lighten`/`multiply` sandwich, so
 no clip introduces a colour outside the system. Institutional logos are exempt.
@@ -226,8 +248,9 @@ Labels are chipped, separated, and flip to the other side of the pin near the fr
 Indian locations never collide.
 
 **No d3 and no runtime fetch.** Land dots (2,946, on an equal-area lattice) and simplified coastlines
-are precomputed from Natural Earth 110m land data and packed base36 into a 16 KB inline constant.
-Regenerate with the script in `tools/` if you ever want a different dot density.
+are precomputed from Natural Earth 110m land data and packed base36 in `scripts/globe-data.js`.
+To change dot density, run `tools/build-globe-data.js` with its source `land.json`, then replace
+the generated `GLOBE_DOTS` and `GLOBE_RINGS` values in that file.
 
 A hand-built inline SVG globe sits beneath as the base layer, so no-JS and `prefers-reduced-motion`
 still land on a complete static page. Reduced motion renders one static frame, already centred on
@@ -258,7 +281,7 @@ build swaps them for a link-out card, since the Artifact CSP blocks external hos
   Singapore 1, Europe 1, North America 2, All 7), exactly one chip is `aria-pressed` at a time, and
   the live readout tracks it.
 - Fee and sponsorship figures diffed digit by digit against the supplied rates.
-- Each of the 11 portraits confirmed against its name on a labelled contact sheet before shipping.
+- The original 11 portraits were confirmed against their names on a labelled contact sheet; the six new portraits were matched by slide position and visually inspected.
 - Zone rail reads `of 12` from the DOM, not from a hard-coded constant.
 
 **Known, pre-existing:** at a 360 px viewport the header CTA pair overflows by 4 px. It is present in
