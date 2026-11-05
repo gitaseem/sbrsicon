@@ -7,8 +7,8 @@ var GLOBE_RINGS="7g6i7eib715q7g6i 8bwb8gcb7rv0843x8bwb 6w6i6vmc6qm26hpp6oe36oyb6
 
 /* venue and organiser locations, city-level precision */
 var GLOBE_PINS = [
-  { lng: 80.02, lat: 23.19, label: "PDPM IIITDM Jabalpur", role: "Venue \u00b7 Host", key: 1, href: "#hosts" },
-  { lng: 80.23, lat: 12.99, label: "IIT Madras",           role: "Co-organizer",     key: 2, href: "#hosts" }
+  { lng: 80.02, lat: 23.19, label: "PDPM IIITDM Jabalpur", role: "Venue", key: 1, href: "#hosts" },
+  { lng: 80.23, lat: 12.99, label: "IIT Madras",           role: "In association", key: 2, href: "#hosts" }
 ];
 window.SBRS.globeData = { dots: GLOBE_DOTS, rings: GLOBE_RINGS, pins: GLOBE_PINS };
 })();

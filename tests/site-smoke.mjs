@@ -60,6 +60,7 @@ try {
   };
   await command('Runtime.enable');
   await command('Page.enable');
+  await command('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1000, deviceScaleFactor: 1, mobile: false });
   for (let attempt = 0; attempt < 80; attempt++) {
     if (await evaluate("document.readyState === 'complete' && !!document.querySelector('#spkGrid')")) break;
     await new Promise(done => setTimeout(done, 100));
@@ -74,7 +75,7 @@ try {
     globeReady: document.querySelector('.hero-stage').classList.contains('gl-on')
   }))()`);
   assert.equal(structure.styles, 7, 'seven named stylesheets load');
-  assert.equal(structure.scripts, 10, 'ten named behavior and data scripts load');
+  assert.equal(structure.scripts, 12, 'twelve named behavior and data scripts load');
   assert.equal(structure.speakers, 12);
   assert.equal(structure.members, 10);
   assert.equal(structure.peopleGrid, 'grid', 'feature CSS applies');
@@ -86,12 +87,15 @@ try {
     display: getComputedStyle(document.querySelector('.hero-mark')).fontFamily,
     loaded: [...document.fonts].filter(face => face.status === 'loaded').map(face => face.family)
   }))()`);
-  assert.match(typography.body, /Source Sans 3/, 'body uses a humanist reading face');
-  assert.match(typography.display, /Fraunces/, 'display headings use the editorial face');
-  assert.ok(typography.loaded.includes('Source Sans 3'), 'self-hosted body font loads');
-  assert.ok(typography.loaded.includes('Fraunces'), 'self-hosted display font loads');
-  assert.match(await evaluate("getComputedStyle(document.querySelector('.spk-name')).fontFamily"), /Fraunces/,
-    'speaker names use the editorial face');
+  assert.match(typography.body, /Archivo/, 'body uses Archivo');
+  assert.match(typography.display, /Newsreader/, 'display headings use Newsreader');
+  assert.ok(typography.loaded.includes('Archivo'), 'self-hosted font loads');
+  const images = await evaluate(`Promise.all([...document.images].map(image => {
+    image.loading = 'eager';
+    return image.decode().then(() => null, () => image.currentSrc || image.src);
+  })).then(results => results.filter(Boolean))`);
+  assert.deepEqual(images, [], 'every image loads');
+  assert.equal(await evaluate("document.querySelectorAll('#committee .spk-fig img').length"), 6, 'all six organizers have portraits');
   if (process.env.SBRS_CAPTURE) {
     const shot = await command('Page.captureScreenshot', { format: 'png' });
     await writeFile(`${process.env.SBRS_CAPTURE}-desktop.png`, Buffer.from(shot.data, 'base64'));
@@ -102,9 +106,9 @@ try {
     const bounds = canvas.getBoundingClientRect();
     const originalArc = CanvasRenderingContext2D.prototype.arc;
     let venue = null;
-    // The venue's 30px halo is drawn once per frame. Capture its projected position.
+    // The venue's 6px dot is drawn once per frame. Capture its projected position.
     CanvasRenderingContext2D.prototype.arc = function(x, y, radius, ...rest) {
-      if (Math.abs(radius - 30) < 0.01) venue = { x, y };
+      if (Math.abs(radius - 6) < 0.01) venue = { x, y };
       return originalArc.call(this, x, y, radius, ...rest);
     };
     const key = name => canvas.dispatchEvent(new KeyboardEvent('keydown', {

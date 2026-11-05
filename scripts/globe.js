@@ -23,10 +23,13 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
   var RINGS = GLOBE_RINGS.split(" ").map(unpack);
 
   var DEG = Math.PI/180;
-  var HOME_L = -80, HOME_P = 14;      // centred on India, where both pins are
-  var BEACON = "#FF4D8D";             // venue marker, phenol pushed bright for the dark body
+  // The whole sphere is visible, with India facing the reader.
+  var HOME_L = -82, HOME_P = 12;
+  var css = getComputedStyle(document.documentElement);
+  var INK = css.getPropertyValue("--ink").trim(), POP = css.getPropertyValue("--pop").trim();
+  var MUTED = css.getPropertyValue("--muted").trim();
   var rotL = HOME_L, rotP = HOME_P;
-  var dragging = false, autoRot = !RM, vis = true;
+  var dragging = false, autoRot = false, vis = true;
   var cx=0, cy=0, R=0, dpr=1;
   var hits = [], hover = -1, focusPin = -1, pulse = 0, idleT = null;
   var hint = $("#glHint"), fb = stage.querySelector(".glfallback");
@@ -52,111 +55,71 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
   }
 
   function draw(){
-    var w = cv.width/dpr, h = cv.height/dpr;
+    var w = cv.width/dpr, h = cv.height/dpr, i, j, q;
     ctx.clearRect(0,0,w,h);
 
-    // sphere body
     ctx.beginPath(); ctx.arc(cx,cy,R,0,6.2832);
-    var g = ctx.createRadialGradient(cx-R*0.35, cy-R*0.35, R*0.1, cx, cy, R);
-    g.addColorStop(0,"rgba(21,57,58,0.95)"); g.addColorStop(1,"rgba(8,28,29,0.95)");
-    ctx.fillStyle = g; ctx.fill();
-    ctx.strokeStyle = "rgba(134,150,144,0.85)"; ctx.lineWidth = 1; ctx.stroke();
+    ctx.strokeStyle = "rgba(22,19,15,0.28)"; ctx.lineWidth = 1; ctx.stroke();
 
-    // graticule
-    var i, j;
     for(i=-60;i<=60;i+=30){
       var lat=[]; for(j=-180;j<=180;j+=6) lat.push([j,i]);
-      strokeRing(lat,"rgba(134,150,144,0.22)",1);
+      strokeRing(lat,"rgba(22,19,15,0.07)",1);
     }
     for(i=0;i<180;i+=30){
       var lon=[]; for(j=-90;j<=90;j+=4) lon.push([i,j]);
-      strokeRing(lon,"rgba(134,150,144,0.22)",1);
+      strokeRing(lon,"rgba(22,19,15,0.07)",1);
       var lon2=[]; for(j=-90;j<=90;j+=4) lon2.push([i-180,j]);
-      strokeRing(lon2,"rgba(134,150,144,0.22)",1);
+      strokeRing(lon2,"rgba(22,19,15,0.07)",1);
     }
 
-    // coastlines
-    for(i=0;i<RINGS.length;i++) strokeRing(RINGS[i],"rgba(134,150,144,0.55)",1);
-
-    // halftone land
-    var r = Math.max(0.9, R*0.0075);
-    ctx.fillStyle = "rgba(221,227,220,0.82)";
+    var r = Math.max(.9, R*0.0052);
+    ctx.fillStyle = INK; ctx.globalAlpha = 0.7;
     for(i=0;i<DOTS.length;i++){
-      var q = project(DOTS[i][0], DOTS[i][1]);
+      q = project(DOTS[i][0], DOTS[i][1]);
       if(q[2] <= 0.02) continue;
       ctx.beginPath(); ctx.arc(q[0], q[1], r, 0, 6.2832); ctx.fill();
     }
 
-    // pins — both sit in India, so labels get chips, generous separation
-    // and an edge flip so they never collide or run out of the frame
+    ctx.globalAlpha = 1;
+
+    // The venue is the one place on the globe that carries the pop colour.
     hits.length = 0;
     for(i=0;i<GLOBE_PINS.length;i++){
-      var pin = GLOBE_PINS[i], q = project(pin.lng, pin.lat);
+      var pin = GLOBE_PINS[i];
+      q = project(pin.lng, pin.lat);
       if(q[2] <= 0.06) continue;
-      var venue = pin.key === 1;
-      var col   = venue ? BEACON : "#E8A33D";
-      var hot   = (hover === i || focusPin === i);
-      var fade  = Math.min(1, q[2]*3.2);
-      var hit   = { x:q[0], y:q[1], i:i, box:null };
+      var venue = pin.key === 1, hot = (hover === i || focusPin === i);
+      var hit = { x:q[0], y:q[1], i:i, box:null };
       hits.push(hit);
-      ctx.globalAlpha = fade;
+      ctx.globalAlpha = Math.min(1, q[2]*3.2);
 
-      // the venue reads first: a halo, a ring that breathes, and a lit centre
-      if(venue){
-        var halo = ctx.createRadialGradient(q[0],q[1],0,q[0],q[1],30);
-        halo.addColorStop(0,"rgba(255,77,141,0.42)");
-        halo.addColorStop(0.55,"rgba(255,77,141,0.13)");
-        halo.addColorStop(1,"rgba(255,77,141,0)");
-        ctx.fillStyle = halo;
-        ctx.beginPath(); ctx.arc(q[0],q[1],30,0,6.2832); ctx.fill();
-
-        if(!RM){
-          var t = (pulse % 2400) / 2400;
-          ctx.globalAlpha = fade * (1 - t) * 0.7;
-          ctx.beginPath(); ctx.arc(q[0], q[1], 9 + t*19, 0, 6.2832);
-          ctx.strokeStyle = col; ctx.lineWidth = 1.4; ctx.stroke();
-          ctx.globalAlpha = fade;
-        }
+      ctx.beginPath(); ctx.arc(q[0], q[1], venue ? 6 : 4, 0, 6.2832);
+      ctx.fillStyle = venue ? POP : INK; ctx.fill();
+      if(hot){
+        ctx.beginPath(); ctx.arc(q[0], q[1], 11, 0, 6.2832);
+        ctx.strokeStyle = INK; ctx.lineWidth = 1.5; ctx.stroke();
       }
 
-      ctx.shadowColor = col; ctx.shadowBlur = venue ? 14 : 6;
-      ctx.beginPath(); ctx.arc(q[0], q[1], hot ? 5 : (venue ? 4.4 : 3.4), 0, 6.2832);
-      ctx.fillStyle = venue ? "#FFF1F6" : col; ctx.fill();
-      ctx.shadowBlur = 0;
-
-      ctx.beginPath(); ctx.arc(q[0], q[1], hot ? 12 : 9, 0, 6.2832);
-      ctx.strokeStyle = col; ctx.lineWidth = venue ? 1.6 : 1.1; ctx.stroke();
-
-      var labelFont = '600 11px "Source Sans 3", system-ui, sans-serif';
-      var sans = '500 12px "Source Sans 3", system-ui, sans-serif';
-      ctx.font = labelFont; var w1 = ctx.measureText(pin.role.toUpperCase()).width;
-      ctx.font = sans; var w2 = ctx.measureText(pin.label).width;
-      var bw = Math.max(w1, w2) + 20, bh = 34;
-
-      var side = venue ? -1 : 1;
-      var ly = q[1] + side * 62;
-      ly = Math.max(bh/2 + 6, Math.min(h - bh/2 - 24, ly));
-      var flip = (q[0] + 30 + bw) > (w - 10);
-      var lx = flip ? (q[0] - 30 - bw) : (q[0] + 30);
-      lx = Math.max(6, Math.min(w - bw - 6, lx));
+      var fRole = '500 11px Archivo, system-ui, sans-serif', fName = '700 13px Archivo, system-ui, sans-serif';
+      ctx.font = fRole; var w1 = ctx.measureText(pin.role).width;
+      ctx.font = fName; var w2 = ctx.measureText(pin.label).width;
+      var bw = Math.max(w1, w2) + 16, bh = 38;
+      var ly = q[1] + (venue ? -30 : 30);
+      ly = Math.max(bh/2 + 6, Math.min(h - bh/2 - 6, ly));
+      var flip = (q[0] + 16 + bw) > (w - 10);
+      var lx = flip ? (q[0] - 16 - bw) : (q[0] + 16);
+      lx = Math.max(6, lx);
       hit.box = [lx, ly - bh/2, bw, bh];
 
+      ctx.fillStyle = "#F6F4EE";
       ctx.beginPath();
-      ctx.moveTo(q[0], q[1] + side*9);
-      ctx.lineTo(flip ? lx + bw + 8 : lx - 8, ly);
-      ctx.strokeStyle = col; ctx.lineWidth = 1; ctx.stroke();
-
-      ctx.fillStyle = hot ? "rgba(12,38,40,0.97)" : "rgba(8,28,29,0.9)";
-      ctx.fillRect(lx, ly - bh/2, bw, bh);
-      ctx.strokeStyle = col; ctx.lineWidth = hot ? 1.8 : (venue ? 1.4 : 1);
-      ctx.strokeRect(lx + 0.5, ly - bh/2 + 0.5, bw - 1, bh - 1);
-
+      ctx.rect(lx, ly - bh/2, bw, bh);
+      ctx.fill();
       ctx.textAlign = "left";
-      ctx.font = labelFont; ctx.fillStyle = col;
-      ctx.fillText(pin.role.toUpperCase(), lx + 10, ly - 3);
-      ctx.font = sans; ctx.fillStyle = "rgba(237,240,235,0.97)";
-      ctx.fillText(pin.label, lx + 10, ly + 11);
-
+      ctx.font = fRole; ctx.fillStyle = MUTED;
+      ctx.fillText(pin.role, lx + 8, ly - 4);
+      ctx.font = fName; ctx.fillStyle = INK;
+      ctx.fillText(pin.label, lx + 8, ly + 12);
       ctx.globalAlpha = 1;
     }
   }
@@ -166,7 +129,7 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
     var w = stage.clientWidth, h = stage.clientHeight;
     cv.width = Math.max(1,Math.round(w*dpr)); cv.height = Math.max(1,Math.round(h*dpr));
     ctx.setTransform(dpr,0,0,dpr,0,0);
-    cx = w/2; cy = h/2; R = Math.min(w,h)/2 - Math.min(w,h)*0.13;
+    cx = w/2; cy = h/2; R = Math.min(w,h)/2 - 1;
     draw();
   }
 
@@ -196,7 +159,6 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
     if(idleT) clearTimeout(idleT);
     if(RM) return;
     idleT = setTimeout(function(){
-      if(!dragging && hover < 0 && focusPin < 0) autoRot = true;
     }, 2600);
   }
 
@@ -303,6 +265,32 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
   if(fb) fb.setAttribute("aria-hidden","true");   // the canvas carries the label now
   window.addEventListener("resize", resize, {passive:true});
   resize();
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+
+  // Buttons fly the globe to a marker and keep it ringed; the place sits above centre because the hero crops the lower part.
+  var flyId = null;
+  window.SBRS.globeTo = function(index){
+    var pin = GLOBE_PINS[index];
+    if(!pin) return;
+    if(flyId) cancelAnimationFrame(flyId);
+    var endL = -pin.lng, endP = pin.lat - 12;
+    var startL = rotL, startP = rotP, start = null;
+    var spin = ((endL - startL) % 360 + 540) % 360 - 180;
+    velL = 0; velP = 0; hover = index;
+    if(RM){ rotL = startL + spin; rotP = endP; draw(); return; }
+    (function step(now){
+      if(dragging) return;
+      if(start === null) start = now;
+      var t = Math.min(1, (now - start) / 620), e = 1 - Math.pow(1 - t, 3);
+      rotL = startL + spin * e;
+      rotP = startP + (endP - startP) * e;
+      draw();
+      if(t < 1) flyId = requestAnimationFrame(step);
+    })(performance.now());
+  };
+
+  // Scrolling the page turns the globe; motion.js supplies the distance.
+  window.SBRS.spinGlobe = function(degrees){ rotL += degrees; if(vis) draw(); };
 
   if(!RM){
     var prev = 0;
@@ -318,7 +306,7 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
           velL *= 0.94; velP *= 0.94;
           live = true;
         }
-        if(autoRot && !dragging){ rotL += dt * 0.0042; live = true; }
+        if(autoRot && !dragging){ rotL += dt * 0.0012; live = true; }
         if(live || hover >= 0 || focusPin >= 0) draw();
       }
       window.requestAnimationFrame(loop);
