@@ -71,7 +71,7 @@ in a per-form tab of your Sheet.
 |---|---|
 | `index.html` | Semantic page content, section links, dialog markup, and SVG fallback |
 | `styles/` | Seven ordered stylesheets: foundation, hero, content, forms, people, fees and sponsorship, motion |
-| `scripts/core.js` / `navigation.js` / `timeline.js` / `video.js` | Shared helpers and page behavior |
+| `scripts/core.js` / `navigation.js` / `timeline.js` | Shared helpers and page behavior |
 | `scripts/globe-data.js` / `globe.js` | Packed geography and interactive globe rendering |
 | `scripts/config.js` / `countries.js` / `forms.js` | Form settings, country data, validation and submission |
 | `scripts/speakers.js` | Region filtering for the speaker grid |
@@ -155,21 +155,17 @@ the page itself never scrolls sideways.
 ## Media provenance
 
 Everything shipping is a transcode of a client-supplied original. Earlier source files are in
-`assets/source/`; the six new portraits came from `SBRS_SPEAKERS(1) (1).pptx` supplied separately.
+`assets/source/`; five of the portraits came from `SBRS_SPEAKERS(1) (1).pptx` supplied separately.
 Nothing was generated and no third-party asset was fetched.
 
 | Shipping file | Source | Treatment |
 |---|---|---|
-| `hero.mp4` + `hero-poster.jpg` | `8940765-uhd_…mp4` | 4K → 1920×1080 H.264 CRF 28, audio stripped (26 MB → 2.0 MB) |
-| `bench.mp4`, `people.mp4` (+ posters) | `7705427-…`, `8327269-…` | → 1280×720 CRF 30 |
-| `heart.jpg` / `.webp` | `printing-blue-human-heart.jpg` | → 1600 px wide |
-| `campus-jabalpur.jpg` / `.webp` | `Campus photograph of PDPM IIITDM Jabalpur.jpg` | → 1400 px, displayed as a 21:9 band |
+| `campus-jabalpur.jpg` | `Campus photograph of PDPM IIITDM Jabalpur.jpg` | → 1400 px, displayed as a 21:9 band |
 | `sbrs-logo.png` | `…sbrs logo.png` | → 440 px, alpha preserved |
 | `iiitdmj-logo.png` | `PDPM IIITDM Jabalpur logo.png` | → 380 px, alpha preserved |
-| `iitm-logo.png` / `.webp` | `IIT_Madras_Logo.svg.webp` | → 176 px, alpha preserved |
-| `hl-bioprinting`, `hl-4d`, `hl-devices`, `hl-products` (`.webp` + `.jpg`) | `3D Bioprinting.png`, `4d biomanufacturing.png`, `advanced medical product.png`, `biomanufacture emdical products.png` | Burned-in captions cropped off, subject area-normalised into one shared 880×660 frame |
+| `iitm-logo.png` | `IIT_Madras_Logo.svg.webp` | → 176 px, alpha preserved |
 | Original `spk-*.webp` / `.jpg` — 11 portraits | `speaker info.pdf` | Image XObjects extracted at native resolution, hand-tuned 4:5 crop per face, 440×550 |
-| New `spk-{roy,rad,li,liu,chanda,sharma}.webp` / `.jpg` — 6 portraits | `SBRS_SPEAKERS(1) (1).pptx` | Embedded images matched by slide relationship and picture position to each caption, cropped to 4:5, 440×550 |
+| `spk-{roy,rad,li,liu,sharma}.webp` / `.jpg` — 5 portraits | `SBRS_SPEAKERS(1) (1).pptx` | Embedded images matched by slide relationship and picture position to each caption, cropped to 4:5, 440×550 |
 
 All three institutional logos are reproduced **unaltered** — marks are never recoloured into the palette.
 **Speaker portraits are likewise exempt from the duotone.** They are photographs of real people; recolouring
@@ -202,7 +198,7 @@ in `assets/source/`.
 | `--bioink` | `#E8A33D` | Accent, duotone highlight end |
 | `--toolpath` | `#869690` | Rules and instrument labels |
 
-**Type** — Fraunces for the title, section headings, and speaker names; Source Sans 3 for body text,
+**Type** — Archivo throughout: weight 600 with tight tracking for headlines, regular weight for body text,
 navigation, controls, and labels. The variable WOFF2 files and their OFL licenses live in
 `assets/fonts/`. The artifact builder embeds those same fonts in its standalone HTML output.
 

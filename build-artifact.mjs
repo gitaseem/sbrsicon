@@ -6,9 +6,7 @@
  * the media and fonts as data URIs and strips the document skeleton, which the
  * viewer supplies itself.
  *
- * The hero video is inlined in full. The two below-the-fold clips ship as their poster stills
- * only, to keep the single file at a sane weight — they are duotoned backgrounds, so a still
- * reads almost identically. The hosted site uses index.html plus styles/, scripts/, and assets/.
+ * The hosted site uses index.html plus styles/, scripts/, and assets/.
  *
  *   node build-artifact.mjs
  */
@@ -40,23 +38,14 @@ h = h.replace(/<script defer src="(scripts\/[a-z-]+\.js)"><\/script>/g,
 const portraits = readdirSync('assets')
   .filter(name => /^spk-.+\.(webp|jpg)$/.test(name))
   .map(name => `assets/${name}`);
-for (const f of ['assets/hero.mp4', 'assets/hero-poster.jpg', 'assets/bench-poster.jpg',
-                 'assets/people-poster.jpg', 'assets/heart.jpg',
-                 'assets/iitm-logo.webp', 'assets/iitm-logo.png',
+for (const f of ['assets/iitm-logo.png',
                  'assets/iiitdmj-logo.png', 'assets/sbrs-logo.png',
-                 'assets/campus-jabalpur.webp', 'assets/campus-jabalpur.jpg',
-                 'assets/hl-bioprinting.webp', 'assets/hl-bioprinting.jpg',
-                 'assets/hl-4d.webp', 'assets/hl-4d.jpg',
-                 'assets/hl-devices.webp', 'assets/hl-devices.jpg',
-                 'assets/hl-products.webp', 'assets/hl-products.jpg',
+                 'assets/campus-jabalpur.jpg',
                  ...portraits]) {
   const before = h.length;
   h = h.split(f).join(dataURI(f));
   if (h.length === before) console.warn('  ! not referenced:', f);
 }
-
-// 3. Drop the two deferred clips; their posters stay and carry the frame.
-h = h.replace(/\s*<source src="assets\/(bench|people)\.mp4" type="video\/mp4">/g, '');
 
 // 4. The Artifact CSP blocks external hosts, so the Google Maps iframes cannot load there.
 //    Swap each for a link-out card; index.html keeps the live embeds.

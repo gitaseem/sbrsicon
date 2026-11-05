@@ -1,33 +1,24 @@
-# Design System: SBRS ICON 2027
+# SBRS ICON 2027 - editorial
 
-## Visual theme
+Reads like a well-set scientific journal, not a product landing page. The speakers' faces and the type carry it.
 
-A conference page shaped by material science: pale anodised plates, deep petrol chambers, precise rules, and natural, unretouched portraits. The page has the clarity of an editorial programme, with a little instrument-like structure. Its content is allowed to feel human.
+**Colour.** Two lights, white `#FFFFFF` and paper `#F6F4EE`. One pop, vermilion `#C8320F`, capped at a couple of uses per screen plus the footer. Ink `#16130F` and muted `#57524A` for text. To change the accent, edit `--pop` and `--on-pop` in `styles/foundation.css`.
 
-## Color and roles
+**Type.** Newsreader for headings, large statements and names. Archivo for reading text, labels, tables and controls. Both self-hosted.
 
-- Plate `#DDE3DC` and secondary plate `#CFD7CE`: light page surfaces.
-- Paper `#EDF0EB`: raised reading surface and card fill.
-- Chamber `#0E2A2B`: hero, technical sections, and footer.
-- Graphite `#161C1B`: primary reading text.
-- Toolpath `#4F5C57`: secondary text and structural notation.
-- Phenol `#D6215F`: the action and focus color. Amber `#E8A33D` belongs to the existing media treatment and dark-surface highlights.
+**Signature.** Portraits are monochrome so mixed source photos read as one set, and colour returns on hover. Highlight images are set as numbered figures.
 
-## Typography
+**Surfaces.** Flat, hairline rules, 2px corners at most. Glass only on the sticky navigation, where content really passes behind it. No cards, blobs, gradients or decorative shapes.
 
-- Fraunces gives the conference title, section headings, and speaker names a warm editorial voice. Source Sans 3 carries reading text, controls, and small labels.
-- Both variable faces are self-hosted WOFF2 files, so the live site and local preview use the same type without a font service.
-- Headlines stay deliberate and distinct from the relaxed body copy. Labels use restrained tracking and a readable size; monospaced lettering is reserved for actual measurements or code.
+**Page order.** Hero, speakers, about, tracks, highlights, dates, fees, sponsorship, venue, committee. Real people come first.
 
-## Components and layout
+**Motion.** One easing, 150ms for controls, 380ms and 12px of travel for reveals. Reveals are limited to headings and a few key blocks; portraits, reading text and fee tables are never hidden. The globe turns only when dragged or scrolled, with no idle loops. The deadline line draws in as the dates scroll into view. With reduced motion on, only the progress line remains.
 
-- Portrait cards share a 4:5 image frame and preserve the supplied photograph's natural color.
-- Text-only members use an open directory separated by hairline rules, rather than empty photo frames.
-- The content width remains bounded at 1520px. Speaker cards and the directory collapse to one column on narrow screens.
-- Desktop section links collapse to a compact, fully labeled menu on smaller screens.
-- Buttons have clear focus and hover states and at least a 44px touch target where used on touch screens.
+**Interaction.** Effects answer the visitor and most do a job. Headline letters thicken near the cursor (variable weight with locked widths, so nothing shifts). Buttons jump the globe to each location. A colour lens follows the cursor over portraits; on touch, the card at screen centre turns colour. Each track row opens the abstract form with that track chosen. The fee finder reads its prices from the published tables and marks the matching cell; it stays pinned beside the tables on wide screens, and on narrow screens only the chosen table shows, directly under the options, so the mark stays in view. The About section is a pinned scroll sequence: the paragraph lights up word by word and a red marker sweeps across its key phrase, then each objective takes the screen in turn with a step counter. It runs only when each step fits the screen, and otherwise falls back to plain text, as it does with reduced motion or without scripts. Other reading text inks in on scroll. All of it lives in `scripts/interactions.js`, `scripts/motion.js` and `styles/motion.css`, has touch and keyboard equivalents where it matters, and stays off or instant with reduced motion.
 
-## Motion and restraint
 
-- Keep the existing restrained entrance and speaker filter transition, with the reduced-motion path intact.
-- Avoid neon glows, generic placeholder portraits, excessive gradient text, emoji, and decorative monospace.
+## Conference highlights
+
+The four highlights are diagrams drawn in code (`scripts/highlights.js`), not images. Each is scrubbed by moving the mouse across it, dragging sideways on touch, or using its slider. Each plays once on entering the view and then draws only when something changes. With reduced motion they show the finished state, with no autoplay and no smoothing.
+
+On load an unseen cursor drifts once across the hero headline on every device, using the same effect as hovering; devices with a cursor can then hover it. Reduced motion turns both off.

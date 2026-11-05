@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SBRS ICON 2027 — Sustainable Materials, Design &amp; Biomanufacturing for Human Health</title>
-<meta name="description" content="1st SBRS International Conference on Sustainable Materials, Design, and Biomanufacturing for Human Health. 14–16 December 2027, PDPM IIITDM Jabalpur, Madhya Pradesh, India.">
-<meta name="theme-color" content="#0E2A2B">
+<title>SBRS ICON 2027 — Sustainable Materials, Design and Biomanufacturing for Human Health</title>
+<meta name="description" content="1st SBRS International Conference on Sustainable Materials, Design and Biomanufacturing for Human Health. 14–16 December 2027, PDPM IIITDM Jabalpur, Madhya Pradesh, India.">
+<meta name="theme-color" content="#F6F4EE">
 <meta property="og:title" content="SBRS ICON 2027">
 <meta property="og:description" content="Engineering Sustainable Innovations for Next-Generation Healthcare and Planetary Health. 14–16 December 2027, PDPM IIITDM Jabalpur.">
 <meta property="og:type" content="website">
@@ -19,497 +19,210 @@
 <link rel="stylesheet" href="styles/motion.css">
 </head>
 <body>
-<!--
-  DIRECTION CONTRACT — SBRS ICON 2027
-  THESIS: A bioprint is built in layers, from the plate up. So is this page; scroll is Z-height.
-    Refuses the academic-conference default (blue gradient, card grid, stock lab photo) and the
-    "bioprinting = dark mode + cyan + helix" avoidance answer.
-  OWN-WORLD: Anodised build-plate ground (#DDE3DC), petrol chambers (#0E2A2B), phenol-red as the
-    only action colour (#D6215F), bioink amber at deposition (#E8A33D). Fraunces lends the
-    conference title an editorial voice; Source Sans 3 keeps reading and controls clear.
-  STORY: A serious interdisciplinary conference with real institutional backing, deadlines close
-    enough to act on — visitor emails an abstract.
-  FIRST VIEWPORT: Duotoned robot-head footage as ground; WebGL organ depositing layer by layer at
-    right; title-block strip beneath it; both CTAs above the fold; Z-axis rail pinned left.
-  FORM: Slicer / build-plate UI fused with engineering-drawing title-block typography.
-  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review,
-    the verdict, and every shipping asset carrying its provenance.
--->
 <a class="skip" href="#main">Skip to content</a>
-
-<div class="zrail" aria-hidden="true">
-  <div class="zr-cap top"><span>Read</span><b id="zrPct">000%</b></div>
-  <div class="zr-line"></div>
-  <div class="zr-fill" id="zrFill"></div>
-  <div id="zrTicks"></div>
-  <div class="zr-head" id="zrHead"></div>
-  <div class="zr-cap bot"><b id="zrZ">01</b><span id="zrOf">of 08</span></div>
-</div>
+<div class="scroll-bar" aria-hidden="true"></div>
 
 <header class="site-head">
   <div class="wrap head-in">
-    <a class="mark" href="#top">
-      <b>SBRS ICON 2027</b>
-      <span>14–16 Dec 2027 · Jabalpur</span>
+    <a class="mark" href="#top" aria-label="SBRS ICON 2027, back to top">
+      <img src="assets/sbrs-logo.png" alt="" width="96" height="40">
+      <b>ICON 2027</b>
     </a>
     <button type="button" class="nav-toggle" id="navToggle" aria-controls="nav" aria-expanded="false" aria-label="Open menu">
-      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16"/></svg>
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 6h16M2 14h16"/></svg>
     </button>
     <nav class="nav" id="nav" aria-label="Sections">
-      <a href="#about">About</a>
-      <a class="nav-opt" href="#objectives">Objectives</a>
-      <a href="#tracks">Tracks</a>
-      <a class="nav-opt" href="#highlights">Highlights</a>
       <a href="#speakers">Speakers</a>
+      <a href="#about">About</a>
+      <a href="#tracks">Tracks</a>
       <a href="#dates">Dates</a>
       <a href="#fees">Fees</a>
       <a href="#sponsors">Sponsors</a>
-      <a href="#hosts">Hosts</a>
+      <a href="#hosts">Venue</a>
       <a href="#committee">Committee</a>
     </nav>
     <div class="head-cta">
       <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register</a>
-      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract" aria-label="Submit abstract"><span class="cta-long">Submit </span>Abstract <span class="ar" aria-hidden="true">→</span></a>
+      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract" aria-label="Submit abstract"><span class="cta-long">Submit&nbsp;</span>Abstract</a>
     </div>
-    <div class="prog" id="prog"></div>
   </div>
 </header>
 
 <main id="main">
 <span id="top"></span>
 
-<!-- ===================== HERO ===================== -->
-<section class="hero on-dark" aria-labelledby="h1">
-  <div class="duo hero-media" aria-hidden="true">
-    <video id="heroVid" poster="assets/hero-poster.jpg" muted loop playsinline preload="metadata" aria-hidden="true">
-      <source src="assets/hero.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="hero-grid-lines" aria-hidden="true"></div>
-
-  <div class="hero-in">
-    <div>
-      <h1 class="hero-h1" id="h1">
-        <span class="hero-mark">SBRS ICON <span class="yr">2027</span></span>
-        <span class="hero-full">1st SBRS International Conference on Sustainable Materials, Design, and Biomanufacturing for Human Health</span>
-      </h1>
+<section class="hero" aria-labelledby="h1">
+  <div class="wrap hero-in">
+    <p class="hero-kicker">1st SBRS International Conference on</p>
+    <h1 class="hero-mark" id="h1">Sustainable Materials, <br>Design and Biomanufacturing <br><em>for Human Health</em></h1>
+    <div class="hero-low">
+      <p class="hero-when">14&ndash;16 December 2027<span>PDPM IIITDM Jabalpur, Madhya Pradesh, India</span></p>
       <p class="hero-theme">Engineering Sustainable Innovations for Next-Generation Healthcare and Planetary Health</p>
       <div class="hero-cta">
-        <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
-        <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register <span class="ar" aria-hidden="true">→</span></a>
+        <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract">Submit Abstract <span class="ar" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register</a>
       </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="hero-stage" id="heroStage">
-        <span class="stage-tag tl">Planetary health · global participation</span>
-        <span class="gl-hint" id="glHint">Drag to rotate</span>
-        <canvas id="heroCanvas" tabindex="0" role="img"
-                aria-label="Interactive globe centred on India, marking PDPM IIITDM Jabalpur and IIT Madras. Drag or use the arrow keys to rotate; press Enter on a marker to jump to the host institutions."></canvas>
-        <svg class="glfallback" viewBox="0 0 360 360" role="img" aria-label="Wireframe globe crossed by a network of connecting arcs">
-          <g fill="none" stroke="#869690" stroke-width="1" opacity=".75">
-            <circle cx="180" cy="180" r="118"/>
-            <ellipse cx="180" cy="180" rx="118" ry="40"/><ellipse cx="180" cy="180" rx="118" ry="78"/>
-            <ellipse cx="180" cy="180" rx="40" ry="118"/><ellipse cx="180" cy="180" rx="78" ry="118"/>
-            <path d="M62 180h236M180 62v236"/>
-          </g>
-          <g fill="none" stroke="#D6215F" stroke-width="1.6" opacity=".95">
-            <path d="M92 122c46 34 130 34 176 0"/><path d="M84 216c52 40 140 26 192-24"/>
-          </g>
-          <g fill="#E8A33D"><circle cx="128" cy="140" r="3.2"/><circle cx="232" cy="152" r="3.2"/><circle cx="164" cy="230" r="3.2"/></g>
-        </svg>
-      </div>
-
-      <dl class="tblock">
-        <div><dt>Dates</dt><dd>14–16 Dec 2027</dd></div>
-        <div><dt>Venue</dt><dd>PDPM IIITDM Jabalpur<small>Madhya Pradesh, India</small></dd></div>
-        <div><dt>Tracks</dt><dd>08</dd></div>
-        <div><dt>Abstracts</dt><dd>Open 01 Oct 2026<small>Close 31 Jan 2027</small></dd></div>
-      </dl>
-
-      <p class="hero-orgs">
-        <span>Organized by <b>SBRS</b></span>
-        <span>Hosted by <b>PDPM IIITDM Jabalpur</b></span>
-        <span>In association with <b>IIT Madras</b></span>
-      </p>
+      <p class="hero-go" hidden><span>Show on the globe</span> <button type="button" aria-pressed="true">Jabalpur</button> <button type="button" aria-pressed="false">IIT Madras</button></p>
     </div>
   </div>
+  <div class="hero-stage" id="heroStage">
+    <canvas id="heroCanvas" tabindex="0" role="img"
+            aria-label="Interactive globe centred on India, marking PDPM IIITDM Jabalpur and IIT Madras. Drag or use the arrow keys to rotate; press Enter on a marker to jump to the venue section."></canvas>
+    <svg class="glfallback" viewBox="0 0 360 360" aria-hidden="true"><circle cx="180" cy="180" r="176" fill="#fff"/></svg>
+  </div>
+  <span class="gl-hint" id="glHint">Drag to rotate</span>
 </section>
 
-<!-- ===================== ABOUT ===================== -->
-<section class="sec" id="about" aria-labelledby="h-about">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">01</span>
-        <span>About the conference</span>
-      </div>
-      <h2 class="h2" id="h-about">Materials, design, engineering and medicine, in one room.</h2>
-    </div>
-    <hr class="rule rv">
-
-    <div class="about-grid" style="margin-top:clamp(30px,4vw,54px)">
-      <div class="about-body rv">
-        <p class="lede">SBRS ICON 2027 will bring together researchers, clinicians, scientists, engineers, industry leaders, entrepreneurs, and policymakers from around the world to advance sustainable solutions for the future of healthcare. The conference will connect materials innovation, engineering design, and biomanufacturing with next-generation medical technologies to address global healthcare challenges while promoting environmental sustainability and planetary well-being.</p>
-        <div class="stat-row">
-          <div><b>08</b><span>Conference<br>tracks</span></div>
-          <div><b>03</b><span>Days in<br>Jabalpur</span></div>
-          <div><b>04</b><span>Founding<br>pillars</span></div>
-          <div><b>12</b><span>Communities<br>convened</span></div>
-        </div>
-      </div>
-
-      <figure class="about-fig rv rv-d1">
-        <div class="plate-frame">
-          <div class="duo"><img src="assets/heart.jpg" alt="An anatomical heart model produced by additive fabrication." loading="lazy" decoding="async" width="1600" height="1333"></div>
-          <figcaption class="figcap">
-            <span>Fig. 01 · Additive fabrication of a cardiac construct</span>
-            <span class="tagi">Illustrative</span>
-          </figcaption>
-        </div>
-      </figure>
-    </div>
+<aside class="next" aria-label="Next conference date">
+  <div class="wrap next-in">
+    <p><span id="nextGap">Next</span> <b id="nextName">Abstract submission starts</b> <span id="nextDate">1 January 2027</span></p>
+    <a href="#dates">All dates <span aria-hidden="true">&darr;</span></a>
   </div>
-</section>
+</aside>
 
-<!-- ===================== OBJECTIVES ===================== -->
-<section class="sec" id="objectives" aria-labelledby="h-obj" style="background:var(--plate-2)">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">02</span>
-        <span>Conference objectives</span>
-      </div>
-      <h2 class="h2" id="h-obj">What this conference sets out to do.</h2>
-    </div>
-
-    <div>
-      <ol class="obj-list rv">
-        <li><span class="oid">OBJ-01</span><p>Catalyse sustainable innovations for next-generation healthcare</p></li>
-        <li><span class="oid">OBJ-02</span><p>Foster a global ecosystem for collaborative research and sustainable biomanufacturing</p></li>
-        <li><span class="oid">OBJ-03</span><p>Bridge materials, design, engineering, and medicine through interdisciplinary partnerships</p></li>
-        <li><span class="oid">OBJ-04</span><p>Accelerate the translation of research into impactful healthcare solutions</p></li>
-        <li><span class="oid">OBJ-05</span><p>Advance technologies that benefit both people and the planet</p></li>
-      </ol>
-    </div>
+<div class="orgs">
+  <div class="wrap orgs-in">
+    <div><span>Organized by</span><img src="assets/sbrs-logo.png" alt="SBRS, Sustainable Biomanufacturers and Research Society" width="132" height="55"></div>
+    <div><span>Hosted by</span><img src="assets/iiitdmj-logo.png" alt="PDPM IIITDM Jabalpur" width="185" height="55"></div>
+    <div><span>In association with</span><img src="assets/iitm-logo.png" alt="IIT Madras" width="56" height="56"></div>
   </div>
-</section>
+</div>
 
-<!-- ===================== TRACKS ===================== -->
-<section class="sec tracks on-dark" id="tracks" aria-labelledby="h-tracks">
+<section class="sec people" id="speakers" aria-labelledby="h-spk">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">03</span>
-        <span>08 tracks</span>
-      </div>
-      <h2 class="h2" id="h-tracks">Eight tracks across the field.</h2>
-    </div>
-
-    <ol class="tk-list">
-      <li class="tk rv"><span class="tk-id">TRK-01</span><h3 class="tk-title">Sustainable and Functional Materials for Human Health</h3></li>
-      <li class="tk rv"><span class="tk-id">TRK-02</span><h3 class="tk-title">Engineering Design for Healthcare Innovation</h3></li>
-      <li class="tk rv"><span class="tk-id">TRK-03</span><h3 class="tk-title">Biomanufacturing and Biofabrication Technologies</h3></li>
-      <li class="tk rv"><span class="tk-id">TRK-04</span><h3 class="tk-title">Medical Devices and Next-Generation Medical Technologies</h3></li>
-      <li class="tk rv"><span class="tk-id">TRK-05</span><h3 class="tk-title">Regenerative Medicine and Therapeutic Engineering</h3></li>
-      <li class="tk rv"><span class="tk-id">TRK-06</span><h3 class="tk-title">AI, Digital Health, and Computational Medicine</h3></li>
-      <li class="tk rv"><span class="tk-id">TRK-07</span><h3 class="tk-title">Sustainable Healthcare and Planetary Health</h3></li>
-      <li class="tk rv"><span class="tk-id">TRK-08</span><h3 class="tk-title">Translational Research and MedTech Innovation</h3></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ===================== WHO SHOULD ATTEND ===================== -->
-<section class="sec attend on-dark" id="attend" aria-labelledby="h-attend">
-  <div class="duo attend-media" aria-hidden="true">
-    <video id="attendVid" poster="assets/people-poster.jpg" muted loop playsinline preload="none" aria-hidden="true">
-      <source src="assets/people.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="attend-scrim" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">04</span>
-        <span>Who should attend</span>
-      </div>
-      <h2 class="h2" id="h-attend">Twelve communities, one room.</h2>
-    </div>
-    <ul class="roles rv rv-d1">
-      <li>Researchers</li><li>Academicians</li><li>Scientists</li><li>Engineers</li>
-      <li>Designers</li><li>Clinicians</li><li>Healthcare Professionals</li><li>Industry Leaders</li>
-      <li>MedTech Innovators</li><li>Entrepreneurs</li><li>Policymakers</li><li>UG/PG/PhD Students</li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===================== HIGHLIGHTS ===================== -->
-<section class="sec" id="highlights" aria-labelledby="h-hl">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">05</span>
-        <span>Conference highlights</span>
-      </div>
-      <h2 class="h2" id="h-hl">Four technologies at the centre of the programme.</h2>
-    </div>
-
-    <div class="hl-band rv">
-      <div class="duo plate-frame">
-        <video id="benchVid" poster="assets/bench-poster.jpg" muted loop playsinline preload="none" aria-hidden="true">
-          <source src="assets/bench.mp4" type="video/mp4">
-        </video>
-      </div>
-      <span class="hl-band-tag">Fig. 02 · Bench workflow, sterile field</span>
-    </div>
-
-    <div class="hl-grid">
-      <article class="hl rv">
-        <span class="hl-fig">
-          <picture>
-            <source srcset="assets/hl-bioprinting.webp" type="image/webp">
-            <img src="assets/hl-bioprinting.jpg" alt="A bioprinter extruding pink hydrogel into a porous cylindrical scaffold in a culture dish." loading="lazy" decoding="async" width="880" height="660">
-          </picture>
-        </span>
-        <span class="hl-txt"><span class="hl-n">01</span><h3>3D Bioprinting</h3></span>
-      </article>
-      <article class="hl rv">
-        <span class="hl-fig">
-          <picture>
-            <source srcset="assets/hl-4d.webp" type="image/webp">
-            <img src="assets/hl-4d.jpg" alt="One printed lattice shown at three stages, unfolding over time from a flat disc into a stellated form." loading="lazy" decoding="async" width="880" height="660">
-          </picture>
-        </span>
-        <span class="hl-txt"><span class="hl-n">02</span><h3>4D Biomanufacturing</h3></span>
-      </article>
-      <article class="hl rv">
-        <span class="hl-fig">
-          <picture>
-            <source srcset="assets/hl-devices.webp" type="image/webp">
-            <img src="assets/hl-devices.jpg" alt="A lattice-structured titanium hip stem beside a porous ceramic bone-graft plug." loading="lazy" decoding="async" width="880" height="660">
-          </picture>
-        </span>
-        <span class="hl-txt"><span class="hl-n">03</span><h3>Advanced Medical Devices</h3></span>
-      </article>
-      <article class="hl rv">
-        <span class="hl-fig">
-          <picture>
-            <source srcset="assets/hl-products.webp" type="image/webp">
-            <img src="assets/hl-products.jpg" alt="A vial, a dish of cultured spheroids, and a porous ceramic scaffold cube." loading="lazy" decoding="async" width="880" height="660">
-          </picture>
-        </span>
-        <span class="hl-txt"><span class="hl-n">04</span><h3>Biomanufactured Medical Products</h3></span>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SPEAKERS ===================== -->
-<section class="sec people" id="speakers" aria-labelledby="h-spk" style="background:var(--plate-2)">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">06</span>
-        <span>Confirmed speakers</span>
-      </div>
-      <h2 class="h2" id="h-spk">Twelve confirmed speakers, nine countries.</h2>
-    </div>
-    <hr class="rule rv">
-
-    <div class="spk-bar rv" style="margin-top:clamp(28px,3.6vw,46px)">
+    <h2 class="h2 sec-title" id="h-spk">Plenary and Keynote Speakers</h2>
+    <div class="spk-bar">
       <button type="button" class="spk-chip" data-filter="all" aria-pressed="true">All</button>
       <button type="button" class="spk-chip" data-filter="india" aria-pressed="false">India</button>
       <button type="button" class="spk-chip" data-filter="japan" aria-pressed="false">Japan</button>
       <button type="button" class="spk-chip" data-filter="singapore" aria-pressed="false">Singapore</button>
+      <button type="button" class="spk-chip" data-filter="china" aria-pressed="false">China</button>
       <button type="button" class="spk-chip" data-filter="europe" aria-pressed="false">Europe</button>
       <button type="button" class="spk-chip" data-filter="namerica" aria-pressed="false">North America</button>
-      <button type="button" class="spk-chip" data-filter="china" aria-pressed="false">China</button>
       <button type="button" class="spk-chip" data-filter="australia" aria-pressed="false">Australia</button>
       <p class="spk-count" id="spkCount" role="status">12 of 12 shown</p>
     </div>
-
-    <div class="spk-grid rv" id="spkGrid">
-      <article class="spk plate-frame" data-region="japan">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-chen.webp" type="image/webp">
-            <img src="assets/spk-chen.jpg" alt="Portrait of Prof. Guoping Chen." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Prof. Guoping Chen</h3>
-        <p class="spk-org">National Institute for Materials Science, Japan</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="india">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-basu.webp" type="image/webp">
-            <img src="assets/spk-basu.jpg" alt="Portrait of Prof. Bikramjit Basu." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Prof. Bikramjit Basu</h3>
-        <p class="spk-org">CSIR&ndash;Central Glass Ceramic Research Institute, Kolkata and IISc Bangalore</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="europe">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-kundu.webp" type="image/webp">
-            <img src="assets/spk-kundu.jpg" alt="Portrait of Prof. Subhas C. Kundu." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Prof. Subhas C. Kundu</h3>
-        <p class="spk-org">I3B&rsquo;s Research Institute, University of Minho, Portugal</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="japan">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-yingnan.webp" type="image/webp">
-            <img src="assets/spk-yingnan.jpg" alt="Portrait of Prof. Yang Yingnan." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Prof. Yang Yingnan</h3>
-        <p class="spk-org">University of Tsukuba, Japan</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="europe">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-roy.webp" type="image/webp">
-            <img src="assets/spk-roy.jpg" alt="Portrait of Professor Ipsita Roy." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Professor Ipsita Roy</h3>
-        <p class="spk-org">The University of Sheffield, UK</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="australia">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-rad.webp" type="image/webp">
-            <img src="assets/spk-rad.jpg" alt="Portrait of Professor Majid Rad." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Professor Majid Rad</h3>
-        <p class="spk-org">Edith Cowan University, Australia</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="singapore">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-hashimoto.webp" type="image/webp">
-            <img src="assets/spk-hashimoto.jpg" alt="Portrait of Prof. Michinao Hashimoto." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Prof. Michinao Hashimoto</h3>
-        <p class="spk-org">Singapore University of Technology and Design (SUTD), Singapore</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="namerica">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-narain.webp" type="image/webp">
-            <img src="assets/spk-narain.jpg" alt="Portrait of Prof. Ravin Narain." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Prof. Ravin Narain</h3>
-        <p class="spk-org">Professor, University of Alberta, Canada</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="namerica">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-rajadas.webp" type="image/webp">
-            <img src="assets/spk-rajadas.jpg" alt="Portrait of Prof. Jayakumar Rajadas." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Prof. Jayakumar Rajadas</h3>
-        <p class="spk-org">Stanford University, USA</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="china">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-li.webp" type="image/webp">
-            <img src="assets/spk-li.jpg" alt="Portrait of Professor Jingchao Li." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Professor Jingchao Li</h3>
-        <p class="spk-org">Donghua University, China</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="china">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-liu.webp" type="image/webp">
-            <img src="assets/spk-liu.jpg" alt="Portrait of Professor Yong Liu." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Professor Yong Liu</h3>
-        <p class="spk-org">Beijing University of Chemical Technology, China</p>
-      </article>
-
-      <article class="spk plate-frame" data-region="india">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-chanda.webp" type="image/webp">
-            <img src="assets/spk-chanda.jpg" alt="Portrait of Professor Arnab Chanda." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <h3 class="spk-name">Professor Arnab Chanda</h3>
-        <p class="spk-org">IIT Delhi and AIIMS, Delhi</p>
-      </article>
+    <div class="spk-grid" id="spkGrid">
+      <article class="spk" data-region="japan"><span class="spk-fig"><picture><source srcset="assets/spk-chen.webp" type="image/webp"><img src="assets/spk-chen.jpg" alt="Portrait of Prof. Guoping Chen." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Guoping Chen</h3><p class="spk-org">National Institute for Materials Science, Japan</p></article>
+      <article class="spk" data-region="india"><span class="spk-fig"><picture><source srcset="assets/spk-basu.webp" type="image/webp"><img src="assets/spk-basu.jpg" alt="Portrait of Prof. Bikramjit Basu." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Bikramjit Basu</h3><p class="spk-org">CSIR&ndash;Central Glass Ceramic Research Institute, Kolkata and IISc Bangalore</p></article>
+      <article class="spk" data-region="europe"><span class="spk-fig"><picture><source srcset="assets/spk-kundu.webp" type="image/webp"><img src="assets/spk-kundu.jpg" alt="Portrait of Prof. Subhas C. Kundu." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Subhas C. Kundu</h3><p class="spk-org">I3B&rsquo;s Research Institute, University of Minho, Portugal</p></article>
+      <article class="spk" data-region="europe"><span class="spk-fig"><picture><source srcset="assets/spk-roy.webp" type="image/webp"><img src="assets/spk-roy.jpg" alt="Portrait of Prof. Ipsita Roy." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Ipsita Roy</h3><p class="spk-org">The University of Sheffield, UK</p></article>
+      <article class="spk" data-region="japan"><span class="spk-fig"><picture><source srcset="assets/spk-yingnan.webp" type="image/webp"><img src="assets/spk-yingnan.jpg" alt="Portrait of Prof. Yang Yingnan." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Yang Yingnan</h3><p class="spk-org">University of Tsukuba, Japan</p></article>
+      <article class="spk" data-region="singapore"><span class="spk-fig"><picture><source srcset="assets/spk-hashimoto.webp" type="image/webp"><img src="assets/spk-hashimoto.jpg" alt="Portrait of Prof. Michinao Hashimoto." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Michinao Hashimoto</h3><p class="spk-org">Singapore University of Technology and Design (SUTD), Singapore</p></article>
+      <article class="spk" data-region="namerica"><span class="spk-fig"><picture><source srcset="assets/spk-rajadas.webp" type="image/webp"><img src="assets/spk-rajadas.jpg" alt="Portrait of Prof. Jayakumar Rajadas." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Jayakumar Rajadas</h3><p class="spk-org">Stanford University, USA</p></article>
+      <article class="spk" data-region="namerica"><span class="spk-fig"><picture><source srcset="assets/spk-narain.webp" type="image/webp"><img src="assets/spk-narain.jpg" alt="Portrait of Prof. Ravin Narain." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Ravin Narain</h3><p class="spk-org">Professor, University of Alberta, Canada</p></article>
+      <article class="spk" data-region="china"><span class="spk-fig"><picture><source srcset="assets/spk-liu.webp" type="image/webp"><img src="assets/spk-liu.jpg" alt="Portrait of Prof. Yong Liu." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Yong Liu</h3><p class="spk-org">Beijing University of Chemical Technology, China</p></article>
+      <article class="spk" data-region="china"><span class="spk-fig"><picture><source srcset="assets/spk-li.webp" type="image/webp"><img src="assets/spk-li.jpg" alt="Portrait of Prof. Jingchao Li." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Jingchao Li</h3><p class="spk-org">Donghua University, China</p></article>
+      <article class="spk" data-region="australia"><span class="spk-fig"><picture><source srcset="assets/spk-rad.webp" type="image/webp"><img src="assets/spk-rad.jpg" alt="Portrait of Prof. Majid Rad." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Majid Rad</h3><p class="spk-org">Edith Cowan University, Australia</p></article>
+      <article class="spk" data-region="namerica"><span class="spk-fig"><picture><source srcset="assets/spk-nukavarapu.webp" type="image/webp"><img src="assets/spk-nukavarapu.jpg" alt="Portrait of Prof. Syam Nukavarapu." loading="lazy" decoding="async" width="440" height="550"></picture></span><h3 class="spk-name">Prof. Syam Nukavarapu</h3><p class="spk-org">University of Connecticut, USA</p></article>
     </div>
   </div>
 </section>
 
-<!-- ===================== IMPORTANT DATES ===================== -->
-<section class="sec dates" id="dates" aria-labelledby="h-dates">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">07</span>
-        <span>Important dates</span>
+<section class="sec tint" id="about" aria-labelledby="h-about">
+  <div class="wrap split">
+    <h2 class="h2" id="h-about">About the conference</h2>
+    <div>
+      <p class="lede">SBRS ICON 2027 will bring together researchers, clinicians, scientists, engineers, industry leaders, entrepreneurs, and policymakers from around the world to advance sustainable solutions for the future of healthcare. The conference will connect materials innovation, engineering design, and biomanufacturing with next-generation medical technologies to address global healthcare challenges while promoting environmental sustainability and planetary well-being.</p>
+      <div id="objectives" class="objectives">
+        <h3 class="sub">Objectives</h3>
+        <ol class="obj-list">
+          <li>Catalyse sustainable innovations for next-generation healthcare</li>
+          <li>Foster a global ecosystem for collaborative research and sustainable biomanufacturing</li>
+          <li>Bridge materials, design, engineering, and medicine through interdisciplinary partnerships</li>
+          <li>Accelerate the translation of research into impactful healthcare solutions</li>
+          <li>Advance technologies that benefit both people and the planet</li>
+        </ol>
       </div>
-      <h2 class="h2" id="h-dates">Key dates.</h2>
     </div>
+  </div>
+</section>
 
-    <p class="tl-now rv" id="tlNow">
-      <span>Current position</span>
-      <b id="tlNowDate">—</b>
-      <span id="tlNowGap"></span>
-    </p>
-
-    <ol class="tl">
-      <li class="tl-item rv" style="--z:.18"><span class="tl-z">01</span><span class="tl-bar"><i></i></span><span class="tl-name">Abstract submission opens</span><time class="tl-date" datetime="2026-10-01">1 Oct 2026</time></li>
-      <li class="tl-item rv" style="--z:.32"><span class="tl-z">02</span><span class="tl-bar"><i></i></span><span class="tl-name">Abstract submission deadline</span><time class="tl-date" datetime="2027-01-31">31 Jan 2027</time></li>
-      <li class="tl-item rv" style="--z:.45"><span class="tl-z">03</span><span class="tl-bar"><i></i></span><span class="tl-name">Acceptance notification</span><time class="tl-date" datetime="2027-02-15">15 Feb 2027</time></li>
-      <li class="tl-item rv" style="--z:.58"><span class="tl-z">04</span><span class="tl-bar"><i></i></span><span class="tl-name">Early-bird registration opens</span><time class="tl-date" datetime="2027-02-16">16 Feb 2027</time></li>
-      <li class="tl-item rv" style="--z:.71"><span class="tl-z">05</span><span class="tl-bar"><i></i></span><span class="tl-name">Early-bird registration deadline</span><time class="tl-date" datetime="2027-03-31">31 Mar 2027</time></li>
-      <li class="tl-item rv" style="--z:.85"><span class="tl-z">06</span><span class="tl-bar"><i></i></span><span class="tl-name">Registration deadline</span><time class="tl-date" datetime="2027-10-31">31 Oct 2027</time></li>
-      <li class="tl-item rv" style="--z:1"><span class="tl-z">07</span><span class="tl-bar"><i></i></span><span class="tl-name">Conference dates</span><time class="tl-date" datetime="2027-12-14">14–16 Dec 2027</time></li>
+<section class="sec" id="tracks" aria-labelledby="h-tracks">
+  <div class="wrap split">
+    <h2 class="h2" id="h-tracks">Conference Tracks</h2>
+    <ol class="tk-list">
+      <li class="tk"><span class="tk-n">1</span><h3 class="tk-title">Sustainable and Functional Materials for Human Health</h3></li>
+      <li class="tk"><span class="tk-n">2</span><h3 class="tk-title">Engineering Design for Healthcare Innovation</h3></li>
+      <li class="tk"><span class="tk-n">3</span><h3 class="tk-title">Advanced Biomanufacturing and Bio-fabrication Technologies</h3></li>
+      <li class="tk"><span class="tk-n">4</span><h3 class="tk-title">Biomanufactured Medical Devices for Next-Generation Medical Technologies</h3></li>
+      <li class="tk"><span class="tk-n">5</span><h3 class="tk-title">Regenerative Medicine and Therapeutic Engineering</h3></li>
+      <li class="tk"><span class="tk-n">6</span><h3 class="tk-title">AI, Digital Health, and Computational Medicine</h3></li>
+      <li class="tk"><span class="tk-n">7</span><h3 class="tk-title">Sustainable Biomanufacturing for Planetary Health</h3></li>
+      <li class="tk"><span class="tk-n">8</span><h3 class="tk-title">Translational Research and MedTech</h3></li>
     </ol>
   </div>
 </section>
 
-<!-- ===================== REGISTRATION & FEES ===================== -->
-<section class="sec" id="fees" aria-labelledby="h-fees">
+<section class="sec tint" id="highlights" aria-labelledby="h-hl">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">08</span>
-        <span>Registration &amp; fees</span>
-      </div>
-      <h2 class="h2" id="h-fees">What it costs to attend.</h2>
+    <h2 class="h2 sec-title" id="h-hl">Conference highlights</h2>
+    <div class="hl-grid">
+      <article class="hl"><div class="hl-lab" data-lab="print" hidden><canvas role="img" aria-label="Diagram of a nozzle printing a lattice scaffold, layer by layer." width="400" height="300"></canvas><input type="range" min="0" max="1000" value="0" aria-label="3D Bioprinting: print progress"><p class="hl-read"><span class="hl-hint"></span><output></output></p></div><h3>3D Bioprinting</h3></article>
+      <article class="hl"><div class="hl-lab" data-lab="fold" hidden><canvas role="img" aria-label="Diagram of a flat printed lattice folding into a closed form over time." width="400" height="300"></canvas><input type="range" min="0" max="1000" value="0" aria-label="4D Biomanufacturing: folding over time"><p class="hl-read"><span class="hl-hint"></span><output></output></p></div><h3>4D Biomanufacturing</h3></article>
+      <article class="hl"><div class="hl-lab" data-lab="stent" hidden><canvas role="img" aria-label="Diagram of a stent expanding inside a narrowed blood vessel." width="400" height="300"></canvas><input type="range" min="0" max="1000" value="0" aria-label="Advanced Medical Devices: stent expansion"><p class="hl-read"><span class="hl-hint"></span><output></output></p></div><h3>Advanced Medical Devices</h3></article>
+      <article class="hl"><div class="hl-lab" data-lab="culture" hidden><canvas role="img" aria-label="Diagram of cells spreading across a culture dish from a seed point." width="400" height="300"></canvas><input type="range" min="0" max="1000" value="0" aria-label="Biomanufactured Medical Products: cell growth"><p class="hl-read"><span class="hl-hint"></span><output></output></p></div><h3>Biomanufactured Medical Products</h3></article>
     </div>
+    <div class="split attend" id="attend">
+      <h3 class="sub">Who should attend</h3>
+      <ul class="roles"><li>Researchers</li><li>Academicians</li><li>Scientists</li><li>Engineers</li><li>Designers</li><li>Clinicians</li><li>Healthcare Professionals</li><li>Industry Leaders</li><li>MedTech Innovators</li><li>Entrepreneurs</li><li>Policymakers</li><li>UG/PG/PhD Students</li></ul>
+    </div>
+  </div>
+</section>
 
-    <div class="fee-block rv">
-      <div class="fee-cap">
-        <h3>Registration</h3>
-        <span class="fee-tag">Conference only</span>
+<section class="sec" id="dates" aria-labelledby="h-dates">
+  <div class="wrap">
+    <h2 class="h2 sec-title" id="h-dates">Important Dates</h2>
+    <ol class="tl">
+      <li class="tl-item"><time class="tl-date" datetime="2027-01-01">1 Jan<small>2027</small></time><span class="tl-name">Abstract submission starts</span><span class="tl-flag" hidden></span></li>
+      <li class="tl-item"><time class="tl-date" datetime="2027-04-15">15 Apr<small>2027</small></time><span class="tl-name">Abstract submission ends</span><span class="tl-flag" hidden></span></li>
+      <li class="tl-item"><time class="tl-date" datetime="2027-04-30">30 Apr<small>2027</small></time><span class="tl-name">Acceptance notification</span><span class="tl-flag" hidden></span></li>
+      <li class="tl-item"><time class="tl-date" datetime="2027-05-01">1 May<small>2027</small></time><span class="tl-name">Early bird registration starts</span><span class="tl-flag" hidden></span></li>
+      <li class="tl-item"><time class="tl-date" datetime="2027-08-31">31 Aug<small>2027</small></time><span class="tl-name">Early bird registration ends</span><span class="tl-flag" hidden></span></li>
+      <li class="tl-item"><time class="tl-date" datetime="2027-10-31">31 Oct<small>2027</small></time><span class="tl-name">Registration ends</span><span class="tl-flag" hidden></span></li>
+      <li class="tl-item"><time class="tl-date" datetime="2027-12-14">14&ndash;16 Dec<small>2027</small></time><span class="tl-name">Conference</span><span class="tl-flag" hidden></span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec tint" id="fees" aria-labelledby="h-fees">
+  <div class="wrap">
+    <div class="fees-head">
+      <h2 class="h2" id="h-fees">Registration fees</h2>
+      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register</a>
+    </div>
+    <div class="fees-layout">
+    <div class="finder" id="feeFinder" role="group" aria-label="Find your registration fee" hidden>
+      <div class="finder-out">
+        <p class="finder-label">Your fee</p>
+        <p class="finder-price" id="finderPrice" aria-hidden="true"></p>
+        <p class="finder-note" id="finderNote" aria-hidden="true"></p>
+        <p class="vh" id="finderStatus" role="status"></p>
       </div>
+      <div class="finder-opts">
+        <fieldset><legend>Category</legend>
+          <label><input type="radio" name="ff-category" value="0" checked><span>Faculty / Scientists / Researchers</span></label>
+          <label><input type="radio" name="ff-category" value="1"><span>Students</span></label>
+          <label><input type="radio" name="ff-category" value="2"><span>Industry</span></label>
+        </fieldset>
+        <fieldset><legend>Delegate</legend>
+          <label><input type="radio" name="ff-origin" value="indian" checked><span>Indian</span></label>
+          <label><input type="radio" name="ff-origin" value="foreign"><span>Foreign</span></label>
+        </fieldset>
+        <fieldset><legend>Package</legend>
+          <label><input type="radio" name="ff-package" value="conference" checked><span>Conference</span></label>
+          <label><input type="radio" name="ff-package" value="member"><span>With SBRS membership</span></label>
+        </fieldset>
+        <fieldset><legend>Rate</legend>
+          <label><input type="radio" name="ff-rate" value="early" checked><span>Early bird</span></label>
+          <label><input type="radio" name="ff-rate" value="late"><span>Late</span></label>
+        </fieldset>
+      </div>
+      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register <span class="ar" aria-hidden="true">&rarr;</span></a>
+    </div>
+    <div class="fees-tables">
+    <div class="fee-block">
+      <h3 class="sub">Conference registration</h3>
       <div class="tbl-scroll">
         <table class="tbl">
           <thead>
@@ -545,12 +258,8 @@
         </table>
       </div>
     </div>
-
-    <div class="fee-block rv">
-      <div class="fee-cap">
-        <h3>Registration + SBRS membership</h3>
-        <span class="fee-tag">Package</span>
-      </div>
+    <div class="fee-block">
+      <h3 class="sub">Registration + SBRS membership</h3>
       <div class="tbl-scroll">
         <table class="tbl">
           <thead>
@@ -586,225 +295,67 @@
         </table>
       </div>
     </div>
-
-    <ul class="fee-notes rv">
-      <li><b>Early bird</b><span>Early-bird rates apply until <strong>31 March 2027</strong>; the late rate applies from 1 April 2027 up to the registration deadline of 31 October 2027. See <a href="#dates">Key dates</a>.</span></li>
-      <li><b>Students</b><span>Student rates require valid photo ID proof of enrolment at registration.</span></li>
-      <li><b>Membership</b><span>The package rate bundles conference registration with SBRS membership &mdash; Sustainable Biomanufacturers and Research Society.</span></li>
+    <ul class="fee-notes">
+      <li>Early bird rates apply until <strong>31 August 2027</strong>. The late rate applies from 1 September until registration ends on 31 October 2027.</li>
+      <li>Student rates require valid photo ID proof of enrolment at registration.</li>
+      <li>The membership package bundles conference registration with membership of SBRS, the Sustainable Biomanufacturers and Research Society.</li>
     </ul>
-
-    <p class="rv" style="margin-top:clamp(24px,3vw,36px)">
-      <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register <span class="ar" aria-hidden="true">&rarr;</span></a>
-    </p>
+    </div>
+    </div>
   </div>
 </section>
 
-<!-- ===================== SPONSORSHIP ===================== -->
-<section class="sec on-dark" id="sponsors" aria-labelledby="h-spo" style="background:var(--chamber)">
+<section class="sec" id="sponsors" aria-labelledby="h-spo">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">09</span>
-        <span>Sponsorship</span>
-      </div>
-      <h2 class="h2" id="h-spo">Four tiers of support.</h2>
+    <h2 class="h2 sec-title" id="h-spo">Sponsorship</h2>
+    <div class="spo-grid">
+      <div class="spo"><h3 class="spo-tier">Diamond</h3><dl><div><dt>Indian</dt><dd>&#8377;5,00,000<small>5 lakh</small></dd></div><div><dt>Foreign</dt><dd>$1,000</dd></div></dl></div>
+      <div class="spo"><h3 class="spo-tier">Platinum</h3><dl><div><dt>Indian</dt><dd>&#8377;3,00,000<small>3 lakh</small></dd></div><div><dt>Foreign</dt><dd>$750</dd></div></dl></div>
+      <div class="spo"><h3 class="spo-tier">Gold</h3><dl><div><dt>Indian</dt><dd>&#8377;2,00,000<small>2 lakh</small></dd></div><div><dt>Foreign</dt><dd>$500</dd></div></dl></div>
+      <div class="spo"><h3 class="spo-tier">Silver</h3><dl><div><dt>Indian</dt><dd>&#8377;1,00,000<small>1 lakh</small></dd></div><div><dt>Foreign</dt><dd>$300</dd></div></dl></div>
     </div>
-
-    <div class="spo-grid rv">
-      <div class="spo spo--top">
-        <div class="spo-top"><span class="spo-tier">Diamond</span><span class="spo-n">T1</span></div>
-        <div class="spo-rates">
-          <div class="spo-rate"><span>Indian</span><b>&#8377;5,00,000</b></div>
-          <p class="spo-lakh">5 lakh</p>
-          <div class="spo-rate"><span>Foreign</span><b>$1,000</b></div>
-        </div>
-      </div>
-      <div class="spo">
-        <div class="spo-top"><span class="spo-tier">Platinum</span><span class="spo-n">T2</span></div>
-        <div class="spo-rates">
-          <div class="spo-rate"><span>Indian</span><b>&#8377;3,00,000</b></div>
-          <p class="spo-lakh">3 lakh</p>
-          <div class="spo-rate"><span>Foreign</span><b>$750</b></div>
-        </div>
-      </div>
-      <div class="spo">
-        <div class="spo-top"><span class="spo-tier">Gold</span><span class="spo-n">T3</span></div>
-        <div class="spo-rates">
-          <div class="spo-rate"><span>Indian</span><b>&#8377;2,00,000</b></div>
-          <p class="spo-lakh">2 lakh</p>
-          <div class="spo-rate"><span>Foreign</span><b>$500</b></div>
-        </div>
-      </div>
-      <div class="spo">
-        <div class="spo-top"><span class="spo-tier">Silver</span><span class="spo-n">T4</span></div>
-        <div class="spo-rates">
-          <div class="spo-rate"><span>Indian</span><b>&#8377;1,00,000</b></div>
-          <p class="spo-lakh">1 lakh</p>
-          <div class="spo-rate"><span>Foreign</span><b>$300</b></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="spo-foot rv">
+    <div class="spo-foot">
       <p>Indian rates apply to organizations registered in India; the foreign rate applies to all others. Tier benefits are confirmed on enquiry.</p>
-      <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Sponsorship%20enquiry">Sponsorship enquiry <span class="ar" aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Sponsorship%20enquiry">Sponsorship enquiry</a>
     </div>
   </div>
 </section>
 
-<!-- ===================== HOSTS ===================== -->
-<section class="sec" id="hosts" aria-labelledby="h-hosts" style="background:var(--plate-2)">
+<section class="sec tint" id="hosts" aria-labelledby="h-hosts">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">10</span>
-        <span>Host &amp; co-organizer</span>
-      </div>
-      <h2 class="h2" id="h-hosts">Where it happens, and who is behind it.</h2>
-    </div>
-
-    <figure class="campus rv">
-      <div class="plate-frame">
-        <picture>
-          <source srcset="assets/campus-jabalpur.webp" type="image/webp">
-          <img src="assets/campus-jabalpur.jpg" width="1400" height="980" loading="lazy" decoding="async"
-               alt="The main academic building at PDPM IIITDM Jabalpur, seen across the campus lawn.">
-        </picture>
-        <figcaption class="figcap">
-          <span>PDPM IIITDM Jabalpur &middot; conference venue</span>
-          <span>14&ndash;16 December 2027</span>
-        </figcaption>
-      </div>
-    </figure>
-
+    <h2 class="h2 sec-title" id="h-hosts">Venue</h2>
+    <img class="campus" src="assets/campus-jabalpur.jpg" width="1498" height="1050" loading="lazy" decoding="async" alt="The main academic building at PDPM IIITDM Jabalpur, seen across the campus lawn.">
     <div class="host-grid">
-      <div class="host plate-frame rv">
-        <div class="host-top">
-          <span class="role">Host institution</span>
-          <img class="host-logo wide" src="assets/iiitdmj-logo.png" width="190" height="57" loading="lazy" decoding="async"
-               alt="Logo of PDPM IIITDM Jabalpur">
-        </div>
-        <h3>PDPM Indian Institute of Information Technology, Design and Manufacturing (IIITDM) Jabalpur</h3>
-        <p>Madhya Pradesh, India &mdash; venue for SBRS ICON 2027, 14&ndash;16 December 2027.</p>
-        <div class="locplate">
-          <iframe class="mapframe" title="Map showing PDPM IIITDM Jabalpur"
-                  src="https://www.google.com/maps?q=PDPM+IIITDM+Jabalpur%2C+Madhya+Pradesh%2C+India&amp;output=embed"
-                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <p class="mapnote"><a href="https://www.google.com/maps/search/?api=1&amp;query=PDPM+IIITDM+Jabalpur%2C+Madhya+Pradesh%2C+India"
-             target="_blank" rel="noopener">Open in Google Maps &#8599;</a></p>
-        </div>
+      <div class="host">
+        <p class="sub">PDPM Indian Institute of Information Technology, Design and Manufacturing, Jabalpur, Madhya Pradesh, India.</p>
+        <iframe class="mapframe" title="Map showing PDPM IIITDM Jabalpur" src="https://www.google.com/maps?q=PDPM+IIITDM+Jabalpur%2C+Madhya+Pradesh%2C+India&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p class="mapnote"><a href="https://www.google.com/maps/search/?api=1&amp;query=PDPM+IIITDM+Jabalpur%2C+Madhya+Pradesh%2C+India" target="_blank" rel="noopener">Open in Google Maps</a></p>
       </div>
-
-      <div class="host plate-frame rv rv-d1">
-        <div class="host-top">
-          <span class="role">In association with</span>
-          <picture>
-            <source srcset="assets/iitm-logo.webp" type="image/webp">
-            <img class="host-logo" src="assets/iitm-logo.png" width="76" height="76" loading="lazy" decoding="async"
-                 alt="Emblem of the Indian Institute of Technology Madras">
-          </picture>
-        </div>
-        <h3>Indian Institute of Technology Madras (IIT Madras)</h3>
-        <p>Chennai, Tamil Nadu, India.</p>
-        <div class="locplate">
-          <iframe class="mapframe" title="Map showing IIT Madras"
-                  src="https://www.google.com/maps?q=Indian+Institute+of+Technology+Madras%2C+Chennai%2C+Tamil+Nadu%2C+India&amp;output=embed"
-                  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          <p class="mapnote"><a href="https://www.google.com/maps/search/?api=1&amp;query=Indian+Institute+of+Technology+Madras%2C+Chennai%2C+Tamil+Nadu%2C+India"
-             target="_blank" rel="noopener">Open in Google Maps &#8599;</a></p>
-        </div>
+      <div class="host">
+        <p class="sub">In association with Indian Institute of Technology Madras, Chennai, Tamil Nadu, India.</p>
+        <iframe class="mapframe" title="Map showing IIT Madras, Chennai" src="https://www.google.com/maps?q=Indian+Institute+of+Technology+Madras%2C+Chennai%2C+Tamil+Nadu%2C+India&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p class="mapnote"><a href="https://www.google.com/maps/search/?api=1&amp;query=Indian+Institute+of+Technology+Madras%2C+Chennai%2C+Tamil+Nadu%2C+India" target="_blank" rel="noopener">Open IIT Madras in Google Maps</a></p>
       </div>
     </div>
-
-    <p class="org-line rv">
-      <img src="assets/sbrs-logo.png" width="150" height="63" loading="lazy" decoding="async"
-           alt="Logo of SBRS, Sustainable Biomanufacturers and Research Society">
-      <span>Organized by SBRS &mdash; Sustainable Biomanufacturers and Research Society</span>
-    </p>
   </div>
 </section>
 
-<!-- ===================== ORGANIZING COMMITTEE ===================== -->
-<section class="sec people people-committee" id="committee" aria-labelledby="h-com" style="background:var(--paper)">
+<section class="sec people" id="committee" aria-labelledby="h-com">
   <div class="wrap">
-    <div class="sec-head rv">
-      <div class="sec-meta">
-        <span class="eyebrow">11</span>
-        <span>Organizing committee</span>
-      </div>
-      <h2 class="h2" id="h-com">Who is convening it.</h2>
+    <h2 class="h2 sec-title" id="h-com">Organizing Committee</h2>
+    <div class="spk-grid">
+      <article class="spk"><span class="spk-fig"><picture><source srcset="assets/spk-singh.webp" type="image/webp"><img src="assets/spk-singh.jpg" alt="Portrait of Prof. Bhartendu K. Singh." loading="lazy" decoding="async" width="440" height="550"></picture></span><p class="spk-role">Patron</p><h3 class="spk-name">Prof. Bhartendu K. Singh</h3><p class="spk-org">Director, PDPM&ndash;IIITDM Jabalpur</p></article>
+      <article class="spk"><span class="spk-fig"><picture><source srcset="assets/spk-kamakoti.webp" type="image/webp"><img src="assets/spk-kamakoti.jpg" alt="Portrait of Prof. V Kamakoti." loading="lazy" decoding="async" width="440" height="550"></picture></span><p class="spk-role">Patron</p><h3 class="spk-name">Prof. V Kamakoti</h3><p class="spk-org">Director, IIT Madras</p></article>
+      <article class="spk"><span class="spk-fig"><picture><source srcset="assets/spk-jayaganthan.webp" type="image/webp"><img src="assets/spk-jayaganthan.jpg" alt="Portrait of Prof. R Jayaganthan." loading="lazy" decoding="async" width="440" height="550"></picture></span><p class="spk-role">Chairperson</p><h3 class="spk-name">Prof. R Jayaganthan</h3><p class="spk-org">Institute Chair Professor, IIT Madras and CEO, SBRS</p></article>
+      <article class="spk"><span class="spk-fig"><picture><source srcset="assets/spk-nanda.webp" type="image/webp"><img src="assets/spk-nanda.jpg" alt="Portrait of Dr. Himansu Sekhar Nanda." loading="lazy" decoding="async" width="440" height="550"></picture></span><p class="spk-role">Chairperson and Convener</p><h3 class="spk-name">Dr. Himansu Sekhar Nanda</h3><p class="spk-org">Assistant Professor Gr-1, PDPM&ndash;IIITDM Jabalpur and President, SBRS</p></article>
+      <article class="spk"><span class="spk-fig"><picture><source srcset="assets/spk-sharma.webp" type="image/webp"><img src="assets/spk-sharma.jpg" alt="Portrait of Prof. Sanjeev Narayan Sharma." loading="lazy" decoding="async" width="440" height="550"></picture></span><p class="spk-role">Co-Convener</p><h3 class="spk-name">Prof. Sanjeev Narayan Sharma</h3><p class="spk-org">Professor, Electronics and Communication Engineering Department, PDPM&ndash;IIITDM Jabalpur, SBRS</p></article>
+      <article class="spk"><span class="spk-fig"><picture><source srcset="assets/spk-ansari.webp" type="image/webp"><img src="assets/spk-ansari.jpg" alt="Portrait of Dr. Zahid Ansari." loading="lazy" decoding="async" width="440" height="550"></picture></span><p class="spk-role">Co-Convener</p><h3 class="spk-name">Dr. Zahid Ansari</h3><p class="spk-org">Professor, Mechanical Engineering Department, PDPM&ndash;IIITDM Jabalpur, SBRS</p></article>
     </div>
-
-    <div class="spk-grid rv">
-      <article class="spk plate-frame">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-singh.webp" type="image/webp">
-            <img src="assets/spk-singh.jpg" alt="Portrait of Prof. Bhartendu K. Singh." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <p class="spk-role">Patron</p>
-        <h3 class="spk-name">Prof. Bhartendu K. Singh</h3>
-        <p class="spk-org">Director, PDPM&ndash;IIITDM Jabalpur</p>
-      </article>
-
-      <article class="spk plate-frame">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-kamakoti.webp" type="image/webp">
-            <img src="assets/spk-kamakoti.jpg" alt="Portrait of Prof. V Kamakoti." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <p class="spk-role">Patron</p>
-        <h3 class="spk-name">Prof. V Kamakoti</h3>
-        <p class="spk-org">Director, IIT Madras</p>
-      </article>
-
-      <article class="spk plate-frame">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-jayaganthan.webp" type="image/webp">
-            <img src="assets/spk-jayaganthan.jpg" alt="Portrait of Prof. R Jayaganthan." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <p class="spk-role">Chairperson</p>
-        <h3 class="spk-name">Prof. R Jayaganthan</h3>
-        <p class="spk-org">Institute Chair Professor, IIT Madras and CEO, SBRS</p>
-      </article>
-
-      <article class="spk plate-frame">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-nanda.webp" type="image/webp">
-            <img src="assets/spk-nanda.jpg" alt="Portrait of Dr. Himansu Sekhar Nanda." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <p class="spk-role">Chairperson &amp; Convener</p>
-        <h3 class="spk-name">Dr. Himansu Sekhar Nanda</h3>
-        <p class="spk-org">Assistant Professor Gr-1, PDPM&ndash;IIITDM Jabalpur and President, SBRS</p>
-      </article>
-
-      <article class="spk plate-frame">
-        <span class="spk-fig">
-          <picture>
-            <source srcset="assets/spk-sharma.webp" type="image/webp">
-            <img src="assets/spk-sharma.jpg" alt="Portrait of Prof. Sanjeev Narayan Sharma." loading="lazy" decoding="async" width="440" height="550">
-          </picture>
-        </span>
-        <p class="spk-role">Co-convener</p>
-        <h3 class="spk-name">Prof. Sanjeev Narayan Sharma</h3>
-        <p class="spk-org">Professor, Electronics and Communication Engineering, PDPM&ndash;IIITDM Jabalpur</p>
-      </article>
-    </div>
-
-    <div class="committee-directory rv" aria-labelledby="h-com-members">
-      <div class="committee-directory-head">
-        <h3 id="h-com-members">Committee members</h3>
-        <p>Contributors across research, education and industry</p>
-      </div>
+    <div class="split committee-directory">
+      <h3 class="sub">Committee members</h3>
       <ul class="committee-list">
         <li><strong>Prof. Amit Kumar Jaiswal</strong><span>CBCMT, VIT, Vellore, India</span></li>
-        <li><strong>Dr. Piyush Padmanavan</strong><span>CEO, Next Big Innovation Labs, India</span></li>
+        <li><strong>Mr. Piyush Padmanabhan</strong><span>CEO, Next Big Innovation Labs, India</span></li>
         <li><strong>Dr. Shabir Hassan</strong><span>Khalifa University, Abu Dhabi, United Arab Emirates</span></li>
         <li><strong>Dr. Bhisham Narayan Singh</strong><span>Manipal Academy of Higher Education (MAHE), Manipal, India</span></li>
         <li><strong>Dr. Harpreet Singh</strong><span>National Institute of Technology Jalandhar, India</span></li>
@@ -826,7 +377,7 @@
       <div>
         <span class="eyebrow">SBRS ICON 2027</span>
         <h2 id="dlgRegister-t">Register</h2>
-        <p class="hint" style="margin-top:10px">Registration opens 16 February 2027. Send your details and we will contact you.</p>
+        <p class="hint" style="margin-top:10px">Registration opens 1 May 2027. Send your details and we will contact you.</p>
       </div>
       <button type="button" class="dlg-x" data-close aria-label="Close">&times;</button>
     </div>
@@ -902,7 +453,7 @@
       <div>
         <span class="eyebrow">SBRS ICON 2027</span>
         <h2 id="dlgAbstract-t">Submit Abstract</h2>
-        <p class="hint" style="margin-top:10px">Abstract submission opens 1 October 2026 and closes 31 January 2027.</p>
+        <p class="hint" style="margin-top:10px">Abstract submission opens 1 January 2027 and closes 15 April 2027.</p>
       </div>
       <button type="button" class="dlg-x" data-close aria-label="Close">&times;</button>
     </div>
@@ -944,12 +495,12 @@
           <option value="">Select&hellip;</option>
           <option value="Sustainable and Functional Materials for Human Health">Sustainable and Functional Materials for Human Health</option>
           <option value="Engineering Design for Healthcare Innovation">Engineering Design for Healthcare Innovation</option>
-          <option value="Biomanufacturing and Biofabrication Technologies">Biomanufacturing and Biofabrication Technologies</option>
-          <option value="Medical Devices and Next-Generation Medical Technologies">Medical Devices and Next-Generation Medical Technologies</option>
+          <option value="Advanced Biomanufacturing and Bio-fabrication Technologies">Advanced Biomanufacturing and Bio-fabrication Technologies</option>
+          <option value="Biomanufactured Medical Devices for Next-Generation Medical Technologies">Biomanufactured Medical Devices for Next-Generation Medical Technologies</option>
           <option value="Regenerative Medicine and Therapeutic Engineering">Regenerative Medicine and Therapeutic Engineering</option>
           <option value="AI, Digital Health, and Computational Medicine">AI, Digital Health, and Computational Medicine</option>
-          <option value="Sustainable Healthcare and Planetary Health">Sustainable Healthcare and Planetary Health</option>
-          <option value="Translational Research and MedTech Innovation">Translational Research and MedTech Innovation</option>
+          <option value="Sustainable Biomanufacturing for Planetary Health">Sustainable Biomanufacturing for Planetary Health</option>
+          <option value="Translational Research and MedTech">Translational Research and MedTech</option>
         </select>
         <span class="err" id="e-a-track"></span>
       </p>
@@ -989,40 +540,22 @@
     </div>
   </form>
 </dialog>
-<footer class="site-foot on-dark" id="contact">
+<footer class="site-foot" id="contact">
   <div class="wrap">
-    <div class="foot-grid rv" id="footGrid">
-      <div>
-        <img class="foot-logo" src="assets/sbrs-logo.png" width="168" height="70" loading="lazy" decoding="async"
-             alt="Logo of SBRS, Sustainable Biomanufacturers and Research Society">
-        <span class="eyebrow">Four pillars</span>
-        <p class="foot-h" style="margin-top:18px">Materials · Design &amp; Engineering · Biomanufacturing · Human Health &amp; Planetary Health</p>
-        <div class="contact">
-          <a href="mailto:office@sbrsin.org">office@sbrsin.org</a>
-          <a href="https://www.sbrs.site" rel="noopener">www.sbrs.site</a>
-        </div>
-        <div class="foot-cta">
-          <a class="btn btn-1" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract">Submit Abstract <span class="ar" aria-hidden="true">→</span></a>
-          <a class="btn btn-2" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register <span class="ar" aria-hidden="true">→</span></a>
-        </div>
+    <p class="foot-line">Innovate. Collaborate. Transform.<br>For a Healthier People and Planet.</p>
+    <div class="foot-grid">
+      <div class="contact">
+        <a href="mailto:office@sbrsin.org">office@sbrsin.org</a>
+        <a href="https://www.sbrs.site" rel="noopener">www.sbrs.site</a>
       </div>
-      <div class="pillars" aria-hidden="true">
-        <div>
-          <div class="pillar-stack">
-            <div class="pillar"></div>
-            <div class="pillar"></div>
-            <div class="pillar"></div>
-            <div class="pillar"></div>
-          </div>
-          <p class="pillar-key">Four pillars <b>·</b> one programme</p>
-        </div>
+      <div class="foot-cta">
+        <a class="btn btn-ink" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Abstract%20Submission" data-open="abstract">Submit Abstract <span class="ar" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-line" href="mailto:office@sbrsin.org?subject=SBRS%20ICON%202027%20%E2%80%94%20Registration" data-open="register">Register</a>
       </div>
     </div>
-
     <div class="colophon">
-      <span>SBRS ICON 2027 · 14–16 Dec 2027 · PDPM IIITDM Jabalpur</span>
-      <span>Organized by SBRS — Sustainable Biomanufacturers and Research Society</span>
-      <span>In association with IIT Madras</span>
+      <span>SBRS ICON 2027, 14&ndash;16 December 2027, PDPM IIITDM Jabalpur</span>
+      <span>Organized by SBRS, in association with IIT Madras</span>
     </div>
   </div>
 </footer>
@@ -1031,12 +564,14 @@
 <script defer src="scripts/core.js"></script>
 <script defer src="scripts/navigation.js"></script>
 <script defer src="scripts/timeline.js"></script>
-<script defer src="scripts/video.js"></script>
 <script defer src="scripts/globe-data.js"></script>
 <script defer src="scripts/globe.js"></script>
 <script defer src="scripts/config.js"></script>
 <script defer src="scripts/countries.js"></script>
 <script defer src="scripts/forms.js"></script>
 <script defer src="scripts/speakers.js"></script>
+<script defer src="scripts/motion.js"></script>
+<script defer src="scripts/interactions.js"></script>
+<script defer src="scripts/highlights.js"></script>
 </body>
 </html>

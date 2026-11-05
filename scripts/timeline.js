@@ -1,24 +1,24 @@
-/** Current date and next conference milestone. */
+/** Marks passed and upcoming dates, and fills the next-date band, from the dates list. */
 (function(){
 "use strict";
-var $ = window.SBRS.select;
-
-/* ---------- timeline: honest current position ---------- */
-(function(){
-  var MS=[["2026-10-01","Abstract submission opens"],["2027-01-31","Abstract submission deadline"],
-          ["2027-02-15","Acceptance notification"],["2027-02-16","Early-bird registration opens"],
-          ["2027-03-31","Early-bird registration deadline"],["2027-10-31","Registration deadline"],
-          ["2027-12-14","Conference opens"]];
-  var now=new Date(), nd=$("#tlNowDate"), ng=$("#tlNowGap");
-  if(!nd) return;
-  nd.textContent = now.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"});
-  var next=null;
-  for(var i=0;i<MS.length;i++){ var d=new Date(MS[i][0]+"T00:00:00"); if(d>now){ next=[d,MS[i][1]]; break; } }
-  if(next){
-    var days=Math.ceil((next[0]-now)/864e5);
-    ng.textContent = "Next · "+next[1]+" in "+days+" days";
-  }else{
-    ng.textContent = "Programme complete";
-  }
-})();
+var $ = window.SBRS.select, $$ = window.SBRS.selectAll;
+var items = $$(".tl-item");
+if(!items.length) return;
+var now = new Date(), next = null;
+items.forEach(function(item){
+  var when = new Date($("time", item).getAttribute("datetime") + "T00:00:00");
+  if(when <= now){ item.classList.add("is-past"); return; }
+  if(!next) next = { item: item, when: when, name: $(".tl-name", item).textContent };
+});
+var gap = $("#nextGap"), name = $("#nextName"), date = $("#nextDate");
+if(!next){ if(gap) gap.closest(".next").hidden = true; return; }
+var days = Math.ceil((next.when - now) / 864e5);
+var label = days === 1 ? "1 day" : days + " days";
+next.item.classList.add("is-next");
+var flag = $(".tl-flag", next.item);
+flag.hidden = false;
+flag.textContent = "Next, in " + label;
+if(gap) gap.textContent = "In " + label;
+if(name) name.textContent = next.name;
+if(date) date.textContent = next.when.toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
 })();
