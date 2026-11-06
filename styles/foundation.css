@@ -18,15 +18,17 @@
   src:url("../assets/fonts/newsreader-latin-opsz-italic.woff2") format("woff2");
 }
 
-/* Two light surfaces, one pop. White on the pop is 5.3:1 and the pop on paper is 4.9:1, so it is safe for text. */
+/* Flyer palette: white and ice blue surfaces, navy ink, one cobalt pop.
+   White on the pop is 5.6:1 and the pop on ice is 5.1:1, so it is safe for text. */
 :root{
   --white:#FFFFFF;
-  --tint:#F6F4EE;
-  --pop:#C8320F;
+  --tint:#EDF3FF;
+  --pop:#1A55E8;
+  --pop-deep:#0B2B8C;
   --on-pop:#FFFFFF;
-  --ink:#16130F;
-  --muted:#57524A;
-  --line:rgba(22,19,15,.16);
+  --ink:#0E1F57;
+  --muted:#46557E;
+  --line:rgba(14,31,87,.16);
 
   --gut:clamp(20px,5vw,72px);
   --maxw:1520px;
@@ -85,7 +87,7 @@ ul,ol{padding:0;list-style:none}
 .btn:hover .ar{transform:translateX(3px)}
 .btn:active{transform:translateY(1px)}
 .btn-1{background-color:var(--pop);color:var(--on-pop);border-color:var(--pop)}
-.btn-2{border-color:rgba(22,19,15,.45);color:var(--ink)}
+.btn-2{border-color:rgba(14,31,87,.45);color:var(--ink)}
 .btn-ink{background-color:var(--ink);border-color:var(--ink);color:var(--white)}
 .btn-line{border-color:var(--on-pop);color:var(--on-pop)}
 
@@ -106,7 +108,7 @@ ul,ol{padding:0;list-style:none}
 .head-cta .btn-2{display:none}
 .nav-toggle{
   order:3;display:inline-flex;align-items:center;justify-content:center;flex:none;
-  width:44px;height:44px;padding:0;border:1px solid rgba(22,19,15,.45);border-radius:2px;background:transparent;color:var(--ink);cursor:pointer;
+  width:44px;height:44px;padding:0;border:1px solid rgba(14,31,87,.45);border-radius:2px;background:transparent;color:var(--ink);cursor:pointer;
 }
 .nav-toggle svg{width:20px;height:20px}
 .nav-toggle[aria-expanded="true"]{background:var(--ink);color:var(--white)}

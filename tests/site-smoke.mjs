@@ -75,7 +75,7 @@ try {
     globeReady: document.querySelector('.hero-stage').classList.contains('gl-on')
   }))()`);
   assert.equal(structure.styles, 7, 'seven named stylesheets load');
-  assert.equal(structure.scripts, 12, 'twelve named behavior and data scripts load');
+  assert.equal(structure.scripts, 13, 'thirteen named behavior and data scripts load');
   assert.equal(structure.speakers, 12);
   assert.equal(structure.members, 10);
   assert.equal(structure.peopleGrid, 'grid', 'feature CSS applies');

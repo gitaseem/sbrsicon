@@ -8,7 +8,7 @@ if(!labs.length) return;
 
 var css = getComputedStyle(document.documentElement);
 function token(name, fallback){ return css.getPropertyValue(name).trim() || fallback; }
-var INK = token("--ink", "#16130F"), POP = token("--pop", "#C8320F"), MUTED = token("--muted", "#57524A"), TINT = token("--tint", "#F6F4EE"), WHITE = token("--white", "#FFFFFF");
+var INK = token("--ink", "#0E1F57"), POP = token("--pop", "#1A55E8"), MUTED = token("--muted", "#46557E"), TINT = token("--tint", "#EDF3FF"), WHITE = token("--white", "#FFFFFF");
 
 function line(c, points, width, colour){
   c.beginPath();

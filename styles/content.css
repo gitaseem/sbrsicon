@@ -51,7 +51,7 @@
 .mapnote a{text-underline-offset:4px;text-decoration-thickness:1px;transition:color var(--fast) linear}
 .mapnote a:hover{color:var(--pop)}
 
-.site-foot{background:var(--pop);color:var(--on-pop);padding-top:clamp(56px,7vw,112px)}
+.site-foot{background:linear-gradient(160deg,var(--pop-deep) 0%,var(--pop) 100%);color:var(--on-pop);padding-top:clamp(56px,7vw,112px)}
 .foot-line{font-size:clamp(2.2rem,5.2vw,5rem)}
 .site-foot :focus-visible{outline-color:var(--on-pop)}
 .foot-grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 48px;margin-top:clamp(32px,4.5vw,64px)}

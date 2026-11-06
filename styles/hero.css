@@ -1,14 +1,27 @@
 /** Hero, globe, next-date line, and organizer logos. */
-.hero{position:relative;background:var(--tint);overflow:hidden;isolation:isolate}
-.hero-in{position:relative;z-index:2;padding-block:clamp(36px,4.4vw,72px) clamp(40px,4.6vw,76px);pointer-events:none}
+/* Pale sky to ice blue, like the top of the flyer; the cells and molecules are drawn over it by the biofield script. */
+.hero{
+  position:relative;overflow:hidden;isolation:isolate;
+  background:
+    radial-gradient(70% 60% at 90% 6%,rgba(140,190,255,.5),rgba(140,190,255,0) 70%),
+    radial-gradient(55% 50% at 0% 100%,rgba(120,172,255,.32),rgba(120,172,255,0) 70%),
+    linear-gradient(180deg,#F7FAFF 0%,#E7F0FF 55%,#D4E5FF 100%);
+}
+.hero-field{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;opacity:0}
+.hero-in{position:relative;z-index:2;padding-block:clamp(28px,3.4vw,60px) clamp(40px,4.6vw,76px);pointer-events:none}
 .hero-in a{pointer-events:auto}
-.hero-kicker{font-size:1.02rem;color:var(--muted);margin-bottom:clamp(14px,1.5vw,22px)}
-.hero-mark{font-size:clamp(2.5rem,6.15vw,6.6rem);line-height:1;letter-spacing:-.028em}
+.hero-kicker{font-size:1.02rem;color:var(--muted);margin-bottom:clamp(10px,1.2vw,18px)}
+.hero-mark{font-size:clamp(2.5rem,5.7vw,6.2rem);line-height:1;letter-spacing:-.028em}
 .hero-mark em{display:block;font-style:italic;color:var(--pop)}
-.hero-low{margin-top:clamp(28px,3.2vw,52px);max-width:min(520px,46%);padding-top:18px;border-top:1px solid var(--ink)}
+.hero-pill{
+  display:inline-flex;align-items:center;margin-top:clamp(16px,1.8vw,26px);padding:.38em 1.2em;
+  border:2px solid var(--ink);border-radius:999px;background:rgba(255,255,255,.6);
+  font-size:clamp(1rem,1.5vw,1.4rem);font-weight:760;letter-spacing:.03em;line-height:1.2;
+}
+.hero-low{margin-top:clamp(20px,2.4vw,38px);max-width:min(520px,46%);padding-top:18px;border-top:1px solid var(--ink)}
 .hero-when{font-family:var(--display);font-size:clamp(1.5rem,2.2vw,2.1rem);line-height:1.12;letter-spacing:-.015em}
 .hero-when span{display:block;margin-top:8px;font-family:var(--font);font-size:1rem;line-height:1.35;letter-spacing:0}
-.hero-theme{margin-top:12px;color:var(--muted);line-height:1.45}
+.hero-theme{margin-top:12px;color:var(--muted);font-style:italic;line-height:1.45}
 .hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 
 /* The globe answers "where": it sits low beside the details and carries the one venue dot. */
@@ -19,6 +32,14 @@
 .hero-stage.gl-on .glfallback{display:none}
 .gl-hint{position:absolute;z-index:3;right:calc(var(--gut) + min(33vw,540px) + 12px);bottom:18px;font-size:.82rem;color:var(--muted);pointer-events:none}
 
+/* Wide screens: the buttons sit beside the date, so they stay above the fold on laptop windows. */
+@media (min-width:1001px){
+  .hero-low{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:clamp(24px,3vw,48px);align-items:end;max-width:min(800px,56%)}
+  .hero-when,.hero-theme{grid-column:1}
+  .hero-cta{grid-column:2;grid-row:1 / span 2;flex-direction:column;align-items:stretch;margin-top:0}
+  .hero-go{grid-column:1 / -1}
+}
+
 @media (max-width:1000px){
   .hero-mark br{display:none}
   .hero-mark{font-size:clamp(2.05rem,10vw,5rem)}
@@ -28,11 +49,12 @@
   .gl-hint{display:none}
 }
 
-.next{background:var(--white);border-bottom:1px solid var(--line);position:relative;z-index:3}
+/* The deep blue band from the flyer's section bars. */
+.next{background:linear-gradient(90deg,var(--pop-deep),var(--pop));color:var(--on-pop);position:relative;z-index:3}
 .next-in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 24px;min-height:60px;padding-block:12px}
-.next p{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline;font-size:1rem;color:var(--muted)}
-.next b{font-weight:600;color:var(--ink)}
-.next a{color:var(--pop);font-weight:600;text-underline-offset:4px;white-space:nowrap}
+.next p{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:baseline;font-size:1rem;color:rgba(255,255,255,.82)}
+.next b{font-weight:600;color:var(--on-pop)}
+.next a{color:var(--on-pop);font-weight:600;text-underline-offset:4px;white-space:nowrap}
 
 .orgs{border-bottom:1px solid var(--line)}
 .orgs-in{display:flex;flex-wrap:wrap;align-items:center;gap:20px clamp(32px,7vw,110px);padding-block:clamp(22px,2.4vw,34px)}

@@ -112,7 +112,7 @@
 .story .split>:last-child{display:grid;min-height:0;position:relative}
 .story .lede,.story .objectives{grid-area:1/1;align-self:center;margin:0;will-change:transform,opacity}
 .story .lede{max-width:none;font-size:calc(clamp(1.3rem,min(1.2rem + 2.2vw,4svh),2.7rem) * var(--story-scale));line-height:1.27}
-.story .lede .ink{color:rgba(22,19,15,calc(.16 + .84 * var(--i,0)));transition:none}
+.story .lede .ink{color:rgba(14,31,87,calc(.16 + .84 * var(--i,0)));transition:none}
 .story .lede .ink-key{
   font-style:italic;transition:color .12s linear;
   background:linear-gradient(var(--pop),var(--pop)) no-repeat 0 60%/calc(var(--i,0) * 100%) 92%;
@@ -122,7 +122,7 @@
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .story .lede .ink-key,.story .lede .ink-key.is-inked{
     color:transparent;-webkit-text-fill-color:transparent;transition:none;
-    background-image:linear-gradient(90deg,var(--on-pop) calc(var(--i,0) * 100%),rgba(22,19,15,.16) 0),linear-gradient(var(--pop),var(--pop));
+    background-image:linear-gradient(90deg,var(--on-pop) calc(var(--i,0) * 100%),rgba(14,31,87,.16) 0),linear-gradient(var(--pop),var(--pop));
     background-repeat:no-repeat;background-position:0 0,0 60%;background-size:100% 100%,calc(var(--i,0) * 100%) 92%;
     -webkit-background-clip:text,border-box;background-clip:text,border-box;
   }
@@ -198,7 +198,7 @@
 .finder legend{padding:0;margin-bottom:5px;font-size:.84rem;color:var(--muted)}
 .finder label{position:relative;display:inline-flex;cursor:pointer}
 .finder input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
-.finder label span{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border:1px solid rgba(22,19,15,.3);border-radius:2px;font-size:.92rem;font-weight:500;line-height:1.2;transition:background-color var(--fast) linear,color var(--fast) linear,border-color var(--fast) linear}
+.finder label span{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border:1px solid rgba(14,31,87,.3);border-radius:2px;font-size:.92rem;font-weight:500;line-height:1.2;transition:background-color var(--fast) linear,color var(--fast) linear,border-color var(--fast) linear}
 .finder label:hover span{border-color:var(--ink)}
 .finder input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--white)}
 .finder input:focus-visible+span{outline:3px solid var(--pop);outline-offset:2px}

@@ -119,11 +119,11 @@ Eleven numbered sections plus the hero. The zone rail bottom-right derives its t
 | 04 | Attend | chamber-2 |
 | 05 | Highlights | plate |
 | 06 | **Speakers** | plate-2 |
-| 07 | Dates | paper |
+| 07 | Dates | ice |
 | 08 | **Registration & fees** | plate |
 | 09 | **Sponsorship** | chamber |
 | 10 | Hosts | plate-2 |
-| 11 | **Organizing committee** | paper |
+| 11 | **Organizing committee** | ice |
 
 The nav carries ten links. Two of them (`Objectives`, `Highlights`) carry `.nav-opt` and stand down
 in the 1040–1299 px desktop band. Below 1040 px, a menu exposes all ten links with keyboard and

@@ -59,17 +59,17 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
     ctx.clearRect(0,0,w,h);
 
     ctx.beginPath(); ctx.arc(cx,cy,R,0,6.2832);
-    ctx.strokeStyle = "rgba(22,19,15,0.28)"; ctx.lineWidth = 1; ctx.stroke();
+    ctx.strokeStyle = "rgba(14,31,87,0.28)"; ctx.lineWidth = 1; ctx.stroke();
 
     for(i=-60;i<=60;i+=30){
       var lat=[]; for(j=-180;j<=180;j+=6) lat.push([j,i]);
-      strokeRing(lat,"rgba(22,19,15,0.07)",1);
+      strokeRing(lat,"rgba(14,31,87,0.07)",1);
     }
     for(i=0;i<180;i+=30){
       var lon=[]; for(j=-90;j<=90;j+=4) lon.push([i,j]);
-      strokeRing(lon,"rgba(22,19,15,0.07)",1);
+      strokeRing(lon,"rgba(14,31,87,0.07)",1);
       var lon2=[]; for(j=-90;j<=90;j+=4) lon2.push([i-180,j]);
-      strokeRing(lon2,"rgba(22,19,15,0.07)",1);
+      strokeRing(lon2,"rgba(14,31,87,0.07)",1);
     }
 
     var r = Math.max(.9, R*0.0052);
@@ -111,7 +111,7 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
       lx = Math.max(6, lx);
       hit.box = [lx, ly - bh/2, bw, bh];
 
-      ctx.fillStyle = "#F6F4EE";
+      ctx.fillStyle = "#FFFFFF";
       ctx.beginPath();
       ctx.rect(lx, ly - bh/2, bw, bh);
       ctx.fill();

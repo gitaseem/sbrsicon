@@ -3,12 +3,12 @@
   width:min(760px,calc(100vw - 24px));max-width:none;max-height:calc(100dvh - 32px);
   padding:0;border:0;background:var(--white);color:var(--ink);overflow:visible;
 }
-.dlg::backdrop{background:rgba(22,19,15,.55)}
+.dlg::backdrop{background:rgba(14,31,87,.55)}
 .dlg-in{display:flex;flex-direction:column;max-height:calc(100dvh - 32px)}
 .dlg-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:clamp(18px,2.6vw,28px);background:var(--tint)}
 .dlg-head h2{margin-top:4px;font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,2.8vw,2.4rem);line-height:1.05;letter-spacing:-.02em}
 .dlg-head .hint{display:block}
-.dlg-x{flex:none;width:44px;height:44px;font-size:1.5rem;line-height:1;background:none;color:var(--ink);border:1px solid rgba(22,19,15,.45);border-radius:2px;cursor:pointer;transition:background-color var(--fast) linear,color var(--fast) linear}
+.dlg-x{flex:none;width:44px;height:44px;font-size:1.5rem;line-height:1;background:none;color:var(--ink);border:1px solid rgba(14,31,87,.45);border-radius:2px;cursor:pointer;transition:background-color var(--fast) linear,color var(--fast) linear}
 .dlg-x:hover{background:var(--ink);color:var(--white)}
 .dlg-body{display:grid;gap:16px;align-content:start;padding:clamp(18px,2.6vw,28px);overflow-y:auto}
 @media (min-width:640px){.dlg-body{grid-template-columns:1fr 1fr}.f.wide{grid-column:1/-1}}
