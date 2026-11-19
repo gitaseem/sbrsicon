@@ -170,9 +170,11 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
   }
 
   var lastX=0, lastY=0, moved=0, velL=0, velP=0, downAt=0;
+  // After a drag is let go, the globe eases back to India once the throw has slowed.
+  var snapHome = false;
 
   function down(e){
-    dragging = true; autoRot = false; moved = 0; velL = 0; velP = 0; downAt = Date.now();
+    dragging = true; autoRot = false; snapHome = false; moved = 0; velL = 0; velP = 0; downAt = Date.now();
     var pt = at(e); lastX = pt[2]; lastY = pt[3];
     try { cv.focus({ preventScroll:true }); } catch(err){ cv.focus(); }
     if(cv.setPointerCapture && e.pointerId !== undefined) cv.setPointerCapture(e.pointerId);
@@ -213,6 +215,9 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
       velL = velP = 0;
       var i = e ? pinAt(at(e)[0], at(e)[1]) : -1;
       if(i >= 0){ openPin(i); setHint("Drag to rotate", false); idle(); return; }
+    }
+    if(moved >= 6){
+      if(RM){ velL = velP = 0; flyTo(HOME_L, HOME_P); } else snapHome = true;
     }
     setHint("Drag to rotate", false);
     idle();
@@ -273,21 +278,27 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
     var pin = GLOBE_PINS[index];
     if(!pin) return;
     if(flyId) cancelAnimationFrame(flyId);
-    var endL = -pin.lng, endP = pin.lat - 12;
+    velL = 0; velP = 0; snapHome = false; hover = index;
+    flyTo(-pin.lng, pin.lat - 12);
+  };
+
+  // Eases the globe to a rotation by the shortest way round.
+  function flyTo(endL, endP, ms){
+    if(flyId) cancelAnimationFrame(flyId);
     var startL = rotL, startP = rotP, start = null;
     var spin = ((endL - startL) % 360 + 540) % 360 - 180;
-    velL = 0; velP = 0; hover = index;
     if(RM){ rotL = startL + spin; rotP = endP; draw(); return; }
+    var dur = ms || 620;
     (function step(now){
       if(dragging) return;
       if(start === null) start = now;
-      var t = Math.min(1, (now - start) / 620), e = 1 - Math.pow(1 - t, 3);
+      var t = Math.min(1, (now - start) / dur), e = 1 - Math.pow(1 - t, 3);
       rotL = startL + spin * e;
       rotP = startP + (endP - startP) * e;
       draw();
       if(t < 1) flyId = requestAnimationFrame(step);
     })(performance.now());
-  };
+  }
 
   // Scrolling the page turns the globe; motion.js supplies the distance.
   window.SBRS.spinGlobe = function(degrees){ rotL += degrees; if(vis) draw(); };
@@ -305,6 +316,11 @@ var GLOBE_DOTS = data.dots, GLOBE_RINGS = data.rings, GLOBE_PINS = data.pins;
           rotP = Math.max(-72, Math.min(72, rotP + velP));
           velL *= 0.94; velP *= 0.94;
           live = true;
+        }
+        // Once the throw has mostly died away, fly back to India.
+        if(snapHome && !dragging && Math.abs(velL) < 0.6 && Math.abs(velP) < 0.6){
+          snapHome = false; velL = velP = 0;
+          flyTo(HOME_L, HOME_P, 900);
         }
         if(autoRot && !dragging){ rotL += dt * 0.0012; live = true; }
         if(live || hover >= 0 || focusPin >= 0) draw();
