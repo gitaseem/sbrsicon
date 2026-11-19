@@ -1,5 +1,5 @@
 /** Hero backdrop: a field of glassy cells and small molecules drawn in code, echoing the conference flyer.
- *  The hero's one off colour, lime, lives only here: a spark that follows the cursor or a finger, lights up
+ *  The hero's one off colour, the palette green, lives only here: a spark that follows the cursor or a finger, lights up
  *  what it passes and pushes cells aside, and a pulse that ripples out from a click or tap. */
 (function(){
 "use strict";
@@ -11,15 +11,15 @@ var w = 0, h = 0, base = 0, dpr = 1, running = false, onScreen = true, born = nu
 var aim = { x:0, y:0 }, look = { x:0, y:0 };
 
 // The spark colour comes from --spark and --spark-deep on .hero (styles/hero.css), so it can be changed in CSS.
-var LIME = "184,242,74", LIME_DEEP = "112,178,12";
+var GLOW = "124,203,137", GLOW_DEEP = "56,169,101";
 function rgb(hex, fallback){
   var m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec((hex || "").trim());
   return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)].join(",") : fallback;
 }
 function readColours(){
   var css = getComputedStyle(hero);
-  LIME = rgb(css.getPropertyValue("--spark"), LIME);
-  LIME_DEEP = rgb(css.getPropertyValue("--spark-deep"), LIME_DEEP);
+  GLOW = rgb(css.getPropertyValue("--spark"), GLOW);
+  GLOW_DEEP = rgb(css.getPropertyValue("--spark-deep"), GLOW_DEEP);
 }
 var spark = { x:null, y:null }, reach = 160, links = [], pointer = null, pulses = [];
 
@@ -196,12 +196,12 @@ function drawCell(c, t, scroll){
   var flash = pulseAt(at.x, at.y, t);
   var body = ctx.createRadialGradient(at.x - R * .35, at.y - R * .4, R * .05, at.x, at.y, R);
   body.addColorStop(0, "rgba(255,255,255," + (.6 * fade) + ")");
-  body.addColorStop(.55, flash > .05 ? "rgba(" + LIME + "," + (.35 * flash * fade) + ")" : "rgba(165,200,255," + (.26 * fade) + ")");
+  body.addColorStop(.55, flash > .05 ? "rgba(" + GLOW + "," + (.35 * flash * fade) + ")" : "rgba(150,196,246," + (.26 * fade) + ")");
   body.addColorStop(1, "rgba(60,120,235," + (.42 * fade) + ")");
   ctx.fillStyle = body;
   ctx.beginPath(); ctx.arc(at.x, at.y, R, 0, 6.2832); ctx.fill();
 
-  // Membrane: the near half of the dotted sphere. Dots near the spark, or under a passing pulse, turn lime.
+  // Membrane: the near half of the dotted sphere. Dots near the spark, or under a passing pulse, turn green.
   var a = (c.a0 || 0) + t * 0.0001 * c.spin * 6, dot = Math.max(.6, R * .024), lit = [], r2 = reach * reach;
   for(var i = 0; i < c.pts.length; i++){
     var q = turn(c.pts[i], a, .38);
@@ -215,13 +215,13 @@ function drawCell(c, t, scroll){
   }
   ctx.globalAlpha = 1;
   lit.forEach(function(p){
-    ctx.fillStyle = "rgba(" + LIME_DEEP + "," + (.45 + .55 * p[3]) + ")";
+    ctx.fillStyle = "rgba(" + GLOW_DEEP + "," + (.45 + .55 * p[3]) + ")";
     ctx.beginPath(); ctx.arc(p[0], p[1], p[2] * (1 + 1.1 * p[3]), 0, 6.2832); ctx.fill();
   });
   ctx.lineWidth = Math.max(1, R * .012);
   ctx.strokeStyle = "rgba(255,255,255," + (.75 * fade) + ")";
   ctx.beginPath(); ctx.arc(at.x, at.y, R, 3.6, 5.4); ctx.stroke();
-  ctx.strokeStyle = flash > .05 ? "rgba(" + LIME_DEEP + "," + (.8 * flash) + ")" : "rgba(26,85,232," + (.22 * fade) + ")";
+  ctx.strokeStyle = flash > .05 ? "rgba(" + GLOW_DEEP + "," + (.8 * flash) + ")" : "rgba(5,102,242," + (.22 * fade) + ")";
   ctx.beginPath(); ctx.arc(at.x, at.y, R - ctx.lineWidth, 0, 6.2832); ctx.stroke();
 
   var gap = Math.hypot(spark.x - at.x, spark.y - at.y), edge = gap - R;
@@ -236,7 +236,7 @@ function drawMol(m, t, scroll){
   var at = place(m, t, scroll), k = m.s * base, a = RM ? .6 : t * 0.0001 * m.spin * 6, fade = 0.5 + 0.5 * m.d;
   var pts = m.atoms.map(function(p){ var q = turn(p, a, .5); return { x: at.x + q[0] * k, y: at.y + q[1] * k, z: q[2] }; });
   ctx.lineCap = "round";
-  ctx.strokeStyle = "rgba(26,85,232," + (.38 * fade) + ")";
+  ctx.strokeStyle = "rgba(5,102,242," + (.38 * fade) + ")";
   ctx.lineWidth = Math.max(1.2, k * .12);
   m.bonds.forEach(function(b){
     ctx.beginPath(); ctx.moveTo(pts[b[0]].x, pts[b[0]].y); ctx.lineTo(pts[b[1]].x, pts[b[1]].y); ctx.stroke();
@@ -247,12 +247,12 @@ function drawMol(m, t, scroll){
     var g = ctx.createRadialGradient(p.x - r * .35, p.y - r * .4, r * .1, p.x, p.y, r);
     g.addColorStop(0, "rgba(255,255,255," + fade + ")");
     if(near > .35 || pulseAt(p.x, p.y, t) > .3){
-      g.addColorStop(.45, "rgba(" + LIME + "," + fade + ")");
-      g.addColorStop(1, "rgba(" + LIME_DEEP + "," + fade + ")");
+      g.addColorStop(.45, "rgba(" + GLOW + "," + fade + ")");
+      g.addColorStop(1, "rgba(" + GLOW_DEEP + "," + fade + ")");
       if(near > .35) link(p.x, p.y, near);
     } else {
-      g.addColorStop(.45, "rgba(120,170,255," + fade + ")");
-      g.addColorStop(1, "rgba(26,85,232," + fade + ")");
+      g.addColorStop(.45, "rgba(93,163,239," + fade + ")");
+      g.addColorStop(1, "rgba(5,102,242," + fade + ")");
     }
     ctx.fillStyle = g;
     ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.2832); ctx.fill();
@@ -263,10 +263,10 @@ function drawPulses(t){
   pulses = pulses.filter(function(p){ return (t - p.t0) * .8 < p.max; });
   pulses.forEach(function(p){
     var r = (t - p.t0) * .8, life = 1 - r / p.max;
-    ctx.strokeStyle = "rgba(" + LIME_DEEP + "," + (.55 * life) + ")";
+    ctx.strokeStyle = "rgba(" + GLOW_DEEP + "," + (.55 * life) + ")";
     ctx.lineWidth = 1 + 2 * life;
     ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.2832); ctx.stroke();
-    ctx.strokeStyle = "rgba(" + LIME + "," + (.35 * life) + ")";
+    ctx.strokeStyle = "rgba(" + GLOW + "," + (.35 * life) + ")";
     ctx.lineWidth = 6 * life;
     ctx.beginPath(); ctx.arc(p.x, p.y, Math.max(0, r - 6), 0, 6.2832); ctx.stroke();
   });
@@ -276,21 +276,21 @@ function drawSpark(){
   links.sort(function(p, q){ return q.k - p.k; });
   ctx.lineCap = "round";
   links.slice(0, 7).forEach(function(l){
-    ctx.strokeStyle = "rgba(" + LIME_DEEP + "," + (.2 + .55 * l.k) + ")";
+    ctx.strokeStyle = "rgba(" + GLOW_DEEP + "," + (.2 + .55 * l.k) + ")";
     ctx.lineWidth = 1 + l.k;
     ctx.beginPath(); ctx.moveTo(spark.x, spark.y); ctx.lineTo(l.x, l.y); ctx.stroke();
-    ctx.fillStyle = "rgba(" + LIME_DEEP + "," + (.5 + .5 * l.k) + ")";
+    ctx.fillStyle = "rgba(" + GLOW_DEEP + "," + (.5 + .5 * l.k) + ")";
     ctx.beginPath(); ctx.arc(l.x, l.y, 2 + 1.5 * l.k, 0, 6.2832); ctx.fill();
   });
   var glow = ctx.createRadialGradient(spark.x, spark.y, 0, spark.x, spark.y, reach * .6);
-  glow.addColorStop(0, "rgba(" + LIME + ",.42)");
-  glow.addColorStop(1, "rgba(" + LIME + ",0)");
+  glow.addColorStop(0, "rgba(" + GLOW + ",.42)");
+  glow.addColorStop(1, "rgba(" + GLOW + ",0)");
   ctx.fillStyle = glow;
   ctx.beginPath(); ctx.arc(spark.x, spark.y, reach * .6, 0, 6.2832); ctx.fill();
   var core = ctx.createRadialGradient(spark.x - 2, spark.y - 2, .5, spark.x, spark.y, 7);
   core.addColorStop(0, "#FFFFFF");
-  core.addColorStop(.45, "rgb(" + LIME + ")");
-  core.addColorStop(1, "rgb(" + LIME_DEEP + ")");
+  core.addColorStop(.45, "rgb(" + GLOW + ")");
+  core.addColorStop(1, "rgb(" + GLOW_DEEP + ")");
   ctx.fillStyle = core;
   ctx.beginPath(); ctx.arc(spark.x, spark.y, 7, 0, 6.2832); ctx.fill();
 }

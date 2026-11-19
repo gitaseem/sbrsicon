@@ -15,6 +15,7 @@ import { readFileSync, readdirSync, writeFileSync, statSync } from 'node:fs';
 const mime = f => f.endsWith('.mp4') ? 'video/mp4'
   : f.endsWith('.woff2') ? 'font/woff2'
   : f.endsWith('.png') ? 'image/png'
+  : f.endsWith('.svg') ? 'image/svg+xml'
   : f.endsWith('.webp') ? 'image/webp'
   : 'image/jpeg';
 
@@ -38,8 +39,8 @@ h = h.replace(/<script defer src="(scripts\/[a-z-]+\.js)"><\/script>/g,
 const portraits = readdirSync('assets')
   .filter(name => /^spk-.+\.(webp|jpg)$/.test(name))
   .map(name => `assets/${name}`);
-for (const f of ['assets/iitm-logo.png',
-                 'assets/iiitdmj-logo.png', 'assets/sbrs-logo.png',
+for (const f of ['assets/iitm-logo.svg',
+                 'assets/iiitdmj-logo.svg', 'assets/sbrs-logo.svg',
                  'assets/campus-jabalpur.jpg',
                  ...portraits]) {
   const before = h.length;

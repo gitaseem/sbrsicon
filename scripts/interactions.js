@@ -43,7 +43,7 @@ function reactiveType(el, options){
         // In em, so a window resize can never leave a stale width behind.
         letter.style.width = (plan.widths[i] / size).toFixed(4) + "em";
         word.appendChild(letter);
-        letters.push({ el: letter, x: 0, y: 0, weight: 400 });
+        letters.push({ el: letter, x: 0, y: 0, weight: 600 });
       }
       plan.node.parentNode.replaceChild(frag, plan.node);
     });
@@ -82,12 +82,12 @@ function reactiveType(el, options){
       }
     }
     letters.forEach(function(item){
-      var target = 400;
+      var target = 600;
       [ghost, pointer && { x: pointer.x - base.left, y: pointer.y - base.top }].forEach(function(at){
         if(!at) return;
         var dx = at.x - item.x, dy = at.y - item.y;
         var near = Math.max(0, 1 - Math.sqrt(dx * dx + dy * dy) / reach);
-        target = Math.max(target, 400 + 340 * near * near);
+        target = Math.max(target, 600 + 250 * near * near);
       });
       var change = (target - item.weight) * 0.24;
       if(Math.abs(target - item.weight) < 1.5){ change = target - item.weight; } else { moving = true; }

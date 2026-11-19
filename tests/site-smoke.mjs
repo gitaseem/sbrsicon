@@ -88,7 +88,7 @@ try {
     loaded: [...document.fonts].filter(face => face.status === 'loaded').map(face => face.family)
   }))()`);
   assert.match(typography.body, /Archivo/, 'body uses Archivo');
-  assert.match(typography.display, /Newsreader/, 'display headings use Newsreader');
+  assert.match(typography.display, /Archivo/, 'headings use the same Archivo family as the body');
   assert.ok(typography.loaded.includes('Archivo'), 'self-hosted font loads');
   const images = await evaluate(`Promise.all([...document.images].map(image => {
     image.loading = 'eager';

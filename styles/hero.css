@@ -3,18 +3,18 @@
 .hero{
   position:relative;overflow:hidden;isolation:isolate;
   background:
-    radial-gradient(70% 60% at 90% 6%,rgba(140,190,255,.5),rgba(140,190,255,0) 70%),
-    radial-gradient(55% 50% at 0% 100%,rgba(120,172,255,.32),rgba(120,172,255,0) 70%),
-    linear-gradient(180deg,#F7FAFF 0%,#E7F0FF 55%,#D4E5FF 100%);
+    radial-gradient(70% 60% at 90% 6%,rgba(93,163,239,.42),rgba(93,163,239,0) 70%),
+    radial-gradient(55% 50% at 0% 100%,rgba(124,203,137,.22),rgba(124,203,137,0) 70%),
+    linear-gradient(180deg,#F7FBFF 0%,#E8F2FE 55%,#D3E6FC 100%);
 }
-/* The hero's one off colour, used only by the reactive backdrop: --spark for the glow, --spark-deep for dots and threads. */
-.hero{--spark:#FF9F1C;--spark-deep:#E06A00}
+/* The reactive backdrop uses the palette green: --spark for the glow, --spark-deep for dots and threads. */
+.hero{--spark:#7CCB89;--spark-deep:#38A965}
 .hero-field{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;opacity:0}
 .hero-in{position:relative;z-index:2;padding-block:clamp(28px,3.4vw,60px) clamp(40px,4.6vw,76px);pointer-events:none}
 .hero-in a{pointer-events:auto}
 .hero-kicker{font-size:1.02rem;color:var(--muted);margin-bottom:clamp(10px,1.2vw,18px)}
 .hero-mark{font-size:clamp(2.5rem,5.7vw,6.2rem);line-height:1;letter-spacing:-.028em}
-.hero-mark em{display:block;font-style:italic;color:var(--pop)}
+.hero-mark em{display:block;font-style:normal;color:var(--pop)}
 .hero-pill{
   display:inline-flex;align-items:center;margin-top:clamp(16px,1.8vw,26px);padding:.38em 1.2em;
   border:2px solid var(--ink);border-radius:999px;background:rgba(255,255,255,.6);
@@ -23,7 +23,7 @@
 .hero-low{margin-top:clamp(20px,2.4vw,38px);max-width:min(520px,46%);padding-top:18px;border-top:1px solid var(--ink)}
 .hero-when{font-family:var(--display);font-size:clamp(1.5rem,2.2vw,2.1rem);line-height:1.12;letter-spacing:-.015em}
 .hero-when span{display:block;margin-top:8px;font-family:var(--font);font-size:1rem;line-height:1.35;letter-spacing:0}
-.hero-theme{margin-top:12px;color:var(--muted);font-style:italic;line-height:1.45}
+.hero-theme{margin-top:12px;color:var(--muted);line-height:1.45}
 .hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 
 /* The globe answers "where": it sits low beside the details and carries the one venue dot. */

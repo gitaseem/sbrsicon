@@ -161,13 +161,15 @@ Nothing was generated and no third-party asset was fetched.
 | Shipping file | Source | Treatment |
 |---|---|---|
 | `campus-jabalpur.jpg` | `Campus photograph of PDPM IIITDM Jabalpur.jpg` | → 1400 px, displayed as a 21:9 band |
-| `sbrs-logo.png` | `…sbrs logo.png` | → 440 px, alpha preserved |
-| `iiitdmj-logo.png` | `PDPM IIITDM Jabalpur logo.png` | → 380 px, alpha preserved |
-| `iitm-logo.png` | `IIT_Madras_Logo.svg.webp` | → 176 px, alpha preserved |
+| `sbrs-logo.svg` | `…sbrs logo.png` | Traced to vector (single colour) so it stays sharp when zoomed |
+| `icon-logo.svg`, `icon-logo-stacked.svg` | `Horizontal Logo.svg`, `Stackup logo .svg` (event logo pack) | Copied unaltered; header uses the horizontal lockup |
+| `icon-mark.svg` | `Horizontal Logo.svg` | Wordmark paths removed, square viewBox; used as the favicon |
+| `iiitdmj-logo.svg` | `PDPM IIITDM Jabalpur logo.png` | Traced to vector, one layer per flat colour; no higher-resolution original was available |
+| `iitm-logo.svg` | Official `IIT_Madras_Logo.svg` (Wikipedia) | Unaltered vector; viewBox added so it scales |
 | Original `spk-*.webp` / `.jpg` — 11 portraits | `speaker info.pdf` | Image XObjects extracted at native resolution, hand-tuned 4:5 crop per face, 440×550 |
 | `spk-{roy,rad,li,liu,sharma}.webp` / `.jpg` — 5 portraits | `SBRS_SPEAKERS(1) (1).pptx` | Embedded images matched by slide relationship and picture position to each caption, cropped to 4:5, 440×550 |
 
-All three institutional logos are reproduced **unaltered** — marks are never recoloured into the palette.
+All three institutional logos keep their own colours and shapes — marks are never recoloured into the palette. The SBRS and IIITDM marks were traced from the supplied PNGs only to make them sharp on high-density screens.
 **Speaker portraits are likewise exempt from the duotone.** They are photographs of real people; recolouring
 them into the petrol/amber ramp would misrepresent the subjects. Consistency comes from the shared 4:5 frame
 and card, not from a colour treatment.
