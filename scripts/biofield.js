@@ -85,7 +85,7 @@ function keepOut(){
       });
     });
   }
-  Array.prototype.forEach.call(hero.querySelectorAll(".hero-pill,.hero-cta .btn,.hero-go,.gl-hint"), function(el){ add(el.getBoundingClientRect()); });
+  Array.prototype.forEach.call(hero.querySelectorAll(".hero-pill,.hero-count,.hero-cta .btn,.hero-go,.gl-hint"), function(el){ add(el.getBoundingClientRect()); });
   var stage = hero.querySelector(".hero-stage");
   if(stage){
     var g = stage.getBoundingClientRect();

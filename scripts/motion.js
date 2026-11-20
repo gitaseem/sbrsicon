@@ -71,10 +71,10 @@ function setUpStory(){
   if(!panes || !lede || !goals || !items.length) return;
   var words = $$(".ink", lede);
 
-  var key = "sustainable solutions for the future of healthcare".split(" ");
+  var key = "Advanced Materials Meet Intelligent Design and Sustainable Healthcare Innovation".split(" ");
   words.forEach(function(word, i){
     var matches = key.every(function(part, k){
-      return words[i + k] && words[i + k].textContent.replace(/[.,]/g, "") === part;
+      return words[i + k] && words[i + k].textContent.replace(/[.,“”"]/g, "") === part;
     });
     if(!matches) return;
     key.forEach(function(part, k){

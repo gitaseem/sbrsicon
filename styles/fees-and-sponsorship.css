@@ -32,5 +32,29 @@
 .spo dt{font-size:.88rem;color:var(--muted)}
 .spo dd{font-weight:650;font-size:1.15rem;font-variant-numeric:tabular-nums;line-height:1.25}
 .spo dd small{margin-left:.5em;font-size:.85rem;font-weight:450;color:var(--muted)}
-.spo-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px 40px;margin-top:clamp(32px,4vw,52px)}
-.spo-foot p{flex:1 1 320px;max-width:44em;font-size:.95rem;color:var(--muted)}
+.spo-note{max-width:44em;margin-top:clamp(24px,3vw,36px);font-size:.95rem;color:var(--muted)}
+/* The sponsorship call to action: a brand-gradient band with a glowing, shimmering button. */
+.spo-cta{
+  position:relative;overflow:hidden;isolation:isolate;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:22px 40px;
+  margin-top:clamp(28px,3.4vw,44px);padding:clamp(26px,3.4vw,46px) clamp(22px,3.4vw,52px);border-radius:14px;color:#fff;
+  background:linear-gradient(115deg,var(--pop-deep) 0%,var(--pop) 48%,var(--sky) 78%,var(--green) 100%);background-size:180% 180%;
+  animation:spo-flow 9s ease-in-out infinite alternate;box-shadow:0 18px 50px -18px rgba(5,102,242,.55);
+}
+.spo-cta::before{content:"";position:absolute;inset:auto -10% -60% 45%;z-index:-1;height:160%;background:radial-gradient(closest-side,rgba(124,203,137,.55),rgba(124,203,137,0));pointer-events:none}
+.spo-cta-text{flex:1 1 300px;min-width:0;max-width:42em}
+.spo-cta-kicker{font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green-light)}
+.spo-cta-title{margin-top:8px;font-size:clamp(1.35rem,2.3vw,2.1rem);font-weight:650;line-height:1.15;letter-spacing:-.02em}
+.spo-cta-btn{
+  position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.6em;min-height:58px;padding:0 30px;border-radius:999px;
+  background:#fff;color:var(--pop-deep);font-size:1.08rem;font-weight:750;text-decoration:none;white-space:nowrap;
+  box-shadow:0 0 0 0 rgba(124,203,137,.7);animation:spo-glow 2.4s ease-out infinite;transition:transform .15s var(--ease),background-color .15s linear,color .15s linear;
+}
+.spo-cta-btn::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,rgba(255,255,255,0),rgba(124,203,137,.55),rgba(255,255,255,0));transform:skewX(-20deg);animation:spo-shine 3.2s ease-in-out infinite}
+.spo-cta-btn .ar{transition:transform .15s var(--ease)}
+.spo-cta-btn:hover{transform:translateY(-2px) scale(1.03);background:var(--green-light);color:var(--pop-deep)}
+.spo-cta-btn:hover .ar{transform:translateX(4px)}
+.spo-cta-btn:focus-visible{outline:3px solid #fff;outline-offset:4px}
+@keyframes spo-flow{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes spo-glow{0%{box-shadow:0 0 0 0 rgba(124,203,137,.7)}70%,100%{box-shadow:0 0 0 18px rgba(124,203,137,0)}}
+@keyframes spo-shine{0%,55%{left:-60%}100%{left:130%}}
+@media (prefers-reduced-motion:reduce){.spo-cta,.spo-cta-btn,.spo-cta-btn::after{animation:none}}
